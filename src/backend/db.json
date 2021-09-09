@@ -1,4 +1,65 @@
 {
-    "users": []
+  "users": [
+    {
+      "email": "first1@mail.com",
+      "password": "$2a$10$zLNJP8OEGbUqfbFG9Uzg1uYoXn4WxAd1EhWO4xw51ifDINpGaV8YS",
+      "username": "First1",
+      "id": 1
+    }
+  ],
+  "clients": [
+    {
+      "name": "First Client",
+      "cpf": "1234567890",
+      "email": "client@mail.com",
+      "tel": "4137456321",
+      "cel": "41987654321",
+      "postalCode": "81526741",
+      "street": "Rua Primeira",
+      "number": "1",
+      "city": "",
+      "district": "Primeirão",
+      "profInfo": "Coisas primeiras",
+      "clientSince": "01/01/0001",
+      "lastContact": "01/01/10001",
+      "totalSpent": "100000.00",
+      "owes": "0.01",
+      "observations": "That's it",
+      "userId": 1,
+      "contracts": [],
+      "id": 1
+    }
+  ],
+  "services": [
+    {
+      "title": "Primeiro",
+      "description": "The first service",
+      "language": "Plankalkül",
+      "budget": "100000.01",
+      "finalValue": "",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "name": "joazinho2",
+      "userId": 1,
+      "id": 3
+    }
+  ],
+  "contracts": [
+    {
+      "service": "id do serviço",
+      "status": "Concluído",
+      "userId": 1,
+      "clientId": 1,
+      "id": 1
+    },
+    {
+      "service": "id do serviço",
+      "status": "Concluído",
+      "userId": 1,
+      "clientId": 2,
+      "id": 2
+    }
+  ]
 }
-  
