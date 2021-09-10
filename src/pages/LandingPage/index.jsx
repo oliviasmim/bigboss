@@ -1,8 +1,8 @@
-import { MenuSide } from "../../components/MenuSide";
+import PageLayout from "../../components/PageLayout";
 
 const LandingPage = () => {
     return (
-        <MenuSide />
+        <PageLayout />
     )
 }
 
