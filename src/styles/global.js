@@ -7,4 +7,12 @@ export default createGlobalStyle`
         box-sizing: border-box;
         outline: 0;
     }
+
+    :root{
+        --white:#f5f5f5;
+        --black:#0c0d0d;
+        --white-gray:#EAF0FC;
+        --blue: #134087;
+    }
+
 `;
