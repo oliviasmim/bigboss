@@ -1,6 +1,8 @@
+import { MenuSide } from "../../components/MenuSide";
+
 const LandingPage = () => {
     return (
-        <div></div>
+        <MenuSide />
     )
 }
 
