@@ -15,10 +15,12 @@
     "json-server-auth": "^2.1.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.4",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.15.1",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "shards-react": "^1.0.3",
     "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
