@@ -1,5 +1,6 @@
 import Header from "../Header";
 import MenuSide from "../MenuSide";
+import Footer from "../Footer";
 import { CssBaseline} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
@@ -28,7 +29,9 @@ const PageLayout = ({ children }) => {
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 						{ children }
+				<Footer />
 			</main>
+			
 		</div>
 	);
 }
