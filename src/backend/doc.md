@@ -2,6 +2,8 @@
 
 ## Usuário:
 
+=> a senha do primeiro usuário é 123456
+
 1. Criação de usuário:
     * POST "/register"
         * Estrutura base: {
@@ -52,6 +54,7 @@
 ## Clientes:
 1. Criar novo cliente:
     * POST "/clients"
+        - A Id do usuário e Id do cliente são colocados pela API.
         * Estrutura básica: {
             "name": "First Client",
             "cpf": "1234567890",
@@ -89,6 +92,7 @@
 
 1. Criar novo serviço:
     * POST "/services"
+        - A Id do usuário e do serviço são colocados pela API.
         *Estrututa básica: {
             "title": "Primeiro",
             "description": "The first service",
@@ -114,6 +118,7 @@
 
 1. Criar novo contrato:
     *POST "/contracts"
+        - O Id do usuário e do contrato são colocados pela API, PORÉM, as Ids do serviço e cliente devem estar no body da requisição.
         *Estrutura básica: {
             "status": "Concluído",
             "serviceId": number,
