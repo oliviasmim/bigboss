@@ -14,4 +14,5 @@ export const FooterContainer = styled.footer`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: 1px solid #C4C4C4;
 `
