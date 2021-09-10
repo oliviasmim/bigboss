@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
     },
     nav: {
-        color: '#EEEEEE',
-        fontWeight: 'medium',
+        color: '#dadada',
+        fontWeight: 'bold',
         justifyContent: 'flex-start',
-        letterSpacing: 0,
+        letterSpacing: 0.5,
         py: 1.25,
         textTransform: 'none',
         width: '100%',
@@ -30,17 +30,16 @@ const useStyles = makeStyles((theme) => ({
 const NavItem = ({ href, icon: Icon, title, ...rest }) => {
     const location = useLocation();
     const classes = useStyles();
-    const active = href ? !!matchPath({
+    const active = href ? !!matchPath(location.pathname, {
       path: href,
-      end: false
-    }, location.pathname) : false;
-  
+    }) : false;
+
     return (
       <ListItem disableGutters className={classes.list} {...rest} >
         <Button
           component={RouterLink}
           className={classes.nav}
-          sx={{ ...(active && { color: '#ffffff'})}}
+          style={{ ...(active && { color: '#ffffff'})}}
           to={href}
         >
           {Icon && (

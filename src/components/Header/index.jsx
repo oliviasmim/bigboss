@@ -35,7 +35,6 @@ const Header = ({ setMobileOpen, mobileOpen, ...rest }) => {
 	return (
 		<AppBar position="fixed" elevation={1} className={classes.appBar} {...rest}>
 				<IconButton
-					color="#D6D7E3"
 					aria-label="open drawer"
 					edge="start"
 					onClick={handleDrawerToggle}
@@ -44,13 +43,13 @@ const Header = ({ setMobileOpen, mobileOpen, ...rest }) => {
 					<Menu />
 				</IconButton>
 			<Toolbar>
-				<IconButton color="#D6D7E3">
+				<IconButton >
 					<WbSunny />
 				</IconButton>
-				<IconButton color="#D6D7E3">
+				<IconButton >
 					<NotificationsNone />
 				</IconButton>
-				<IconButton color="#D6D7E3">
+				<IconButton >
 					<AccountCircle />
 				</IconButton>
 			</Toolbar>
