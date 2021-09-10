@@ -1,6 +1,6 @@
 import { Background, Container, Content, AnimationContainer } from "./styles";
 
-export const Login = () => {
+const Login = () => {
   return (
     <Container>
       <Background />
@@ -12,3 +12,5 @@ export const Login = () => {
     </Container>
   );
 };
+
+export default Login;
