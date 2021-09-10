@@ -5,10 +5,6 @@ import {
         Hidden,
         List,
         Typography, 
-        AppBar,
-        CssBaseline,
-        Toolbar,
-        IconButton
 } from '@material-ui/core';
 import { 
         Assessment,
@@ -19,10 +15,8 @@ import {
         ChromeReaderMode, 
         AccountBox, 
         AssignmentTurnedIn,
-        Menu 
 } from '@material-ui/icons';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { useState } from 'react';
 import logo from "../../assets/logo.svg"
 import NavItem from '../NavItem';
 
@@ -81,12 +75,6 @@ const useStyles = makeStyles((theme) => ({
       flexShrink: 0,
     },
   },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
-  },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
@@ -98,7 +86,8 @@ const useStyles = makeStyles((theme) => ({
   flex: {
     display: "flex",
     alignItems: "center",
-    padding: "1rem",
+    padding: "0 1rem",
+    height: "64px",
   },
   fontLogo: {
     fontWeight: "700",
