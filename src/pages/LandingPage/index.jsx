@@ -1,6 +1,8 @@
+import PageLayout from "../../components/PageLayout";
+
 const LandingPage = () => {
     return (
-        <div></div>
+        <PageLayout />
     )
 }
 
