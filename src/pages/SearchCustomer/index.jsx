@@ -1,7 +1,12 @@
-const SearchCostumer = () => {
+import PageLayout from "../../components/PageLayout"
+import CardCustomer from "../../components/CardCustomer";
+
+const SearchCustomer = () => {
     return (
-        <div></div>
+        <PageLayout>
+            <CardCustomer />
+        </PageLayout>
     )
 }
 
-export default SearchCostumer;
+export default SearchCustomer;
