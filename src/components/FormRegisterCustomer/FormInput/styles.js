@@ -31,6 +31,9 @@ export const Input = styled(InputMask)`
 
 export const TextArea = styled.textarea`
     flex-grow: 1;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem;
 `
 
 export const Select = styled.select`
