@@ -1,7 +1,12 @@
-const RegisterCostumer = () => {
+import FormRegisterCustomer from "../../components/FormRegisterCustomer";
+import PageLayout from "../../components/PageLayout";
+
+const RegisterCustomer = () => {
     return (
-        <div></div>
-    )
+		<PageLayout>
+			<FormRegisterCustomer isRegister={true} />
+		</PageLayout>
+	);
 }
 
-export default RegisterCostumer;
+export default RegisterCustomer;
