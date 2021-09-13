@@ -1,7 +1,8 @@
-import { AppBar, Toolbar, IconButton } from '@material-ui/core';
-import { WbSunny, Menu, NotificationsNone, AccountCircle } from '@material-ui/icons';
+import { AppBar, Toolbar, IconButton, Menu, MenuItem, Fade, Typography, ListItemIcon } from '@material-ui/core';
+import { WbSunny, List, NotificationsNone, AccountCircle, ExitToApp, AccountBox } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { useState } from 'react';
+import { useHistory } from 'react-router';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +27,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = ({ setMobileOpen, mobileOpen, ...rest }) => {
+	const history = useHistory();
 	const classes = useStyles();
+	const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+	const handleLogout = () => {
+		localStorage.clear();
+		window.location.href = '/';	
+	}
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
@@ -40,7 +57,7 @@ const Header = ({ setMobileOpen, mobileOpen, ...rest }) => {
 					onClick={handleDrawerToggle}
 					className={classes.menuButton}
 				>
-					<Menu />
+					<List />
 				</IconButton>
 			<Toolbar>
 				<IconButton >
@@ -49,9 +66,30 @@ const Header = ({ setMobileOpen, mobileOpen, ...rest }) => {
 				<IconButton >
 					<NotificationsNone />
 				</IconButton>
-				<IconButton >
+				<IconButton aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}>
 					<AccountCircle />
 				</IconButton>
+				<Menu
+                    id="fade-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={open}
+                    onClose={handleClose}
+                    TransitionComponent={Fade}
+                >
+                    <MenuItem onClick={() => history.push("/profile")}> 
+						<ListItemIcon>
+							<AccountBox />
+						</ListItemIcon> 
+						<Typography variant="inherit"> Perfil </Typography>
+					</MenuItem> 
+                    <MenuItem onClick={handleLogout}>
+						<ListItemIcon>
+							<ExitToApp />
+						</ListItemIcon>  
+						<Typography variant="inherit"> Sair </Typography>
+					</MenuItem>
+                </Menu>
 			</Toolbar>
 		</AppBar>
 	);
