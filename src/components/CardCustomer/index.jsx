@@ -1,4 +1,4 @@
-import getLettersAvatarSrc from "../../services/avatarLetters"
+import { getLettersAvatarSrc } from "../../services/avatarLetters"
 import { CardContainer, ImageContainer, Badge, Image, CardContent } from "./styles";
 
 const CardCustomer = ({ name, email, tel, date }) => {

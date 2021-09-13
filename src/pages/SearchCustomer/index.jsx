@@ -1,10 +1,10 @@
 import PageLayout from "../../components/PageLayout"
-import CardCustomer from "../../components/CardCustomer";
+import CardService from "../../components/CardService";
 
 const SearchCustomer = () => {
     return (
         <PageLayout>
-            <CardCustomer />
+            <CardService />
         </PageLayout>
     )
 }
