@@ -25,8 +25,10 @@
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "remask": "^0.1.0-alpha.5",
     "shards-react": "^1.0.3",
     "styled-components": "^5.3.1",
+    "vanilla-masker": "^1.2.0",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },

@@ -6,6 +6,7 @@ import axios from "axios";
 import api from "../../services/api";
 import { useHistory, useParams } from "react-router-dom";
 import { Edit } from "@material-ui/icons";
+import { mask as maskSelector } from "remask";
 
 const FormRegisterCustomer = ({ isRegister }) => {
 	//Variável para segurar dados do cliente
@@ -65,7 +66,8 @@ const FormRegisterCustomer = ({ isRegister }) => {
 	const { clientId } = useParams();
 	const history = useHistory();
 	const [errors, setErrors] = useState({});
-
+    const patterns = ["999.999.999-99", "99.999.999/9999-99"]
+    
 	useEffect(() => {
 		if (!isRegister) {
 			axios
@@ -122,6 +124,9 @@ const FormRegisterCustomer = ({ isRegister }) => {
 		}
 		func(value);
 	};
+    const handleCpfMask = (value) => {
+        setNumCpf(maskSelector(value.replace(/\D/g, ""), patterns))
+    }
 	const handleEmail = (value, func) => {
 		if (!(value.includes("@") && value.includes("."))) {
 			func(value);
@@ -239,9 +244,10 @@ const FormRegisterCustomer = ({ isRegister }) => {
 						size="20ch"
 						disabled={areDisabled}
 						value={numCpf}
-						changefunction={(value) =>
-							handleOnlyNumbers(value, setNumCpf)
-						}
+						// changefunction={(value) =>
+						// 	handleOnlyNumbers(value, setNumCpf)
+						// }
+                        changefunction={handleCpfMask}
 					/>
 					<FormInput
 						label="Email:"
