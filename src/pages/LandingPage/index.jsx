@@ -1,7 +1,10 @@
+import PageLayout from "../../components/PageLayout";
+
 const LandingPage = () => {
-    return (
-        <div></div>
-    )
+	return (
+		<PageLayout>
+		</PageLayout>
+	)
 }
 
 export default LandingPage;

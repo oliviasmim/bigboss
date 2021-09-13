@@ -3,12 +3,12 @@ import Dashboard from "../pages/Dashboard";
 import LandingPage from "../pages/LandingPage";
 import { Login } from "../pages/Login";
 import PageCostumer from "../pages/PageCostumer";
+import Profile from "../pages/Profile";
 import RegisterCostumer from "../pages/RegisterCustomer";
 import SearchCostumer from "../pages/SearchCustomer";
 import SearchServices from "../pages/SearchServices";
 import Services from "../pages/Services";
 import Signup from "../pages/Signup";
-
 
 const Routes = () => {
     return (
@@ -22,6 +22,7 @@ const Routes = () => {
             <Route exact path="/costumer/:clientId" component={SearchCostumer} />
             <Route exact path="/costumer/register" component={RegisterCostumer} />
             <Route exact path="/costumer/page:id" component={PageCostumer} />
+            <Route exact path="/profile" component={Profile} />
         </Switch>
     )
 }
