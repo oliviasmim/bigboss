@@ -8,7 +8,7 @@ export const InputContainer = styled.div`
     flex-grow: 1;
 `
 export const Label = styled.label`
-	color: ${props=> props.errorMessage ? "red" : "var(--blue)"};
+	color: var(--blue);
     width: 100%;
     display: inline-flex;
     justify-content: space-between; 
@@ -16,7 +16,7 @@ export const Label = styled.label`
 
 export const Input = styled(InputMask)`
 	border-radius: 10px;
-	border: ${props => props.errorMessage ? "1px solid red" : "none"};
+	border: ${props => props.error? "1px solid red" : "none"};
 	line-height: 2rem;
 	height: 2.1rem;
 	padding: 0 1rem;
@@ -40,4 +40,10 @@ export const Select = styled.select`
     &:disabled{
         background: "blue" !important;
     }
+`
+
+export const Span = styled.span`
+    color: red;
+    font-size: 12px;
+    transform: translate(-8px, 10px)
 `

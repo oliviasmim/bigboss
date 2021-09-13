@@ -1,48 +1,39 @@
-import { InputContainer, Input, Label, TextArea, Select } from "./styles";
+import { InputContainer, Input, Label, TextArea, Select, Span } from "./styles";
 import React from "react";
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 const FormInput = React.forwardRef((props, ref) => {
 	const {
 		label,
 		size,
 		multiline,
-		errorMessage,
-		funcCep,
-		funcRua,
-		funcBairro,
-		funcEstado,
-		funcCidade,
 		options,
 		value,
+        tipedate,
+        changefunction,
+        errormessage,
 	} = props;
+
+    
 
 	return (
 		<InputContainer>
-			<Label
-				errorMessage={errorMessage}
-				size={size}
-			>
-				{errorMessage ? (
+			<Label size={size}>
+				{errormessage ? (
 					<>
 						<span>{label}</span>
-						<span
-							style={{
-								fontSize: "12px",
-								transform: "translateY(3px)",
-							}}
-						>
-							{errorMessage}
-						</span>
+						<Span>{errormessage}</Span>
 					</>
 				) : (
-					label
+					<span>{label}</span>
 				)}
 			</Label>
 			{options ? (
 				<Select
 					value={value}
-                    {...props}
-					onChange={(e) => funcEstado(e.target.value)}
+					{...props}
+					onChange={(e) => changefunction(e.target.value)}
 				>
 					{options.map((item) => (
 						<option key={item} value={item}>
@@ -55,25 +46,35 @@ const FormInput = React.forwardRef((props, ref) => {
 					rows="4"
 					ref={ref}
 					{...props}
+					onChange={(e) => changefunction(e.target.value)}
 				/>
+			) : tipedate ? (
+				<MuiPickersUtilsProvider
+					utils={DateFnsUtils}
+					{...props}
+					helperText={null}
+				>
+					<KeyboardDatePicker
+						format="dd/MM/yyyy"
+						{...props}
+						label={null}
+						InputProps={{
+							disableUnderline: true,
+						}}
+						helperText={null}
+						KeyboardButtonProps={{
+							"aria-label": "change date",
+						}}
+						onChange={(date) => changefunction(date)}
+					/>{" "}
+				</MuiPickersUtilsProvider>
 			) : (
 				<Input
 					inputRef={ref}
 					{...props}
-					onChange={(e) => {
-						if (!!funcCep) {
-							funcCep(e.target.value);
-						}
-						if (!!funcRua) {
-							funcRua(e.target.value);
-						}
-						if (!!funcBairro) {
-							funcBairro(e.target.value);
-						}
-						if (!!funcCidade) {
-							funcCidade(e.target.value);
-						}
-					}}
+					value={value}
+					error={!!errormessage}
+					onChange={(e) => changefunction(e.target.value)}
 				/>
 			)}
 		</InputContainer>
