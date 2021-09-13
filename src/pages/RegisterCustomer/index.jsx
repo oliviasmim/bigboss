@@ -1,6 +1,8 @@
+import FormRegisterCustomer from "../../components/FormRegisterCustomer";
+
 const RegisterCostumer = () => {
     return (
-        <div></div>
+        <FormRegisterCustomer isRegister/>
     )
 }
 
