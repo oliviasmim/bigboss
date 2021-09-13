@@ -1,13 +1,12 @@
 import FormRegisterCustomer from "../../components/FormRegisterCustomer";
 import PageLayout from "../../components/PageLayout";
 
-const PageCustomer = () => {
-    return (
+const PageCostumer = () => {
+	return (
         <PageLayout>
-
-            <FormRegisterCustomer isRegister={false}/>
+            <FormRegisterCustomer/>
         </PageLayout>
     )
-}
+};
 
-export default PageCustomer;
+export default PageCostumer;

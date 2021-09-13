@@ -4,6 +4,7 @@ import PageLayout from "../../components/PageLayout";
 import {useHistory} from "react-router-dom";
 import { Button } from "@material-ui/core";
 import {Add} from "@material-ui/icons"
+import CardCustomer from "../../components/CardCustomer";
 
 const SearchCustomer = () => {
     const [clientsList, setClientsList] = useState([]);
@@ -26,11 +27,12 @@ const SearchCustomer = () => {
     return (
 		<PageLayout>
 			<Button variant="text" color="secondary" startIcon={<Add/>} onClick={()=> history.push("/customer/register")}>Novo</Button>
-            <div>
+            <div style={{gap: "15px", display: "flex", flexWrap: "wrap"}}>
 				{clientsList.map((item) => (
-					<li key={item.id} onClick={()=>history.push(`/customer/id/${item.id}`)}>{item.name}</li>
+					<CardCustomer key={item.id} action={()=>history.push(`/customer/id/${item.id}`)} {...item}/>
 				))}
 			</div>
+            
 		</PageLayout>
 	);
 }
