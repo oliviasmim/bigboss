@@ -8,5 +8,5 @@ export const getLettersAvatarSrc = (name) => {
 }
 
 export const getOneLetterAvatarSrc = (name) => {
-    return `https://ui-avatars.com/api/?background=random&name=${name}&length=1`;
+    return `https://ui-avatars.com/api/?background=random&name=${name}&length=1&rounded=true&bold=true`;
 }
