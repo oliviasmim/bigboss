@@ -6,19 +6,12 @@ export const theme = createTheme({
 	},
 	overrides: {
 		// Style sheet name ⚛️
-		MuiInputBase: {
+		MuiOutlinedInput: {
 			root: {
 				backgroundColor: "white",
 				borderRadius: 34,
 				paddingLeft: ".3rem",
 				outlineColor: "none",
-			},
-			input: {
-				textAlign: "center",
-			},
-		},
-		MuiOutlinedInput: {
-			root: {
 				border: "1px solid var(--blue)",
 				"&:hover": {
 					border: "1px solid var(--blue)",
@@ -36,6 +29,7 @@ export const theme = createTheme({
 			input: {
 				padding: ".5rem 0",
 				border: "none",
+				textAlign: "center",
 			},
 			notchedOutline: {
 				border: "none",

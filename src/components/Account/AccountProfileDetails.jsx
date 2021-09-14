@@ -94,68 +94,68 @@ const AccountProfileDetails = ({ user }) => {
 						<TextField
 							fullWidth
 							label="Nome"
+							placeholder="Nome"
 							name="firstName"
 							onChange={handleChange}
 							required
 							value={values.firstName}
-							variant="outlined"
 						/>
 					</Grid>
 					<Grid item md={6} xs={12} >
 						<TextField
 							fullWidth
 							label="Sobrenome"
+							placeholder="Sobrenome"
 							name="lastName"
 							onChange={handleChange}
 							required
 							value={values.lastName}
-							variant="outlined"
 						/>
 					</Grid>
 					<Grid item md={6} xs={12} >
 						<TextField
 							fullWidth
 							label="Email"
+							placeholder="Email"
 							name="email"
 							onChange={handleChange}
 							required
 							value={values.email}
-							variant="outlined"
 						/>
 					</Grid>
 					<Grid item md={6} xs={12} >
 						<TextField
 							fullWidth
 							label="Telefone"
+							placeholder="Telefone"
 							name="phone"
 							mask="(99) 9999-99999"
 							onChange={handleChange}
 							value={values.phone}
-							variant="outlined"
 						/>
 					</Grid>
 					<Grid item md={6} xs={12} >
 						<TextField
 							fullWidth
 							label="Cidade"
+							placeholder="Cidade"
 							name="city"
 							onChange={handleChange}
 							required
 							value={values.city}
-							variant="outlined"
 						/>
 					</Grid>
 					<Grid item md={6} xs={12} >
 						<TextField
 							fullWidth
 							label="Selecione o estado"
+							placeholder="Selecione o estado"
 							name="state"
 							onChange={handleChange}
 							required
 							select
 							SelectProps={{ native: true }}
 							value={values.state}
-							variant="outlined"
 						>
 							{states.map((option) => (
 							<option
