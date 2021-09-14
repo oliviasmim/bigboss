@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { createTheme } from '@material-ui/core/styles';
 
 export default createGlobalStyle`
     * {
