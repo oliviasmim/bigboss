@@ -5,7 +5,7 @@ import BarChart from "../../components/BarChart";
 import PieChart from "../../components/PieChart";
 import LastProjectsTable from "../../components/LastProjectsTable";
 import Typography from "@material-ui/core/Typography";
-import { Container, DashboardContainer } from "./styles";
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,16 +16,25 @@ const useStyles = makeStyles((theme) => ({
     alignContent: "center",
     justifyContent: "center",
   },
-
+  Container: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
   //Ajusta o Título da Página
   PageTitle: {
     display: "flex",
     fontSize: 24,
     fontWeight: "bold",
-    marginLeft: "30%",
+    marginLeft: "32%",
+    marginBottom: 30,
 
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: "14%",
+    [theme.breakpoints.up(768)]: {
+      marginLeft: "55%",
+    },
+
+    [theme.breakpoints.up(1024)]: {
+      marginLeft: "15%",
     },
   },
 }));
@@ -33,19 +42,19 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
   const classes = useStyles();
   return (
-    <DashboardContainer>
+    <Grid className={classes.DashboardContainer}>
       <PageLayout />
       <Typography className={classes.PageTitle}>Dashboard </Typography>
       <DashCards />
-      <Container>
+      <Grid className={classes.Container}>
         <LineChart />
         <BarChart />
-      </Container>
-      <Container>
+      </Grid>
+      <Grid className={classes.Container}>
         <LastProjectsTable />
         <PieChart />
-      </Container>
-    </DashboardContainer>
+      </Grid>
+    </Grid>
   );
 };
 

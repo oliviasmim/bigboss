@@ -9,20 +9,27 @@ const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
     width: 380,
+    height: 400,
     margin: "10%",
     marginTop: 0,
-    height: 400,
-    [theme.breakpoints.up("sm")]: {
+
+    [theme.breakpoints.up(768)]: {
+      width: 380,
       height: 610,
-      width: 1240,
       margin: 10,
-      marginLeft: "14%",
+      marginTop: 30,
+      marginLeft: "40%",
+    },
+    [theme.breakpoints.up(1024)]: {
+      width: 1240,
+      height: 610,
+      marginLeft: "15%",
     },
   },
-  //Ajusta o Título do gráfico
+  //Ajusta Título do gráfico
   title: {
     fontSize: 18,
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up(768)]: {
       fontSize: 24,
     },
   },
@@ -32,14 +39,18 @@ const useStyles = makeStyles((theme) => ({
   },
   //Ajusta o Gráfico dentro do Card
   chart: {
-    margin: "2%",
-    width: "10%",
-    height: "10%",
+    margin: 10,
+    maxWidth: 300,
+    maxHeight: 320,
 
-    [theme.breakpoints.up("sm")]: {
-      margin: 10,
-      width: 1175,
-      height: 510,
+    [theme.breakpoints.up(768)]: {
+      margin: 20,
+      maxWidth: 485,
+      maxHeight: 475,
+    },
+    [theme.breakpoints.up(1024)]: {
+      maxWidth: 1175,
+      height: 650,
     },
   },
 }));

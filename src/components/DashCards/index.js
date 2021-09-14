@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     flexWrap: "wrap",
+    [theme.breakpoints.up(768)]: {
+      marginLeft: "30%",
+    },
+    [theme.breakpoints.up(1024)]: {
+      marginLeft: "12%",
+    },
   },
 
   //Ajusta o tamanho do Card
@@ -25,12 +31,12 @@ const useStyles = makeStyles((theme) => ({
     width: 380,
     margin: "10%",
     marginTop: 0,
-    height: 110,
+    height: 120,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
 
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up(768)]: {
       height: 170,
       margin: 25,
     },
@@ -44,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-evenly",
     marginTop: 30,
     padding: 5,
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up(768)]: {
       marginTop: 20,
     },
   },
@@ -53,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "16%",
     margin: "1%",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up(768)]: {
       width: "22%",
       margin: "5%",
     },

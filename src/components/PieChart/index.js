@@ -5,18 +5,32 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
     width: 380,
     height: 400,
-    margin: 5,
-    marginTop: 30,
-    marginLeft: 50,
+    margin: "10%",
+    marginTop: 40,
+
+    [theme.breakpoints.up(768)]: {
+      width: 380,
+      height: 400,
+      margin: 10,
+      marginTop: 30,
+      marginLeft: "40%",
+    },
+    [theme.breakpoints.up(1024)]: {
+      marginTop: 35,
+      marginLeft: 50,
+    },
   },
   //Ajusta Título do gráfico
   title: {
-    fontSize: 24,
+    fontSize: 18,
+    [theme.breakpoints.up(768)]: {
+      fontSize: 24,
+    },
   },
   //Ajusta Sub-título do gráfico
   subtitle: {
@@ -25,10 +39,21 @@ const useStyles = makeStyles({
   //Ajusta o Gráfico dentro do Card
   chart: {
     margin: 20,
-    maxWidth: 451,
-    maxHeight: 425,
+    maxWidth: 300,
+    maxHeight: 320,
+    [theme.breakpoints.up(768)]: {
+      margin: 20,
+      marginTop: "20%",
+      maxWidth: 485,
+      maxHeight: 475,
+    },
+    [theme.breakpoints.up(1024)]: {
+      marginTop: 20,
+      maxWidth: 280,
+      maxHeight: 280,
+    },
   },
-});
+}));
 
 const PieChart = () => {
   const classes = useStyles();

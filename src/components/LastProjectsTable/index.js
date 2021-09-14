@@ -1,5 +1,25 @@
 import * as React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid } from "@material-ui/data-grid";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: 400,
+    width: 1240,
+    marginLeft: "10%",
+    marginTop: 0,
+    backgroundColor: "white",
+
+    [theme.breakpoints.up(768)]: {
+      marginTop: 35,
+      marginLeft: "40%",
+    },
+
+    [theme.breakpoints.up(1024)]: {
+      marginLeft: "15%",
+    },
+  },
+}));
 
 const columns = [
   {
@@ -132,8 +152,9 @@ const rows = [
 ];
 
 const LastProjectsTable = () => {
+  const classes = useStyles();
   return (
-    <div style={{ height: 400, width: 1240, marginLeft: "14%", marginTop: 35 }}>
+    <div className={classes.root}>
       <DataGrid
         rows={rows}
         columns={columns}
