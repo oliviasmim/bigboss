@@ -12,6 +12,12 @@
       "username": "teste2",
       "todo": [],
       "id": 2
+    },
+    {
+      "email": "teste@mail.com",
+      "password": "$2a$10$RgI/oEx7OAiXwbOxCU2Gl.y6k0L8pMXberbX2j.9ioqZVSJXMyCfm",
+      "username": "testeLogin",
+      "id": 3
     }
   ],
   "clients": [
