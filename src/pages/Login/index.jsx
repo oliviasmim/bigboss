@@ -1,4 +1,5 @@
 import { Background, Container, Content, AnimationContainer } from "./styles";
+import FormLogin from "../../components/FormLogin";
 
 const Login = () => {
   return (
@@ -6,7 +7,7 @@ const Login = () => {
       <Background />
       <Content>
         <AnimationContainer>
-          <h3>Comece sua jornada...</h3>
+          <FormLogin />
         </AnimationContainer>
       </Content>
     </Container>

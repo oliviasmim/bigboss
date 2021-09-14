@@ -1,10 +1,12 @@
 {
   "users": [
     {
-      "email": "first@mail.com",
+      "email": "first1@mail.com",
       "password": "$2a$10$zLNJP8OEGbUqfbFG9Uzg1uYoXn4WxAd1EhWO4xw51ifDINpGaV8YS",
-      "username": "First",
-      "id": 1
+      "username": "First1",
+      "id": 1,
+      "firstName": "fulano",
+      "lastName": "de tal"
     },
     {
       "email": "teste2@mail.com",
@@ -12,31 +14,21 @@
       "username": "teste2",
       "todo": [],
       "id": 2
+    },
+    {
+      "email": "first@mail.com",
+      "password": "$2a$10$vniq0/SG4Dt4nF3jgp2joODRt9SqBt40pzd502NCpAAY/hg3KWQ8C",
+      "id": 3
+    },
+    {
+      "email": "first2@mail.com",
+      "password": "$2a$10$rbVaC28sGVGGSD0WXkVKx.WXCczIcU4jI/KLb8iDYH/FzgCXFqhVa",
+      "firstName": "sdf",
+      "confirmPassword": "123456",
+      "id": 4
     }
   ],
   "clients": [
-    {
-      "name": "First Client",
-      "cpf": "1234567890",
-      "email": "client@mail.com",
-      "tel": "4137456321",
-      "cel": "41987654321",
-      "postalCode": "94820-170",
-      "street": "Rua Itararé",
-      "number": "1",
-      "city": "Alvorada",
-      "district": "Sumaré",
-      "profInfo": "Coisas primeiras",
-      "clientSince": "01/01/0001",
-      "lastContact": "2021-07-01T03:00:00.000Z",
-      "totalSpent": "100000.00",
-      "owes": "0.01",
-      "observations": "That's it",
-      "userId": 1,
-      "contracts": [],
-      "id": 1,
-      "state": "RS"
-    },
     {
       "name": "dfgfdg",
       "cpf": "35345",
@@ -340,6 +332,26 @@
       "contracts": [],
       "userId": 1,
       "id": 19
+    },
+    {
+      "name": "sfdgdsfgdfsgsdfg",
+      "cpf": "",
+      "email": "",
+      "tel": "",
+      "cel": "",
+      "postalCode": "",
+      "number": "",
+      "profInfo": "",
+      "clientSince": "2021-09-14T12:30:20.962Z",
+      "lastContact": "2021-09-14T12:30:20.962Z",
+      "observations": "",
+      "street": "",
+      "city": "",
+      "district": "",
+      "state": "",
+      "contracts": [],
+      "userId": 1,
+      "id": 20
     }
   ],
   "services": [
@@ -359,13 +371,6 @@
     }
   ],
   "contracts": [
-    {
-      "service": "id do serviço",
-      "status": "Concluído",
-      "userId": 1,
-      "clientId": 1,
-      "id": 1
-    },
     {
       "service": "id do serviço",
       "status": "Concluído",

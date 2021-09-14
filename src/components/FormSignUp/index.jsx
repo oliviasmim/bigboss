@@ -9,8 +9,10 @@ import { TextField, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Label, ErrorMsg } from "./styles";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { ref } from "yup";
+import { useAuthenticated } from "../../providers/authentication";
+import { useState } from "react";
 
 const useStyles = makeStyles(() => ({
 	inputs: {
@@ -26,8 +28,9 @@ const useStyles = makeStyles(() => ({
 
 const FormSignUp = () => {
     const classes = useStyles();
-
+    const { authenticated, setAuthenticated } = useAuthenticated();
 	const history = useHistory();
+    const [apiError, setApiError] = useState("");
 
 	const formSchema = yup.object().shape({
 		firstName: yup.string().required("Nome Obrigatório"),
@@ -57,14 +60,18 @@ const FormSignUp = () => {
 					JSON.stringify(accessToken)
 				);
 				localStorage.setItem("userId", userId);
+				setAuthenticated(true);
 				history.push("/dashboard");
-				toast.sucess("Sucesso!");
+				toast.success("Sucesso!");
 			})
 			.catch((err) => {
-				console.log(err);
+				setApiError(err.response.data);
 			});
 	};
 
+    if (authenticated) {
+		return <Redirect to="/dashboard" />;
+	}
 	return (
 		<Form noValidate onSubmit={handleSubmit(onSubmitFunction)}>
 			<Label>
@@ -86,7 +93,16 @@ const FormSignUp = () => {
 			{}
 			<Label>
 				<span>E-mail:</span>{" "}
-				{errors.email && <ErrorMsg>({errors.email?.message})</ErrorMsg>}
+				{(errors.email) && (
+						<ErrorMsg>
+							({errors.email?.message})
+						</ErrorMsg>
+					)}
+				{(apiError) && (
+						<ErrorMsg>
+							({apiError})
+						</ErrorMsg>
+					)}
 			</Label>
 			<TextField
 				className={classes.inputs}
@@ -126,7 +142,7 @@ const FormSignUp = () => {
 				type="password"
 				{...register("confirmPassword")}
 			/>
-            <p>&nbsp;</p>
+			<p>&nbsp;</p>
 			<Button variant="contained" color="primary" type="submit" fullWidth>
 				Cadastrar
 			</Button>
