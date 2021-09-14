@@ -1,17 +1,16 @@
 import { getLettersAvatarSrc } from "../../services/avatarLetters"
 import { CardContainer, ImageContainer, Badge, Image, CardContent } from "./styles";
 
-const CardCustomer = ({ name, email, tel, clientSince, action }) => {
+const CardCustomer = ({ name, email, tel, clientSince, action, contracts }) => {
     const source = getLettersAvatarSrc(name);
 
-    //Fazer lógica para o status (prospect/active)
     return (
         <CardContainer onClick={()=>action()}>
             <ImageContainer>
                 <Image>
                   <img src={source} alt={`avatar:${name}`} />  
                 </Image>
-                <Badge>status</Badge>
+                <Badge>{contracts.length === 0 ? <>cliente ativo</> : <>cadastrado</>}</Badge>
             </ImageContainer>
             <CardContent>
                 <h4>{name}</h4>
