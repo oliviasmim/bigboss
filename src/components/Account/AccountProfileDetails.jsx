@@ -10,6 +10,7 @@ import {
 	Grid,
 	TextField
 } from '@material-ui/core';
+import api from '../../services/api';
 
 const states = [
 	"",
@@ -56,15 +57,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AccountProfileDetails = ({ user }) => {
-	const { name, email } = user;
+	const token =
+		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZpcnN0QG1haWwuY29tIiwiaWF0IjoxNjMxNTA4OTI0LCJleHAiOjE2MzE1OTUzMjQsInN1YiI6IjEifQ.nbfX7ZzbzaeAsiad79xhjry0xaohz6IQQkuI-kAKzy4";
+	const { name, email, phone = "", state = "", city = "", userId } = user;
 	const classes = useStyles();
 	const [values, setValues] = useState({
 		firstName: name.split(" ")[0],
 		lastName: name.split(" ")[1],
 		email: email,
-		phone: '',
-		state: '',
-		city: ''
+		phone: phone,
+		state: state,
+		city: city,
 	});
 
 	const handleChange = (event) => {
@@ -77,7 +80,19 @@ const AccountProfileDetails = ({ user }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(values)//mandar pra api
+		const data = {
+			name: `${values.firstName} ${values.lastName}`,
+			email: values.email,
+			phone: values.phone,
+			state: values.state,
+			city: values.city
+		};
+
+		api.patch(`/users/${userId}`, data, {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+		});
 	}
 
 	return (
