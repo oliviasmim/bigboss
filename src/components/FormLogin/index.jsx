@@ -1,4 +1,4 @@
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 import { useForm } from "react-hook-form";
@@ -21,13 +21,11 @@ const useStyles = makeStyles(() => ({
     width: "100%",
     maxWidth: "24rem",
     borderRadius: "4px",
-
   },
 
   icon: {
     color: "var(--blue)",
   },
-
 }));
 
 const FormLogin = () => {
@@ -39,7 +37,10 @@ const FormLogin = () => {
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório!").email("E-mail inválido"),
-    password: yup.string().required("Campo obrigatório!").min(6, "Mínimo 6 caracteres!"),
+    password: yup
+      .string()
+      .required("Campo obrigatório!")
+      .min(6, "Mínimo 6 caracteres!"),
   });
 
   const {
@@ -72,51 +73,46 @@ const FormLogin = () => {
   }
 
   return (
-		<form noValidate onSubmit={handleSubmit(onSubmitFunction)}>
-			<h3>Comece sua jornada...</h3>
-			<p>&nbsp;</p>
-			<h1>Login</h1>
-			<RedirectMsg>
-				Ainda não tem conta? Efetue seu{" "}
-				<LinkTo to="/signup">Cadastro.</LinkTo>
-			</RedirectMsg>
-			<Label>
-				<span>E-mail:</span>{" "}
-				{errors.email && (
-					<ErrorMsg>({errors.email?.message})</ErrorMsg>
-				)}
-			</Label>
-			<TextField
-				className={classes.inputs}
-				type="email"
-				placeholder="E-mail"
-				variant="outlined"
-				InputProps={{
-					endAdornment: <MailOutline className={classes.icon} />,
-				}}
-				{...register("email")}
-			/>
-			{/* {errors.email?.message} */}
-			<Label>
-				<span>Senha:</span>{" "}
-				{errors.password && (
-					<ErrorMsg>({errors.password?.message})</ErrorMsg>
-				)}
-			</Label>
-			<TextField
-				className={classes.inputs}
-				placeholder="Senha"
-				variant="outlined"
-				InputProps={{ endAdornment: <Lock className={classes.icon} /> }}
-				type="password"
-				{...register("password")}
-			/>
-			{/* {errors.password?.message} */}
-			<p>&nbsp;</p>
-			<Button variant="contained" color="primary" type="submit" fullWidth>
-				Login
-			</Button>
-		</form>
+    <form noValidate onSubmit={handleSubmit(onSubmitFunction)}>
+      <span className="span">Comece sua jornada...</span>
+      <p>&nbsp;</p>
+      <h2>Login</h2>
+      <RedirectMsg>
+        Ainda não tem conta? Efetue seu <LinkTo to="/signup">Cadastro.</LinkTo>
+      </RedirectMsg>
+      <Label>
+        <span>E-mail:</span>{" "}
+        {errors.email && <ErrorMsg>({errors.email?.message})</ErrorMsg>}
+      </Label>
+      <TextField
+        className={classes.inputs}
+        type="email"
+        placeholder="E-mail"
+        variant="outlined"
+        InputProps={{
+          endAdornment: <MailOutline className={classes.icon} />,
+        }}
+        {...register("email")}
+      />
+      {/* {errors.email?.message} */}
+      <Label>
+        <span>Senha:</span>{" "}
+        {errors.password && <ErrorMsg>({errors.password?.message})</ErrorMsg>}
+      </Label>
+      <TextField
+        className={classes.inputs}
+        placeholder="Senha"
+        variant="outlined"
+        InputProps={{ endAdornment: <Lock className={classes.icon} /> }}
+        type="password"
+        {...register("password")}
+      />
+      {/* {errors.password?.message} */}
+      <p>&nbsp;</p>
+      <Button variant="contained" color="primary" type="submit" fullWidth>
+        Login
+      </Button>
+    </form>
   );
 };
 
