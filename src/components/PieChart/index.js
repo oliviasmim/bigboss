@@ -8,9 +8,11 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   //Ajusta o Card do Gráfico
   root: {
-    maxWidth: 575,
-    maxHeight: 375,
-    margin: 10,
+    width: 380,
+    height: 400,
+    margin: 5,
+    marginTop: 30,
+    marginLeft: 50,
   },
   //Ajusta Título do gráfico
   title: {
@@ -23,8 +25,8 @@ const useStyles = makeStyles({
   //Ajusta o Gráfico dentro do Card
   chart: {
     margin: 20,
-    maxWidth: 485,
-    maxHeight: 225,
+    maxWidth: 451,
+    maxHeight: 425,
   },
 });
 
@@ -33,7 +35,7 @@ const PieChart = () => {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title}>Receitas X Produtos</Typography>
+        <Typography className={classes.title}>Receitas X Serviços</Typography>
         <Typography
           className={classes.subtitle}
           color="textSecondary"
@@ -52,7 +54,7 @@ const PieChart = () => {
                 backgroundColor: [
                   "rgba(54,168,235,0.4)",
                   "rgba(255,99,132,0.4)",
-                  "rgba(153,102,255,0.4)",
+                  "rgba(93,80,155,0.4)",
                 ],
               },
             ],

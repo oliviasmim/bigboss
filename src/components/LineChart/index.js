@@ -5,17 +5,26 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
-    maxHeight: 675,
-    width: 1240,
-    margin: 10,
-    marginLeft: 295,
+    width: 380,
+    margin: "10%",
+    marginTop: 0,
+    height: 400,
+    [theme.breakpoints.up("sm")]: {
+      height: 610,
+      width: 1240,
+      margin: 10,
+      marginLeft: "14%",
+    },
   },
-  //Ajusta Título do gráfico
+  //Ajusta o Título do gráfico
   title: {
-    fontSize: 24,
+    fontSize: 18,
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 24,
+    },
   },
   //Ajusta Sub-título do gráfico
   subtitle: {
@@ -23,11 +32,17 @@ const useStyles = makeStyles({
   },
   //Ajusta o Gráfico dentro do Card
   chart: {
-    margin: 20,
-    maxWidth: 1175,
-    maxHeight: 475,
+    margin: "2%",
+    width: "10%",
+    height: "10%",
+
+    [theme.breakpoints.up("sm")]: {
+      margin: 10,
+      width: 1175,
+      height: 510,
+    },
   },
-});
+}));
 
 const LineChart = () => {
   const classes = useStyles();
