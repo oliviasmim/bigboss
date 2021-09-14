@@ -8,9 +8,10 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   //Ajusta o Card do Gráfico
   root: {
-    maxWidth: 575,
-    maxHeight: 375,
+    width: 380,
+    height: 610,
     margin: 10,
+    marginLeft: 40,
   },
   //Ajusta Título do gráfico
   title: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
   chart: {
     margin: 20,
     maxWidth: 485,
-    maxHeight: 225,
+    maxHeight: 475,
   },
 });
 
