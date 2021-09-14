@@ -11,6 +11,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Label } from "./style";
 import { toast } from "react-toastify";
 import { useAuthenticated } from "../../providers/authentication";
+import { RedirectMsg, LinkTo } from "../../pages/Signup/styles";
+import { ErrorMsg } from "../FormSignUp/styles";
 
 const useStyles = makeStyles(() => ({
   inputs: {
@@ -18,28 +20,14 @@ const useStyles = makeStyles(() => ({
     margin: "12px 0",
     width: "100%",
     maxWidth: "24rem",
-    border: "1px solid var(--blue)",
     borderRadius: "4px",
 
-    "&:focus": {
-      border: "1px solid var(--blue)",
-    },
-
-    "&:hover": {
-      border: "none",
-      outline: "none",
-    },
   },
 
   icon: {
     color: "var(--blue)",
   },
 
-  btn: {
-    margin: "1rem 0",
-    height: "45px",
-    width: "100%",
-  },
 }));
 
 const FormLogin = () => {
@@ -51,7 +39,7 @@ const FormLogin = () => {
 
   const formSchema = yup.object().shape({
     email: yup.string().required("Email obrigatório!").email("E-mail inválido"),
-    password: yup.string().min(6, "Mínimo 6 caracteres!"),
+    password: yup.string().required("Campo obrigatório!").min(6, "Mínimo 6 caracteres!"),
   });
 
   const {
@@ -84,41 +72,51 @@ const FormLogin = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmitFunction)}>
-      <h3>Comece sua jornada...</h3>
-      <h1>Login</h1>
-      <span>
-        Ainda não tem conta? Efetue seu <Link to="/">cadastro.</Link>
-      </span>
-      <Label>Email: </Label>
-      <TextField
-        className={classes.inputs}
-        type="email"
-        placeholder="E-mail"
-        variant="outlined"
-        InputProps={{ endAdornment: <MailOutline className={classes.icon} /> }}
-        {...register("email")}
-      />
-      {errors.email?.message}
-      <Label>Senha: </Label>
-      <TextField
-        className={classes.inputs}
-        placeholder="Senha"
-        variant="outlined"
-        InputProps={{ endAdornment: <Lock className={classes.icon} /> }}
-        type="password"
-        {...register("password")}
-      />
-      {errors.password?.message}
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.btn}
-        type="submit"
-      >
-        Login
-      </Button>
-    </form>
+		<form noValidate onSubmit={handleSubmit(onSubmitFunction)}>
+			<h3>Comece sua jornada...</h3>
+			<p>&nbsp;</p>
+			<h1>Login</h1>
+			<RedirectMsg>
+				Ainda não tem conta? Efetue seu{" "}
+				<LinkTo to="/signup">Cadastro.</LinkTo>
+			</RedirectMsg>
+			<Label>
+				<span>E-mail:</span>{" "}
+				{errors.email && (
+					<ErrorMsg>({errors.email?.message})</ErrorMsg>
+				)}
+			</Label>
+			<TextField
+				className={classes.inputs}
+				type="email"
+				placeholder="E-mail"
+				variant="outlined"
+				InputProps={{
+					endAdornment: <MailOutline className={classes.icon} />,
+				}}
+				{...register("email")}
+			/>
+			{/* {errors.email?.message} */}
+			<Label>
+				<span>Senha:</span>{" "}
+				{errors.password && (
+					<ErrorMsg>({errors.password?.message})</ErrorMsg>
+				)}
+			</Label>
+			<TextField
+				className={classes.inputs}
+				placeholder="Senha"
+				variant="outlined"
+				InputProps={{ endAdornment: <Lock className={classes.icon} /> }}
+				type="password"
+				{...register("password")}
+			/>
+			{/* {errors.password?.message} */}
+			<p>&nbsp;</p>
+			<Button variant="contained" color="primary" type="submit" fullWidth>
+				Login
+			</Button>
+		</form>
   );
 };
 

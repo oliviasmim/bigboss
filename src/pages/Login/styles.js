@@ -12,8 +12,8 @@ export const Background = styled.div`
         flex:1;
         background: url(${Login}) no-repeat center, var(--white-gray);
         background-size: contain;
-        border-bottom-right-radius: 5rem;
-        border-top-right-radius: 5rem;
+        border-bottom-right-radius: 2.5rem;
+        border-top-right-radius: 2.5rem;
     }
 `;
 
