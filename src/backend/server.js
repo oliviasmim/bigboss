@@ -1,4 +1,4 @@
-var cors = require('cors');
+const cors = require('cors');
 const jsonServer = require("json-server");
 const auth = require("json-server-auth");
 const jwt_decode = require("jwt-decode");
@@ -44,6 +44,7 @@ app.use((req, res, next) => {
         if (req.body.clientId === undefined){
             return res.status(400).jsonp({error: "Obrigatório ter o id do cliente"})
         }
+        
     }
     
     //erros:

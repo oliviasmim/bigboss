@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import { createTheme } from '@material-ui/core/styles';
 
 export default createGlobalStyle`
     * {
@@ -6,6 +7,7 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: 0;
+        font-family: "Inter", sans-serif;
     }
 
     :root{
@@ -14,5 +16,4 @@ export default createGlobalStyle`
         --white-gray:#EAF0FC;
         --blue: #134087;
     }
-
-`;
+`
