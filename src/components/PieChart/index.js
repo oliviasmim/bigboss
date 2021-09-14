@@ -60,7 +60,13 @@ const PieChart = () => {
           height={400}
           width={600}
           options={{
-            responsive: true,
+            legend: {
+              position: "bottom",
+              labels: {
+                padding: 25,
+                boxWidth: 20,
+              },
+            },
           }}
         />
       </CardContent>

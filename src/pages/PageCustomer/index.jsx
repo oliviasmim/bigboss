@@ -1,7 +1,12 @@
+import FormRegisterCustomer from "../../components/FormRegisterCustomer";
+import PageLayout from "../../components/PageLayout";
+
 const PageCostumer = () => {
-    return (
-        <div></div>
+	return (
+        <PageLayout>
+            <FormRegisterCustomer/>
+        </PageLayout>
     )
-}
+};
 
 export default PageCostumer;

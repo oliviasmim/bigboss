@@ -21,7 +21,7 @@ const Routes = () => {
             <Route exact path="/services/search" component={SearchServices} />
             <Route exact path="/customer" component={SearchCustomer} />
             <Route exact path="/customer/register" component={RegisterCustomer} />
-            <Route exact path="/customer/page:id" component={PageCustomer} />
+            <Route exact path="/customer/id/:clientId" component={PageCustomer} />
             <Route exact path="/profile" component={Profile} />
         </Switch>
     )

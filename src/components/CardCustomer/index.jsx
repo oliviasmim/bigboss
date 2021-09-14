@@ -1,12 +1,12 @@
 import { getLettersAvatarSrc } from "../../services/avatarLetters"
 import { CardContainer, ImageContainer, Badge, Image, CardContent } from "./styles";
 
-const CardCustomer = ({ name, email, tel, date }) => {
+const CardCustomer = ({ name, email, tel, clientSince, action }) => {
     const source = getLettersAvatarSrc(name);
 
     //Fazer lógica para o status (prospect/active)
     return (
-        <CardContainer>
+        <CardContainer onClick={()=>action()}>
             <ImageContainer>
                 <Image>
                   <img src={source} alt={`avatar:${name}`} />  
@@ -17,7 +17,7 @@ const CardCustomer = ({ name, email, tel, date }) => {
                 <h4>{name}</h4>
                 <p>Email: {email}</p>
                 <p>Telone: {tel}</p>
-                <p>Data de cadastro: {date}</p>
+                <p>Data de cadastro: {clientSince}</p>
             </CardContent>
         </CardContainer>
     )
