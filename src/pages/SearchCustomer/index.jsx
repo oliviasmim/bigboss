@@ -26,7 +26,7 @@ const SearchCustomer = () => {
 
     return (
 		<PageLayout>
-			<Button variant="text" color="secondary" startIcon={<Add/>} onClick={()=> history.push("/customer/register")}>Novo</Button>
+			<Button variant="text" color="secondary" startIcon={<Add/>} onClick={()=> history.push("/customer/register")}>Novo Cliente</Button>
             <div style={{gap: "15px", display: "flex", flexWrap: "wrap"}}>
 				{clientsList.map((item) => (
 					<CardCustomer key={item.id} action={()=>history.push(`/customer/id/${item.id}`)} {...item}/>
