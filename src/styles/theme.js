@@ -6,23 +6,47 @@ export const theme = createTheme({
 	},
 	overrides: {
 		// Style sheet name ⚛️
-        MuiInputBase: {
-            root: {
-                backgroundColor: "white",
-                borderRadius: 34,
-                paddingLeft: ".3rem",
-                "&:before" :{
-                    borderColor: "yellow"
-                },
-                
-            },
-            input: {
-                textAlign: "center",
-            },
-            
-        },
-        
-        
+		MuiInputBase: {
+			root: {
+				backgroundColor: "white",
+				borderRadius: 34,
+				paddingLeft: ".3rem",
+				outlineColor: "none",
+			},
+			input: {
+				textAlign: "center",
+			},
+		},
+		MuiOutlinedInput: {
+			root: {
+				border: "1px solid var(--blue)",
+				"&:hover": {
+					border: "1px solid var(--blue)",
+					boxShadow: " 0 0 2px 0 var(--blue)",
+				},
+				"&:valid": {
+					border: "1px solid var(--blue)",
+					boxShadow: " 0 0 2px 0 var(--blue)",
+				},
+				"&:focus": {
+					border: "1px solid var(--blue)",
+					boxShadow: " 0 0 2px 0 var(--blue)",
+				},
+			},
+			input: {
+				padding: ".5rem 0",
+				border: "none",
+			},
+			notchedOutline: {
+				border: "none",
+			},
+		},
+		MuiFormControl: {
+			"&:hover": {
+				// border: "1px solid var(--blue)",
+			},
+		},
+
 		MuiButton: {
 			// Name of the rule
 			root: {
