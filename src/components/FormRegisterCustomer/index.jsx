@@ -161,7 +161,8 @@ const FormRegisterCustomer = ({ isRegister }) => {
 		setObservations("");
 		setErrors({});
 	};
-	const handleDelete = () => {
+	const handleDelete = (e) => {
+        e.preventDefault();
 		api.delete(`/clients/${clientId}`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
