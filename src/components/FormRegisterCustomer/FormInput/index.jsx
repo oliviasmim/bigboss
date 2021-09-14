@@ -15,8 +15,6 @@ const FormInput = React.forwardRef((props, ref) => {
         errormessage,
 	} = props;
 
-    
-
 	return (
 		<InputContainer>
 			<Label size={size}>
