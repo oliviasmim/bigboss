@@ -63,10 +63,15 @@ export const AnimationContainer = styled.div`
             width: 80%;
             margin: 0 auto;
         }
+
+        .span{
+            color: var(--black);
+		    font-weight: 500;
+        }
     }
 
-        h1{
-            margin: .5rem 0;
+        h2{
+            margin-bottom: .4rem;
         }
 
         > div {
@@ -74,8 +79,6 @@ export const AnimationContainer = styled.div`
         }
 
         span{
-            margin-top: 8px;
-
             a{
                 text-decoration: none;
                 font-weight: bold;

@@ -53,11 +53,24 @@ export const AnimationContainer = styled.div`
 
 export const Header = styled.div`
 	width: 100%;
+
+	.span{
+		color: var(--black);
+		font-weight: 500;
+	}
+
+	h2{
+		margin-bottom: .4rem;
+	}
 `;
 
-export const RedirectMsg = styled.h4`
-	color: gray;
-	margin-top: 0.5rem;
+export const RedirectMsg = styled.span`
+	color: var(--gray);
+	font-weight: 500;
+
+	a{
+		text-decoration: none;
+	}
 `;
 export const LinkTo = styled(Link)`
 	color: var(--blue);
