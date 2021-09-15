@@ -3,11 +3,13 @@ import { CardContainer, ImageContainer, Image, CardContent } from "./styles";
 import { MoreHoriz } from "@material-ui/icons";
 import { IconButton, Menu, MenuItem, Fade } from "@material-ui/core";
 import { useState } from "react";
+import { useUserServices } from "../../providers/userServices";
 
-const CardService = ({ title, description }) => {
+const CardService = ({ title, description, id }) => {
     const source = getOneLetterAvatarSrc(title);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const { handleDelete, updateUserServices } = useUserServices(); 
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -16,6 +18,13 @@ const CardService = ({ title, description }) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleOptionDelete = () => {
+        handleDelete(id);
+        setAnchorEl(null);
+        updateUserServices();
+    }
+    
     //Fazer implementar o apagar e o editar
     return (
         <CardContainer>
@@ -35,7 +44,7 @@ const CardService = ({ title, description }) => {
                     TransitionComponent={Fade}
                 >
                     <MenuItem onClick={handleClose}>Editar</MenuItem> 
-                    <MenuItem onClick={handleClose}>Apagar</MenuItem>
+                    <MenuItem onClick={handleOptionDelete}>Apagar</MenuItem>
                 </Menu>
             </ImageContainer>
             <CardContent>
