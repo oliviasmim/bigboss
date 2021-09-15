@@ -55,6 +55,7 @@ export const CardContent = styled.div`
         font-weight: 700;
         font-size: 1rem;
         color: #171717;
+        cursor: pointer;
     }
 
     p {
