@@ -10,6 +10,9 @@ import {
 	Grid,
 	TextField
 } from '@material-ui/core';
+import api from '../../services/api';
+import { useAuthenticated } from '../../providers/authentication';
+import { useUserInfos } from '../../providers/userInfos';
 
 const states = [
 	"",
@@ -56,15 +59,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AccountProfileDetails = ({ user }) => {
-	const { name, email } = user;
+	const { firstName, email, id, lastName, phone, state, city } = user;
+    const { token } = useAuthenticated();
+    const { updateUserInfos } = useUserInfos();
 	const classes = useStyles();
 	const [values, setValues] = useState({
-		firstName: name.split(" ")[0],
-		lastName: name.split(" ")[1],
+		firstName: firstName,
+		lastName: lastName,
 		email: email,
-		phone: '',
-		state: '',
-		city: ''
+		phone: phone,
+		state: state,
+		city: city,
 	});
 
 	const handleChange = (event) => {
@@ -77,6 +82,11 @@ const AccountProfileDetails = ({ user }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+        api.patch(`/users/${id}`, values, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		}).then(updateUserInfos()).catch(err=>console.log(err));
 		console.log(values)//mandar pra api
 	}
 

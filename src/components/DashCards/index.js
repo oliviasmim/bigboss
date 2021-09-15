@@ -10,25 +10,36 @@ import PendingServices from "../../assets/PendingServices.svg";
 import TrendingDownIcon from "@material-ui/icons/TrendingDown";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   //Container Geral
   container: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 220,
     flexWrap: "wrap",
+    // [theme.breakpoints.up(768)]: {
+    //   marginLeft: "30%",
+    // },
+    // [theme.breakpoints.up(1024)]: {
+    //   marginLeft: "12%",
+    // },
   },
 
   //Ajusta o tamanho do Card
   root: {
-    width: 380,
-    height: 200,
-    margin: 25,
-
+    // width: 380,
+    margin: "10%",
+    marginTop: 0,
+    // height: 120,
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
+
+    [theme.breakpoints.up(768)]: {
+      height: 170,
+      margin: 25,
+    },
   },
 
   //Container que engloba a Imagem e o outro container com os demais itens
@@ -37,15 +48,21 @@ const useStyles = makeStyles({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
+    marginTop: 30,
     padding: 5,
-    marginTop: 35,
+    [theme.breakpoints.up(768)]: {
+      marginTop: 20,
+    },
   },
 
   //Ajusta Imagem do Card
   image: {
-    width: 90,
-    height: 90,
-    borderRadius: "100%",
+    width: "16%",
+    margin: "1%",
+    [theme.breakpoints.up(768)]: {
+      width: "22%",
+      margin: "5%",
+    },
   },
 
   //Ajusta o total do card
@@ -87,16 +104,16 @@ const useStyles = makeStyles({
     marginTop: 7,
   },
 
-  //Ajusta Seta do Card
+  //Ajusta Seta para cima do Card
   arrow: {
     color: "#4BDE97",
   },
 
-  //Ajusta Seta do Card
+  //Ajusta Seta para baixo do Card
   arrowDown: {
     color: "#F55B5D",
   },
-});
+}));
 
 const DashCards = () => {
   const classes = useStyles();
