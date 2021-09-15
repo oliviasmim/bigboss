@@ -6,6 +6,7 @@ import CardCustomer from "../../components/CardCustomer";
 import { useUserClients } from "../../providers/userClients";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
+import MenuSearchCustomer from "../../components/SearchMenu/SearchCustomer";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -39,6 +40,7 @@ const SearchCustomer = () => {
 					Novo Cliente
 				</Button>	
 			</div>
+			<MenuSearchCustomer />
 			<section className={classes.container}>
 				{userClients.length > 0 ? userClients.map((item) => (
 					<CardCustomer
