@@ -8,6 +8,9 @@ const CardCustomer = ({ name, email, tel, clientSince, action, id }) => {
     const source = getLettersAvatarSrc(name);
     const [clientContracts, setClientContracts] = useState([]);
     const { token } = useAuthenticated();
+    const event = new Date(clientSince);
+    const options = { day: 'numeric', month: 'numeric', year: 'numeric'};
+    const date = event.toLocaleDateString(options);
 
     useEffect(() => {
         api.get(`/contracts/client/${id}`, {
@@ -30,7 +33,7 @@ const CardCustomer = ({ name, email, tel, clientSince, action, id }) => {
                 <h4>{name}</h4>
                 <p>Email: {email}</p>
                 <p>Telone: {tel}</p>
-                <p>Data de cadastro: {clientSince}</p>
+                <p>Data de cadastro: {date}</p>
             </CardContent>
         </CardContainer>
     )

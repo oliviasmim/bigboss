@@ -186,7 +186,7 @@ const AccountProfileDetails = ({ user }) => {
 						variant="contained"
 						type="submit"
 					>
-						Save details
+						Salvar
 					</Button>
 				</Box>
 			</Card>

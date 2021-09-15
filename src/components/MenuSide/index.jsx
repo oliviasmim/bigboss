@@ -41,7 +41,7 @@ const menuItems = [
     {
       href: '/services/search',
       icon: FindInPage,
-      title: 'Buscar Serviços'
+      title: 'Contratos'
     },
     {
       href: '/404', //implementar pós mvp
@@ -54,7 +54,7 @@ const menuItems = [
       title: 'Relatórios'
     },
     {
-      href: '/register',
+      href: '/404',
       icon: AssignmentTurnedIn,
       title: 'To-do'
     },
