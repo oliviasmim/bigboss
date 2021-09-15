@@ -5,23 +5,37 @@ const AutheticationContext = createContext();
 
 export const AutheticationProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
-  const [token, setToken] = useState(JSON.parse(localStorage.getItem("@BigBoss/users")) || "");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("@BigBoss/users")) || ""
+  );
   const [userId, setUserId] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    const accessToken = JSON.parse(localStorage.getItem("@BigBoss/users")) || "" ;
+    const accessToken =
+      JSON.parse(localStorage.getItem("@BigBoss/users")) || "";
 
     if (accessToken) {
       setAuthenticated(true);
       setToken(accessToken);
       setUserId(jwt_decode(accessToken).sub);
-      console.log("prov", token)
+      console.log("prov", token);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authenticated]);
 
   return (
-    <AutheticationContext.Provider value={{ authenticated, setAuthenticated, token, userId }}>
+    <AutheticationContext.Provider
+      value={{
+        authenticated,
+        setAuthenticated,
+        token,
+        userId,
+        isLoading,
+        setLoading,
+      }}
+    >
       {children}
     </AutheticationContext.Provider>
   );

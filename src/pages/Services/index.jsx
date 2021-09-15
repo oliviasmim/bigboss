@@ -1,43 +1,56 @@
-import { useModal } from "../../providers/Modal";
-import FormularioNewService from "../../components/FormNewService";
-import Modal from "../../components/Modal";
-import PageLayout from "../../components/PageLayout";
-import CardService from "../../components/CardService";
 import { useUserServices } from "../../providers/userServices";
+import CardService from "../../components/CardService";
+import PageLayout from "../../components/PageLayout";
+import { makeStyles } from "@material-ui/styles";
 import { Button } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
+import FormularioNewService from "../../components/FormNewService";
+import { useModal } from "../../providers/Modal";
+import Modal from "../../components/Modal";
+
+const useStyles = makeStyles((theme) => ({
+	container: {
+		gap: "15px", 
+		display: "flex", 
+		flexWrap: "wrap",
+		justifyContent: "space-evenly",
+	},
+	button: {
+		display: "flex",
+		justifyContent: "flex-end",
+		paddingRight: "2rem",
+		paddingBottom: "1rem"
+	}
+}))
 
 const Services = () => {
-  const { isModalVisible, handleCloseModal, handleOpenModal } = useModal();
   const { userServices } = useUserServices();
+  const classes = useStyles();
+  const { isModalVisible, handleCloseModal, handleOpenModal } = useModal();
 
   return (
-		<PageLayout>
-			<div style={{display:'flex', flexDirection: "column", gap: "15px"}}>
+    <PageLayout>
+      	{isModalVisible && (
+				<Modal onClose={handleCloseModal}>
+					<FormularioNewService />
+				</Modal>
+			)}
+      	<div className={classes.button}>
 				<Button
 					variant="text"
 					color="secondary"
-					onClick={handleOpenModal}
-					style={{ alignSelf: "flex-end" }}
 					startIcon={<Add />}
+          			onClick={handleOpenModal}
 				>
-					Criar novo
-				</Button>
-
-				<div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-					{isModalVisible && (
-						<Modal onClose={handleCloseModal}>
-							<FormularioNewService />
-						</Modal>
-					)}
-					{userServices.length > 0
-						? userServices.map((item) => (
-								<CardService key={item.id} {...item} />
-						  ))
-						: null}
-				</div>
-			</div>
-		</PageLayout>
+					Novo Serviço
+				</Button>	
+		</div>
+      	<section className={classes.container}>
+			{userServices.length  > 0 && userServices.map((item) => (
+				<CardService key={item.id} {...item} />
+			))}
+		</section>
+    </PageLayout>
   );
 };
 
