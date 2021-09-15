@@ -52,7 +52,7 @@ const Dashboard = () => {
         <BarChart />
       </Grid>
       <Grid className={classes.Container}>
-        <LastProjectsTable />
+        <LastProjectsTable maxRows={5} hideFooter/>
         <PieChart />
       </Grid>
     </Grid>
