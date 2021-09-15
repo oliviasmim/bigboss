@@ -26,8 +26,17 @@ export const UserServicesProvider = ({ children }) => {
 	const updateUserServices = () => {
 		setReloadUserServices(!reloadUserServices);
 	};
+
+	const handleDelete = (id) => {
+		api.delete(`/services/${id}`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		})
+		    .catch((err) => console.log(err));
+	}
 	return (
-		<UserServicesContext.Provider value={{ userServices, updateUserServices }}>
+		<UserServicesContext.Provider value={{ userServices, updateUserServices, handleDelete }}>
 			{children}
 		</UserServicesContext.Provider>
 	);
