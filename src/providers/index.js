@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { AutheticationProvider } from "./authentication";
 import { UserInfosProvider } from "./userInfos";
 import { UserClientsProvider } from "./userClients";
@@ -23,3 +24,5 @@ const Providers = ({ children }) => {
 	);
 };
 export default Providers;
+=======
+>>>>>>> f34744aaf8b89ec5a868dc7fc73b9115bc7d344e

@@ -1,28 +1,9 @@
-import GlobalStyle from "./styles/global";
-import Routes from "./routes";
-import { ThemeProvider } from "@material-ui/core";
-import { theme } from "./styles/theme";
-import 'react-toastify/dist/ReactToastify.css';
-import {ToastContainer} from "react-toastify";
+import GlobalStyle from "./styles/global"
 
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          />
-        <Routes />
-      </ThemeProvider>
+    <GlobalStyle />
     </>
   );
 }
