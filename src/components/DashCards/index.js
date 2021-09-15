@@ -18,20 +18,20 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     flexWrap: "wrap",
-    [theme.breakpoints.up(768)]: {
-      marginLeft: "30%",
-    },
-    [theme.breakpoints.up(1024)]: {
-      marginLeft: "12%",
-    },
+    // [theme.breakpoints.up(768)]: {
+    //   marginLeft: "30%",
+    // },
+    // [theme.breakpoints.up(1024)]: {
+    //   marginLeft: "12%",
+    // },
   },
 
   //Ajusta o tamanho do Card
   root: {
-    width: 380,
+    // width: 380,
     margin: "10%",
     marginTop: 0,
-    height: 120,
+    // height: 120,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

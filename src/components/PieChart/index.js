@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: 380,
     height: 400,
-    margin: "10%",
+    // margin: "10%",
     marginTop: 40,
 
     [theme.breakpoints.up(768)]: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
       height: 400,
       margin: 10,
       marginTop: 30,
-      marginLeft: "40%",
+    //   marginLeft: "40%",
     },
     [theme.breakpoints.up(1024)]: {
       marginTop: 35,

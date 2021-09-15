@@ -6,18 +6,18 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: 400,
     width: 1240,
-    marginLeft: "10%",
+    // marginLeft: "10%",
     marginTop: 0,
     backgroundColor: "white",
 
-    [theme.breakpoints.up(768)]: {
-      marginTop: 35,
-      marginLeft: "40%",
-    },
+    // [theme.breakpoints.up(768)]: {
+    //   marginTop: 35,
+    //   marginLeft: "40%",
+    // },
 
-    [theme.breakpoints.up(1024)]: {
-      marginLeft: "15%",
-    },
+    // [theme.breakpoints.up(1024)]: {
+    //   marginLeft: "15%",
+    // },
   },
 }));
 

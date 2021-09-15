@@ -13,18 +13,18 @@ const useStyles = makeStyles((theme) => ({
     margin: "10%",
     marginTop: 0,
 
-    [theme.breakpoints.up(768)]: {
-      width: 380,
-      height: 610,
-      margin: 10,
-      marginTop: 30,
-      marginLeft: "40%",
-    },
-    [theme.breakpoints.up(1024)]: {
-      width: 1240,
-      height: 610,
-      marginLeft: "15%",
-    },
+    // [theme.breakpoints.up(768)]: {
+    //   width: 380,
+    //   height: 610,
+    //   margin: 10,
+    //   marginTop: 30,
+    //   marginLeft: "40%",
+    // },
+    // [theme.breakpoints.up(1024)]: {
+    //   width: 1240,
+    //   height: 610,
+    //   marginLeft: "15%",
+    // },
   },
   //Ajusta Título do gráfico
   title: {

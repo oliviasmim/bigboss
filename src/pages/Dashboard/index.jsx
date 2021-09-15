@@ -26,24 +26,25 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     fontSize: 24,
     fontWeight: "bold",
-    marginLeft: "32%",
+    // marginLeft: "32%",
     marginBottom: 30,
 
-    [theme.breakpoints.up(768)]: {
-      marginLeft: "55%",
-    },
+    // [theme.breakpoints.up(768)]: {
+    //   marginLeft: "55%",
+    // },
 
-    [theme.breakpoints.up(1024)]: {
-      marginLeft: "15%",
-    },
+    // [theme.breakpoints.up(1024)]: {
+    //   marginLeft: "15%",
+    // },
   },
 }));
 
 const Dashboard = () => {
   const classes = useStyles();
   return (
+    <PageLayout>
     <Grid className={classes.DashboardContainer}>
-      <PageLayout />
+      
       <Typography className={classes.PageTitle}>Dashboard </Typography>
       <DashCards />
       <Grid className={classes.Container}>
@@ -55,6 +56,7 @@ const Dashboard = () => {
         <PieChart />
       </Grid>
     </Grid>
+    </PageLayout>
   );
 };
 
