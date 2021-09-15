@@ -9,22 +9,8 @@ const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
     width: 380,
-    height: 400,
-    margin: "10%",
-    marginTop: 0,
-
-    // [theme.breakpoints.up(768)]: {
-    //   width: 380,
-    //   height: 610,
-    //   margin: 10,
-    //   marginTop: 30,
-    //   marginLeft: "40%",
-    // },
-
-    // [theme.breakpoints.up(1024)]: {
-    //   marginTop: 30,
-    //   marginLeft: 40,
-    // },
+    height: 610,
+    margin: 20,
   },
   //Ajusta Título do gráfico
   title: {
@@ -39,14 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
   //Ajusta o Gráfico dentro do Card
   chart: {
-    margin: 10,
-    maxWidth: 300,
-    maxHeight: 320,
-    [theme.breakpoints.up(768)]: {
-      margin: 20,
-      maxWidth: 485,
-      maxHeight: 475,
-    },
+    width: 320,
+    height: 400,
   },
 }));
 
@@ -83,10 +63,11 @@ const BarChart = () => {
               },
             ],
           }}
-          height={400}
-          width={200}
+          height={450}
+          width={350}
           options={{
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
+            responsive: false,
             scales: {
               x: {
                 grid: {

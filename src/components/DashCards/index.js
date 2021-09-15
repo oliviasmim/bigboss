@@ -15,31 +15,18 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "center",
     flexWrap: "wrap",
-    // [theme.breakpoints.up(768)]: {
-    //   marginLeft: "30%",
-    // },
-    // [theme.breakpoints.up(1024)]: {
-    //   marginLeft: "12%",
-    // },
   },
 
   //Ajusta o tamanho do Card
   root: {
-    // width: 380,
-    margin: "10%",
-    marginTop: 0,
-    // height: 120,
+    minWidth: 385,
+    height: 180,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-
-    [theme.breakpoints.up(768)]: {
-      height: 170,
-      margin: 25,
-    },
+    margin: 20,
   },
 
   //Container que engloba a Imagem e o outro container com os demais itens
@@ -48,11 +35,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
-    marginTop: 30,
+    marginTop: 20,
     padding: 5,
-    [theme.breakpoints.up(768)]: {
-      marginTop: 20,
-    },
   },
 
   //Ajusta Imagem do Card
@@ -60,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
     width: "16%",
     margin: "1%",
     [theme.breakpoints.up(768)]: {
-      width: "22%",
-      margin: "5%",
+      width: "24%",
+      margin: "2%",
     },
   },
 

@@ -1,23 +1,19 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid } from "@material-ui/data-grid";
+import { NoEncryption } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: 400,
-    width: 1240,
-    // marginLeft: "10%",
-    marginTop: 0,
-    backgroundColor: "white",
+    display: "none",
 
-    // [theme.breakpoints.up(768)]: {
-    //   marginTop: 35,
-    //   marginLeft: "40%",
-    // },
-
-    // [theme.breakpoints.up(1024)]: {
-    //   marginLeft: "15%",
-    // },
+    [theme.breakpoints.up(1534)]: {
+      display: "block",
+      width: 1228,
+      height: 450,
+      backgroundColor: "white",
+      margin: 20,
+    },
   },
 }));
 

@@ -9,21 +9,7 @@ const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
     width: 380,
-    height: 400,
-    // margin: "10%",
-    marginTop: 40,
-
-    [theme.breakpoints.up(768)]: {
-      width: 380,
-      height: 400,
-      margin: 10,
-      marginTop: 30,
-    //   marginLeft: "40%",
-    },
-    [theme.breakpoints.up(1024)]: {
-      marginTop: 35,
-      marginLeft: 50,
-    },
+    margin: 20,
   },
   //Ajusta Título do gráfico
   title: {
@@ -41,17 +27,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 20,
     maxWidth: 300,
     maxHeight: 320,
-    [theme.breakpoints.up(768)]: {
-      margin: 20,
-      marginTop: "20%",
-      maxWidth: 485,
-      maxHeight: 475,
-    },
-    [theme.breakpoints.up(1024)]: {
-      marginTop: 20,
-      maxWidth: 280,
-      maxHeight: 280,
-    },
   },
 }));
 

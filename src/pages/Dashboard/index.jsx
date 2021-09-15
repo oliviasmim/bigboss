@@ -20,22 +20,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+    alignContent: "center",
+    justifyContent: "center",
   },
   //Ajusta o Título da Página
   PageTitle: {
     display: "flex",
     fontSize: 24,
     fontWeight: "bold",
-    // marginLeft: "32%",
     marginBottom: 30,
-
-    // [theme.breakpoints.up(768)]: {
-    //   marginLeft: "55%",
-    // },
-
-    // [theme.breakpoints.up(1024)]: {
-    //   marginLeft: "15%",
-    // },
   },
 }));
 
@@ -43,19 +36,18 @@ const Dashboard = () => {
   const classes = useStyles();
   return (
     <PageLayout>
-    <Grid className={classes.DashboardContainer}>
-      
-      <Typography className={classes.PageTitle}>Dashboard </Typography>
-      <DashCards />
-      <Grid className={classes.Container}>
-        <LineChart />
-        <BarChart />
+      <Grid className={classes.DashboardContainer}>
+        <Typography className={classes.PageTitle}>Dashboard </Typography>
+
+        <Grid className={classes.Container}>
+          <DashCards />
+          <LineChart />
+          <BarChart />
+          <LastProjectsTable />
+          <PieChart />
+        </Grid>
+        <Grid className={classes.Container}></Grid>
       </Grid>
-      <Grid className={classes.Container}>
-        <LastProjectsTable />
-        <PieChart />
-      </Grid>
-    </Grid>
     </PageLayout>
   );
 };
