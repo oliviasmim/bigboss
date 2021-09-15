@@ -1,16 +1,30 @@
 import { getLettersAvatarSrc } from "../../services/avatarLetters"
 import { CardContainer, ImageContainer, Badge, Image, CardContent } from "./styles";
+import { useState, useEffect } from "react";
+import api from "../../services/api"
+import { useAuthenticated } from "../../providers/authentication";
 
-const CardCustomer = ({ name, email, tel, clientSince, action, contracts }) => {
+const CardCustomer = ({ name, email, tel, clientSince, action, id }) => {
     const source = getLettersAvatarSrc(name);
+    const [clientContracts, setClientContracts] = useState([]);
+    const { token } = useAuthenticated();
 
+    useEffect(() => {
+        api.get(`/contracts/client/${id}`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		}).then(res=>setClientContracts(res.data)).catch(err=>console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+    
     return (
         <CardContainer onClick={()=>action()}>
             <ImageContainer>
                 <Image>
                   <img src={source} alt={`avatar:${name}`} />  
                 </Image>
-                <Badge>{contracts.length === 0 ? <>cliente ativo</> : <>cadastrado</>}</Badge>
+                <Badge>{clientContracts.length === 0 ? <>cliente ativo</> : <>cadastrado</>}</Badge>
             </ImageContainer>
             <CardContent>
                 <h4>{name}</h4>
