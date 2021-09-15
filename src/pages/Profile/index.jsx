@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
 import AccountProfile from "../../components/Account/AccountProfile";
 import AccountProfileDetails from "../../components/Account/AccountProfileDetails";
+import { useUserInfos } from "../../providers/userInfos";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -16,20 +17,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-//mock
-const user = {
-    email: 'johndoe@mail.com',
-    name: 'John Doe',
-  };
-
 const Profile = () => {
     const classes = useStyles();
+    const { userInfos } = useUserInfos();
 
     return (
         <PageLayout>
             <Box className={classes.container}>
-                <AccountProfile name={user.name} email={user.email} />
-                <AccountProfileDetails user={user}/>
+                <AccountProfile name={userInfos.firstName + " " + userInfos.lastName} email={userInfos.email} />
+                <AccountProfileDetails user={userInfos}/>
             </Box>
         </PageLayout>
     )

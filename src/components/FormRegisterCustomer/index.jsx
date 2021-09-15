@@ -7,13 +7,14 @@ import api from "../../services/api";
 import { useHistory, useParams } from "react-router-dom";
 import { Edit } from "@material-ui/icons";
 import { mask as maskSelector } from "remask";
+import { useAuthenticated } from "../../providers/authentication";
+import { useUserClients } from "../../providers/userClients";
 
 const FormRegisterCustomer = ({ isRegister }) => {
 	//Variável para segurar dados do cliente
-	const [clientInfo, setClientInfo] = useState({});
-	console.log(clientInfo);
-	const token =
-		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZpcnN0QG1haWwuY29tIiwiaWF0IjoxNjMxNTA4OTI0LCJleHAiOjE2MzE1OTUzMjQsInN1YiI6IjEifQ.nbfX7ZzbzaeAsiad79xhjry0xaohz6IQQkuI-kAKzy4";
+	const { token } = useAuthenticated();
+    const { updateUserClients } = useUserClients();
+
 	//Variáveis input formulário:
 	const [numCep, setNumCep] = useState("");
 	const [nomeRua, setNomeRua] = useState("");
@@ -70,14 +71,13 @@ const FormRegisterCustomer = ({ isRegister }) => {
     
 	useEffect(() => {
 		if (!isRegister) {
-			axios
-				.get(`http://localhost:3001/clients/${clientId}`, {
+			api
+				.get(`/clients/${clientId}`, {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
 				})
 				.then((res) => {
-					setClientInfo(res.data);
 					setAreDisabled(true);
 					setSinceDate(res.data.clientSince);
 					setNumCep(res.data.postalCode);
@@ -167,7 +167,7 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then(history.push("/customers"));
+		}).then(()=> {updateUserClients(); history.push("/customer")});
 	};
 	const handleUpdate = (e) => {
 		e.preventDefault();
@@ -192,7 +192,7 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then(setAreDisabled(true));
+		}).then(() => {setAreDisabled(true); updateUserClients()});
 	};
 	const onSub = (e) => {
 		e.preventDefault();
@@ -217,7 +217,7 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then((res) => history.push(`/customer/id/${res.data.id}`));
+		}).then((res) => {updateUserClients(); history.push(`/customer/id/${res.data.id}`)});
 	};
 	return (
 		<>
