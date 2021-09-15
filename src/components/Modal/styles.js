@@ -11,6 +11,7 @@ export const ModalBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 20000;
 `;
 
 export const Container = styled.div`
