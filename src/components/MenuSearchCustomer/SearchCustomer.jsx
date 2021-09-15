@@ -1,5 +1,5 @@
 import { SearchContainer } from "./styles";
-import { InputSearch } from "./InputSearch";
+import InputSearch from "./InputSearch";
 
 const MenuSearchCustomer = () => {
     return (
