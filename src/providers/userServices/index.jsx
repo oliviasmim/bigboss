@@ -34,6 +34,16 @@ export const UserServicesProvider = ({ children }) => {
     setCurrentService(currentService);
     callback();
   };
+
+  const handleDelete = (id) => {
+    api
+      .delete(`/services/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <UserServicesContext.Provider
       value={{
@@ -41,6 +51,7 @@ export const UserServicesProvider = ({ children }) => {
         updateUserServices,
         handleIdService,
         currentService,
+        handleDelete,
       }}
     >
       {children}

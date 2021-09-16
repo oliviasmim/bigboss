@@ -9,133 +9,134 @@ import { Edit } from "@material-ui/icons";
 import { mask as maskSelector } from "remask";
 import { useAuthenticated } from "../../providers/authentication";
 import { useUserClients } from "../../providers/userClients";
+import { toast } from "react-toastify";
 
 const FormRegisterCustomer = ({ isRegister }) => {
-	//Variável para segurar dados do cliente
-	const { token } = useAuthenticated();
-    const { updateUserClients } = useUserClients();
+  //Variável para segurar dados do cliente
+  const { token } = useAuthenticated();
+  const { updateUserClients } = useUserClients();
 
-	//Variáveis input formulário:
-	const [numCep, setNumCep] = useState("");
-	const [nomeRua, setNomeRua] = useState("");
-	const [nomeBairro, setNomeBairro] = useState("");
-	const [nomeCidade, setNomeCidade] = useState("");
-	const [nomeEstado, setNomeEstado] = useState("");
-	const [nomeCliente, setNomeCliente] = useState("");
-	const [numCpf, setNumCpf] = useState("");
-	const [numTel, setNumTel] = useState("");
-	const [numCel, setNumCel] = useState("");
-	const [numRua, setNumRua] = useState("");
-	const [email, setEmail] = useState("");
-	const [profInfo, setProfInfo] = useState("");
-	const listaEstados = [
-		"",
-		"AC",
-		"AL",
-		"AP",
-		"AM",
-		"BA",
-		"CE",
-		"DF",
-		"ES",
-		"GO",
-		"MA",
-		"MT",
-		"MS",
-		"MG",
-		"PA",
-		"PB",
-		"PR",
-		"PE",
-		"PI",
-		"RJ",
-		"RN",
-		"RS",
-		"RO",
-		"RR",
-		"SC",
-		"SP",
-		"SE",
-		"TO",
-	];
-	const [sinceDate, setSinceDate] = useState(new Date());
-	const [lastContactDate, setLastContactDate] = useState(new Date());
-	const [observations, setObservations] = useState("");
+  //Variáveis input formulário:
+  const [numCep, setNumCep] = useState("");
+  const [nomeRua, setNomeRua] = useState("");
+  const [nomeBairro, setNomeBairro] = useState("");
+  const [nomeCidade, setNomeCidade] = useState("");
+  const [nomeEstado, setNomeEstado] = useState("");
+  const [nomeCliente, setNomeCliente] = useState("");
+  const [numCpf, setNumCpf] = useState("");
+  const [numTel, setNumTel] = useState("");
+  const [numCel, setNumCel] = useState("");
+  const [numRua, setNumRua] = useState("");
+  const [email, setEmail] = useState("");
+  const [profInfo, setProfInfo] = useState("");
+  const listaEstados = [
+    "",
+    "AC",
+    "AL",
+    "AP",
+    "AM",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA",
+    "MT",
+    "MS",
+    "MG",
+    "PA",
+    "PB",
+    "PR",
+    "PE",
+    "PI",
+    "RJ",
+    "RN",
+    "RS",
+    "RO",
+    "RR",
+    "SC",
+    "SP",
+    "SE",
+    "TO",
+  ];
+  const [sinceDate, setSinceDate] = useState(new Date());
+  const [lastContactDate, setLastContactDate] = useState(new Date());
+  const [observations, setObservations] = useState("");
 
-	//Varáveis gerais para funcionamento:
-	const [areDisabled, setAreDisabled] = useState(false);
-	const { clientId } = useParams();
-	const history = useHistory();
-	const [errors, setErrors] = useState({});
-    const patterns = ["999.999.999-99", "99.999.999/9999-99"]
-    
-	useEffect(() => {
-		if (!isRegister) {
-			api
-				.get(`/clients/${clientId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				})
-				.then((res) => {
-					setAreDisabled(true);
-					setSinceDate(res.data.clientSince);
-					setNumCep(res.data.postalCode);
-					setNomeRua(res.data.street);
-					setNomeBairro(res.data.district);
-					setNomeCidade(res.data.city);
-					setNomeEstado(res.data.state);
-					setNomeCliente(res.data.name);
-					setNumCpf(res.data.cpf);
-					setNumTel(res.data.tel);
-					setNumCel(res.data.cel);
-					setNumRua(res.data.number);
-					setEmail(res.data.email);
-					setProfInfo(res.data.profInfo);
-					setLastContactDate(res.data.lastContact);
-					setObservations(res.data.observations);
-				})
-				.catch((err) => console.log(err.message));
-		}
+  //Varáveis gerais para funcionamento:
+  const [areDisabled, setAreDisabled] = useState(false);
+  const { clientId } = useParams();
+  const history = useHistory();
+  const [errors, setErrors] = useState({});
+  const patterns = ["999.999.999-99", "99.999.999/9999-99"];
 
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	//Funções de controle:
-	const handleCep = (value) => {
-		setNumCep(value);
-		if (value[8] !== "_" && numCep !== "") {
-			axios
-				.get(`https://viacep.com.br/ws/${value}/json/ `)
-				.then((res) => {
-					if (!res.data.erro) {
-						setNomeRua(res.data.logradouro);
-						setNomeBairro(res.data.bairro);
-						setNomeCidade(res.data.localidade);
-						setNomeEstado(res.data.uf);
-					}
-				})
-				.catch((err) => console.log("CEP não será usado"));
-		}
-	};
-	const handleOnlyNumbers = (value, func) => {
-		if (isNaN(value)) {
-			return;
-		}
-		func(value);
-	};
-    const handleCpfMask = (value) => {
-        setNumCpf(maskSelector(value.replace(/\D/g, ""), patterns))
+  useEffect(() => {
+    if (!isRegister) {
+      api
+        .get(`/clients/${clientId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setAreDisabled(true);
+          setSinceDate(res.data.clientSince);
+          setNumCep(res.data.postalCode);
+          setNomeRua(res.data.street);
+          setNomeBairro(res.data.district);
+          setNomeCidade(res.data.city);
+          setNomeEstado(res.data.state);
+          setNomeCliente(res.data.name);
+          setNumCpf(res.data.cpf);
+          setNumTel(res.data.tel);
+          setNumCel(res.data.cel);
+          setNumRua(res.data.number);
+          setEmail(res.data.email);
+          setProfInfo(res.data.profInfo);
+          setLastContactDate(res.data.lastContact);
+          setObservations(res.data.observations);
+        })
+        .catch((err) => console.log(err.message));
     }
-	const handleEmail = (value, func) => {
-		if (!(value.includes("@") && value.includes("."))) {
-			func(value);
-			setErrors({ ...errors, email: "E-mail inválido" });
-			if (value === "") {
-				setErrors({ ...errors, email: "" });
-			}
-			return;
-		}
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //Funções de controle:
+  const handleCep = (value) => {
+    setNumCep(value);
+    if (value[8] !== "_" && numCep !== "") {
+      axios
+        .get(`https://viacep.com.br/ws/${value}/json/ `)
+        .then((res) => {
+          if (!res.data.erro) {
+            setNomeRua(res.data.logradouro);
+            setNomeBairro(res.data.bairro);
+            setNomeCidade(res.data.localidade);
+            setNomeEstado(res.data.uf);
+          }
+        })
+        .catch((err) => console.log("CEP não será usado"));
+    }
+  };
+  const handleOnlyNumbers = (value, func) => {
+    if (isNaN(value)) {
+      return;
+    }
+    func(value);
+  };
+  const handleCpfMask = (value) => {
+    setNumCpf(maskSelector(value.replace(/\D/g, ""), patterns));
+  };
+  const handleEmail = (value, func) => {
+    if (!(value.includes("@") && value.includes("."))) {
+      func(value);
+      setErrors({ ...errors, email: "E-mail inválido" });
+      if (value === "") {
+        setErrors({ ...errors, email: "" });
+      }
+      return;
+    }
 
 		setErrors({ ...errors, email: "" });
 		func(value);
@@ -167,8 +168,13 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then(()=> {updateUserClients(); history.push("/customer")});
+		}).then(()=> {updateUserClients(); toast.success("Deletado");history.push("/customer")}).catch(err=> {console.log(err); toast.warning("Algo deu errado, tente novamente!")});
 	};
+    const scrollToTop = () => {
+        document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+        
+    }
 	const handleUpdate = (e) => {
 		e.preventDefault();
 		const data = {};
@@ -192,7 +198,7 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then(() => {setAreDisabled(true); updateUserClients()});
+		}).then(() => {setAreDisabled(true); updateUserClients(); scrollToTop(); toast.success("Cadastro atualizado!");}).catch(err=>{console.log(err); toast.warning("Algo deu errado! Tente novamente!")});
 	};
 	const onSub = (e) => {
 		e.preventDefault();
@@ -217,7 +223,7 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then((res) => {updateUserClients(); history.push(`/customer/id/${res.data.id}`)});
+		}).then((res) => {updateUserClients();scrollToTop(); toast.success("Cliente cadastrado com sucesso!");history.push(`/customer/id/${res.data.id}`)}).catch(err=>{console.log(err); toast.warning("Algo deu errado! Tente novamente!")});
 	};
 	return (
 		<>
@@ -275,75 +281,73 @@ const FormRegisterCustomer = ({ isRegister }) => {
 						changefunction={setNumCel}
 					/>
 
-					<FormInput
-						label="CEP:"
-						size="20ch"
-						disabled={areDisabled}
-						mask="99999-999"
-						value={numCep}
-						changefunction={handleCep}
-					/>
-					<FormInput
-						label="Endereço/Rua:"
-						size="35ch"
-						disabled={areDisabled}
-						value={nomeRua}
-						changefunction={setNomeRua}
-					/>
-					<FormInput
-						label="Número:"
-						size="7ch"
-						disabled={areDisabled}
-						value={numRua}
-						changefunction={(value) =>
-							handleOnlyNumbers(value, setNumRua)
-						}
-					/>
-					<FormInput
-						label="Cidade:"
-						size="20ch"
-						disabled={areDisabled}
-						changefunction={setNomeCidade}
-						value={nomeCidade}
-					/>
-					<FormInput
-						label="Estado:"
-						options={listaEstados}
-						size="10ch"
-						disabled={areDisabled}
-						changefunction={setNomeEstado}
-						value={nomeEstado}
-					/>
-					<FormInput
-						label="Bairro:"
-						size="20ch"
-						disabled={areDisabled}
-						changefunction={setNomeBairro}
-						value={nomeBairro}
-					/>
-					<FormInput
-						label="Profissão/Ramo de Atividade::"
-						disabled={areDisabled}
-						value={profInfo}
-						changefunction={setProfInfo}
-					/>
-					<FormInput
-						label="Cliente desde:"
-						tipedate
-						disabled={areDisabled}
-						value={sinceDate}
-						changefunction={setSinceDate}
-					/>
-					<FormInput
-						label="Data do último contato:"
-						tipedate
-						disabled={areDisabled}
-						value={lastContactDate}
-						changefunction={setLastContactDate}
-						size="10ch"
-					/>
+          <FormInput
+            label="CEP:"
+            size="20ch"
+            disabled={areDisabled}
+            mask="99999-999"
+            value={numCep}
+            changefunction={handleCep}
+          />
+          <FormInput
+            label="Endereço/Rua:"
+            size="35ch"
+            disabled={areDisabled}
+            value={nomeRua}
+            changefunction={setNomeRua}
+          />
+          <FormInput
+            label="Número:"
+            size="7ch"
+            disabled={areDisabled}
+            value={numRua}
+            changefunction={(value) => handleOnlyNumbers(value, setNumRua)}
+          />
+          <FormInput
+            label="Cidade:"
+            size="20ch"
+            disabled={areDisabled}
+            changefunction={setNomeCidade}
+            value={nomeCidade}
+          />
+          <FormInput
+            label="Estado:"
+            options={listaEstados}
+            size="10ch"
+            disabled={areDisabled}
+            changefunction={setNomeEstado}
+            value={nomeEstado}
+          />
+          <FormInput
+            label="Bairro:"
+            size="20ch"
+            disabled={areDisabled}
+            changefunction={setNomeBairro}
+            value={nomeBairro}
+          />
+          <FormInput
+            label="Profissão/Ramo de Atividade::"
+            disabled={areDisabled}
+            value={profInfo}
+            changefunction={setProfInfo}
+          />
+          <FormInput
+            label="Cliente desde:"
+            tipedate
+            disabled={areDisabled}
+            value={sinceDate}
+            changefunction={setSinceDate}
+          />
+          <FormInput
+            label="Data do último contato:"
+            tipedate
+            disabled={areDisabled}
+            value={lastContactDate}
+            changefunction={setLastContactDate}
+            size="10ch"
+          />
 
-					{/* <FormInput
+          {/* <FormInput
 						label="Total de compras R$:"
 						{...register("totalSpent")}
 						errorMessage={errors.totalSpent?.message}
@@ -353,35 +357,35 @@ const FormRegisterCustomer = ({ isRegister }) => {
 						size="33ch"
 						{...register("owes")}
 					/> */}
-				</InputsContainer>
-				<FormInput
-					label="Observações:"
-					multiline
-					disabled={areDisabled}
-					value={observations}
-					changefunction={setObservations}
-				/>
-				<ButtonsContainer>
-					<Button
-						variant="contained"
-						color="secondary"
-						disabled={areDisabled}
-						onClick={isRegister ? handleReset : handleDelete}
-					>
-						{isRegister ? "Limpar" : "Deletar"}
-					</Button>
-					<Button
-						variant="contained"
-						color="primary"
-						type="submit"
-						disabled={areDisabled}
-					>
-						Salvar
-					</Button>
-				</ButtonsContainer>
-			</Form>
-		</>
-	);
+        </InputsContainer>
+        <FormInput
+          label="Observações:"
+          multiline
+          disabled={areDisabled}
+          value={observations}
+          changefunction={setObservations}
+        />
+        <ButtonsContainer>
+          <Button
+            variant="contained"
+            color="secondary"
+            disabled={areDisabled}
+            onClick={isRegister ? handleReset : handleDelete}
+          >
+            {isRegister ? "Limpar" : "Deletar"}
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            disabled={areDisabled}
+          >
+            Salvar
+          </Button>
+        </ButtonsContainer>
+      </Form>
+    </>
+  );
 };
 
 export default FormRegisterCustomer;
