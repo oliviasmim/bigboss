@@ -37,7 +37,13 @@ export const InputContainer = styled.div`
     button {
         height: 100%;
         width: 20%;
+/* 
         padding: 3px;
+
+        padding: 6px; */
+
+        padding: 3px;
+
     }
     svg{
         color: #D6D7E3;

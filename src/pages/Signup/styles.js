@@ -10,25 +10,25 @@ export const Container = styled.div`
 `;
 
 export const Background = styled.div`
-  display: none;
-  width: 50%;
-  @media (min-width: 1100px) {
-    display: block;
-    flex: 1;
-    background: url(${Login}) no-repeat center, var(--white-gray);
-    background-size: contain;
-    border-bottom-left-radius: 2.5rem;
-    border-top-left-radius: 2.5rem;
-  }
+	display: none;
+	width: 100%;
+	@media (min-width: 900px) {
+		display: block;
+		/* flex: 1; */
+		background: url(${Login}) no-repeat center, var(--white-gray);
+		background-size: contain;
+		border-bottom-left-radius: 2.5rem;
+		border-top-left-radius: 2.5rem;
+	}
 `;
 
 export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  /* max-width: 50%; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	/* max-width: 50%; */
 `;
 
 const appearFromLeft = keyframes`
