@@ -74,6 +74,7 @@ const FormLogin = () => {
         toast.success("Sucesso!");
       })
       .catch(() => {
+        setLoading(false);
         toast.error("E-mail ou senha inválidos!");
       });
   };

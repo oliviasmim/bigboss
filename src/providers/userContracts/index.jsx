@@ -5,9 +5,9 @@ import { useAuthenticated } from "../authentication";
 const UserContractsContext = createContext();
 
 export const UserContractsProvider = ({ children }) => {
-	const [userContracts, setUserContracts] = useState([]);
-	const [reloadUserContracts, setReloadUserContracts] = useState(false);
-	const { userId, token } = useAuthenticated();
+  const [userContracts, setUserContracts] = useState([]);
+  const [reloadUserContracts, setReloadUserContracts] = useState(false);
+  const { userId, token } = useAuthenticated();
 
   useEffect(() => {
     if (userId) {
@@ -20,7 +20,7 @@ export const UserContractsProvider = ({ children }) => {
         .then((res) => setUserContracts(res.data))
         .catch((err) => console.log(err));
     } else {
-      setUserContracts({});
+      setUserContracts([]);
     }
   }, [reloadUserContracts, token, userId]);
 

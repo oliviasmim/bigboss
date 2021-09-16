@@ -1,7 +1,11 @@
 import { useState } from "react";
-import logo from "../../../assets/logo1.svg";
+import logo from "../../../assets/logo.png";
+import "../../../styles/style.css";
+import { useHistory, Link } from "react-router-dom";
 
 const Navbar = () => {
+  const history = useHistory();
+
   const [nav, setNav] = useState(false);
 
   const changeBackground = () => {
@@ -15,25 +19,32 @@ const Navbar = () => {
   window.addEventListener("scroll", changeBackground);
 
   return (
-    <nav className={nav ? "nav active" : "nav"}>
-      <a href="#" className="logo">
+    <nav className={"navbar" ? "navbar active" : "navbar"}>
+      <Link to="/" className="logo">
         <img src={logo} alt="logo" />
-      </a>
+      </Link>
       <input type="checkbox" className="menu-btn" id="menu-btn" />
-      <label className="menu-icon" for="menu-btn">
+      <label className="menu-icon" htmlFor="menu-btn">
         <span className="nav-icon"></span>
       </label>
-      <ul className="menu">
-        <li>
-          <a href="#">Produto</a>
-        </li>
-        <li>
-          <a href="#">Equipe</a>
-        </li>
-        <li>
-          <a href="#">Contato</a>
-        </li>
-      </ul>
+      <div className="menu">
+        <ul className="menu-list">
+          <li>
+            <a href="#about">Sobre</a>
+          </li>
+          <li>
+            <a href="#team">Equipe</a>
+          </li>
+          <li>
+            <a href="#contact">Contato</a>
+          </li>
+        </ul>
+        <div className="login">
+          <button className="cv-btn" onClick={() => history.push("/login")}>
+            Login
+          </button>
+        </div>
+      </div>
     </nav>
   );
 };

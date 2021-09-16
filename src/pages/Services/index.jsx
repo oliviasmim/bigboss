@@ -26,12 +26,13 @@ const useStyles = makeStyles((theme) => ({
 const Services = () => {
   const { userServices } = useUserServices();
   const classes = useStyles();
-  const { isModalVisible, handleCloseModal, handleOpenModal } = useModal();
+  const { isModalVisibleNew, handleCloseModalNew, handleOpenModalNew } =
+    useModal();
 
   return (
     <PageLayout>
-      {isModalVisible && (
-        <Modal onClose={handleCloseModal}>
+      {isModalVisibleNew && (
+        <Modal onClose={handleCloseModalNew}>
           <FormularioNewService />
         </Modal>
       )}
@@ -40,7 +41,7 @@ const Services = () => {
           variant="text"
           color="secondary"
           startIcon={<Add />}
-          onClick={handleOpenModal}
+          onClick={handleOpenModalNew}
         >
           Novo Serviço
         </Button>
