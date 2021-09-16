@@ -2,6 +2,7 @@ import * as React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid } from "@material-ui/data-grid";
 import { NoEncryption } from "@material-ui/icons";
+import { getLettersAvatarSrc } from "../../services/avatarLetters";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,24 @@ const columns = [
     align: "left",
   },
 
-  { field: "customer", headerName: "Cliente", width: 220 },
+  {
+    field: "customer",
+    headerName: "Cliente",
+    width: 220,
+    renderCell: (cellValues) => {
+      return (
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {console.log(cellValues)}
+          <img
+            src={getLettersAvatarSrc(cellValues.value)}
+            alt="asd"
+            style={{ borderRadius: "50px", width: "40px" }}
+          />
+          {cellValues.value}
+        </div>
+      );
+    },
+  },
   { field: "cpf", headerName: "CPF/CNPJ", width: 190 },
   {
     field: "service",
