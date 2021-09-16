@@ -99,21 +99,30 @@ const columns = [
   },
 ];
 
-const LastProjectsTable = ({ maxRows, hideFooter, newRows }) => {
+const LastProjectsTable = ({ maxRows = 5, hideFooter, newRows }) => {
   const { userContracts } = useUserContracts();
 
   const classes = useStyles();
+  const noRows = () => {
+      return (
+          <div style={{position: "absolute", top: "50%", left: "50%", transform: "translateX(-50%)"}}>
+              <h4>Sem contratos por aqui!</h4>
+              
+          </div>
+      )
+  }
   return (
     <div className={classes.root}>
       {userContracts.length && (
         <DataGrid
           rows={newRows || userContracts}
           columns={columns}
-          pageSize={5}
+          pageSize={maxRows}
           autoPageSize
           autoHeight
           hideFooterPagination={hideFooter}
           disableSelectionOnClick
+          components={{ NoRowsOverlay: noRows}}
         />
       )}
     </div>

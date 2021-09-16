@@ -41,25 +41,25 @@ const Dashboard = () => {
   });
   const formationA = () => {
     return (
-      <>
-        <DashCards />
-        <LineChart />
-        <BarChart />
-        <PieChart />
-        <LastProjectsTable />
-      </>
-    );
+		<>
+			<DashCards />
+			<LineChart />
+			<BarChart />
+			<PieChart />
+			<LastProjectsTable hideFooter />
+		</>
+	);
   };
   const formationB = () => {
     return (
-      <Grid className={classes.Container}>
-        <DashCards />
-        <LineChart />
-        <BarChart />
-        <LastProjectsTable />
-        <PieChart />
-      </Grid>
-    );
+		<Grid className={classes.Container}>
+			<DashCards />
+			<LineChart />
+			<BarChart />
+			<LastProjectsTable hideFooter />
+			<PieChart />
+		</Grid>
+	);
   };
   return (
     <PageLayout>
