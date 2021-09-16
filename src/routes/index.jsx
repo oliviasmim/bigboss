@@ -6,10 +6,11 @@ import PageCustomer from "../pages/PageCustomer";
 import Profile from "../pages/Profile";
 import RegisterCustomer from "../pages/RegisterCustomer";
 import SearchCustomer from "../pages/SearchCustomer";
-import SearchServices from "../pages/SearchServices";
+import Contracts from "../pages/Contracts";
 import Services from "../pages/Services";
 import Signup from "../pages/Signup";
 import Page404 from "../pages/Page404";
+import Reports from "../pages/Reports";
 
 const Routes = () => {
     return (
@@ -19,12 +20,13 @@ const Routes = () => {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/services" component={Services} />
-            <Route exact path="/services/search" component={SearchServices} />
+            <Route exact path="/contracts" component={Contracts} />
             <Route exact path="/customer" component={SearchCustomer} />
             <Route exact path="/customer/register" component={RegisterCustomer} />
             <Route exact path="/customer/id/:clientId" component={PageCustomer} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/404" component={Page404} />
+            <Route exact path="/reports" component={Reports} />
+            <Route path="*" component={Page404} />
         </Switch>
     )
 }
