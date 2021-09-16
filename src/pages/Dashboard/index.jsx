@@ -7,6 +7,7 @@ import LastProjectsTable from "../../components/LastProjectsTable";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   //Container Geral da página
@@ -34,6 +35,32 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = () => {
   const classes = useStyles();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  window.addEventListener("resize", () => {
+		setWindowWidth(window.innerWidth);
+  });
+  const formationA = () => {
+      return (
+          <>
+          <div>
+          <LineChart />
+          <PieChart />
+          </div>
+          <BarChart />
+          </>
+      )
+  }
+  const formationB = () => {
+      return (
+          <>
+          <LineChart />
+            <div style={{display: "flex"}}>
+          <PieChart />
+          <BarChart />
+          </div>
+          </>
+      )
+  }
   return (
     <PageLayout>
       <Grid className={classes.DashboardContainer}>
@@ -41,11 +68,10 @@ const Dashboard = () => {
 
         <Grid className={classes.Container}>
           <DashCards />
-          <LineChart />
-          <BarChart />
-          <LastProjectsTable />
-          <PieChart />
+          {windowWidth < 1550 ? formationA() : formationB()}
+          
         </Grid>
+          <LastProjectsTable />
         <Grid className={classes.Container}></Grid>
       </Grid>
     </PageLayout>

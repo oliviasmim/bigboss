@@ -9,6 +9,7 @@ import { Edit } from "@material-ui/icons";
 import { mask as maskSelector } from "remask";
 import { useAuthenticated } from "../../providers/authentication";
 import { useUserClients } from "../../providers/userClients";
+import { toast } from "react-toastify";
 
 const FormRegisterCustomer = ({ isRegister }) => {
   //Variável para segurar dados do cliente
@@ -137,158 +138,148 @@ const FormRegisterCustomer = ({ isRegister }) => {
       return;
     }
 
-    setErrors({ ...errors, email: "" });
-    func(value);
-  };
-  const handleEditable = () => {
-    setAreDisabled(false);
-  };
-  const handleReset = () => {
-    setSinceDate(new Date());
-    setNumCep("");
-    setNomeRua("");
-    setNomeBairro("");
-    setNomeCidade("");
-    setNomeEstado("");
-    setNomeCliente("");
-    setNumCpf("");
-    setNumTel("");
-    setNumCel("");
-    setNumRua("");
-    setEmail("");
-    setProfInfo("");
-    setLastContactDate(new Date());
-    setObservations("");
-    setErrors({});
-  };
-  const handleDelete = (e) => {
-    e.preventDefault();
-    api
-      .delete(`/clients/${clientId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(() => {
-        updateUserClients();
-        history.push("/customer");
-      });
-  };
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    const data = {};
-    data.name = nomeCliente;
-    data.cpf = numCpf;
-    data.email = email;
-    data.tel = numTel;
-    data.cel = numCel;
-    data.postalCode = numCep;
-    data.number = numRua;
-    data.profInfo = profInfo;
-    data.clientSince = sinceDate;
-    data.lastContact = lastContactDate;
-    data.observations = observations;
-    data.street = nomeRua;
-    data.city = nomeCidade;
-    data.district = nomeBairro;
-    data.state = nomeEstado;
-    data.contracts = [];
-    api
-      .patch(`/clients/${clientId}`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(() => {
-        setAreDisabled(true);
-        updateUserClients();
-      });
-  };
-  const onSub = (e) => {
-    e.preventDefault();
-    const data = {};
-    data.name = nomeCliente;
-    data.cpf = numCpf;
-    data.email = email;
-    data.tel = numTel;
-    data.cel = numCel;
-    data.postalCode = numCep;
-    data.number = numRua;
-    data.profInfo = profInfo;
-    data.clientSince = sinceDate;
-    data.lastContact = lastContactDate;
-    data.observations = observations;
-    data.street = nomeRua;
-    data.city = nomeCidade;
-    data.district = nomeBairro;
-    data.state = nomeEstado;
-    data.contracts = [];
-    api
-      .post(`/clients`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        updateUserClients();
-        history.push(`/customer/id/${res.data.id}`);
-      });
-  };
-  return (
-    <>
-      <Form noValidate onSubmit={isRegister ? onSub : handleUpdate}>
-        {isRegister ? null : (
-          <Button
-            variant="text"
-            color="secondary"
-            onClick={handleEditable}
-            endIcon={<Edit />}
-          >
-            Editar
-          </Button>
-        )}
-        <InputsContainer>
-          <FormInput
-            label="Nome ou Razão Social:"
-            disabled={areDisabled}
-            size="45ch"
-            value={nomeCliente}
-            changefunction={setNomeCliente}
-          />
-          <FormInput
-            label="CPF/CNPJ:"
-            size="20ch"
-            disabled={areDisabled}
-            value={numCpf}
-            // changefunction={(value) =>
-            // 	handleOnlyNumbers(value, setNumCpf)
-            // }
-            changefunction={handleCpfMask}
-          />
-          <FormInput
-            label="Email:"
-            size="35ch"
-            disabled={areDisabled}
-            value={email}
-            changefunction={(value) => handleEmail(value, setEmail)}
-            errormessage={errors.email ? errors.email : null}
-          />
-          <FormInput
-            label="Telefone:"
-            size="20ch"
-            disabled={areDisabled}
-            value={numTel}
-            mask="(99) 9999-9999"
-            changefunction={setNumTel}
-          />
-          <FormInput
-            label="Celular:"
-            size="20ch"
-            disabled={areDisabled}
-            value={numCel}
-            mask="(99) 9999-99999"
-            changefunction={setNumCel}
-          />
+		setErrors({ ...errors, email: "" });
+		func(value);
+	};
+	const handleEditable = () => {
+		setAreDisabled(false);
+	};
+	const handleReset = () => {
+		setSinceDate(new Date());
+		setNumCep("");
+		setNomeRua("");
+		setNomeBairro("");
+		setNomeCidade("");
+		setNomeEstado("");
+		setNomeCliente("");
+		setNumCpf("");
+		setNumTel("");
+		setNumCel("");
+		setNumRua("");
+		setEmail("");
+		setProfInfo("");
+		setLastContactDate(new Date());
+		setObservations("");
+		setErrors({});
+	};
+	const handleDelete = (e) => {
+        e.preventDefault();
+		api.delete(`/clients/${clientId}`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		}).then(()=> {updateUserClients(); toast.success("Deletado");history.push("/customer")}).catch(err=> {console.log(err); toast.warning("Algo deu errado, tente novamente!")});
+	};
+    const scrollToTop = () => {
+        document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+        
+    }
+	const handleUpdate = (e) => {
+		e.preventDefault();
+		const data = {};
+		data.name = nomeCliente;
+		data.cpf = numCpf;
+		data.email = email;
+		data.tel = numTel;
+		data.cel = numCel;
+		data.postalCode = numCep;
+		data.number = numRua;
+		data.profInfo = profInfo;
+		data.clientSince = sinceDate;
+		data.lastContact = lastContactDate;
+		data.observations = observations;
+		data.street = nomeRua;
+		data.city = nomeCidade;
+		data.district = nomeBairro;
+		data.state = nomeEstado;
+		data.contracts = [];
+		api.patch(`/clients/${clientId}`, data, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		}).then(() => {setAreDisabled(true); updateUserClients(); scrollToTop(); toast.success("Cadastro atualizado!");}).catch(err=>{console.log(err); toast.warning("Algo deu errado! Tente novamente!")});
+	};
+	const onSub = (e) => {
+		e.preventDefault();
+		const data = {};
+		data.name = nomeCliente;
+		data.cpf = numCpf;
+		data.email = email;
+		data.tel = numTel;
+		data.cel = numCel;
+		data.postalCode = numCep;
+		data.number = numRua;
+		data.profInfo = profInfo;
+		data.clientSince = sinceDate;
+		data.lastContact = lastContactDate;
+		data.observations = observations;
+		data.street = nomeRua;
+		data.city = nomeCidade;
+		data.district = nomeBairro;
+		data.state = nomeEstado;
+		data.contracts = [];
+		api.post(`/clients`, data, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		}).then((res) => {updateUserClients();scrollToTop(); toast.success("Cliente cadastrado com sucesso!");history.push(`/customer/id/${res.data.id}`)}).catch(err=>{console.log(err); toast.warning("Algo deu errado! Tente novamente!")});
+	};
+	return (
+		<>
+			<Form noValidate onSubmit={isRegister ? onSub : handleUpdate}>
+				{isRegister ? null : (
+					<Button
+						variant="text"
+						color="secondary"
+						onClick={handleEditable}
+						endIcon={<Edit />}
+					>
+						Editar
+					</Button>
+				)}
+				<InputsContainer>
+					<FormInput
+						label="Nome ou Razão Social:"
+						disabled={areDisabled}
+						size="45ch"
+						value={nomeCliente}
+						changefunction={setNomeCliente}
+					/>
+					<FormInput
+						label="CPF/CNPJ:"
+						size="20ch"
+						disabled={areDisabled}
+						value={numCpf}
+						// changefunction={(value) =>
+						// 	handleOnlyNumbers(value, setNumCpf)
+						// }
+                        changefunction={handleCpfMask}
+					/>
+					<FormInput
+						label="Email:"
+						size="35ch"
+						disabled={areDisabled}
+						value={email}
+						changefunction={(value) => handleEmail(value, setEmail)}
+						errormessage={errors.email ? errors.email : null}
+					/>
+					<FormInput
+						label="Telefone:"
+						size="20ch"
+						disabled={areDisabled}
+						value={numTel}
+						mask="(99) 9999-9999"
+						changefunction={setNumTel}
+					/>
+					<FormInput
+						label="Celular:"
+						size="20ch"
+						disabled={areDisabled}
+						value={numCel}
+						mask="(99) 9999-99999"
+						changefunction={setNumCel}
+					/>
 
           <FormInput
             label="CEP:"

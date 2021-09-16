@@ -8,13 +8,14 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
-    width: 380,
-    height: 610,
+    width: 400,
+    height: 210,
     fontSize: 18,
     margin: 20,
     [theme.breakpoints.up(1550)]: {
-      width: 1228,
+      width: 1180,
       fontSize: 24,
+      height: 610
     },
   },
   //Ajusta Título do gráfico

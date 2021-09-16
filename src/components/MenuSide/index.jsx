@@ -23,47 +23,47 @@ import NavItem from "../NavItem";
 const drawerWidth = 240;
 
 const menuItems = [
-  {
-    href: "/dashboard",
-    icon: Home,
-    title: "Dashboard",
-  },
-  {
-    href: "/customer",
-    icon: AssignmentInd,
-    title: "Clientes",
-  },
-  {
-    href: "/services",
-    icon: Ballot,
-    title: "Serviços",
-  },
-  {
-    href: "/services/search",
-    icon: FindInPage,
-    title: "Contratos",
-  },
-  {
-    href: "/404", //implementar pós mvp
-    icon: Assessment,
-    title: "Gestão Financeira",
-  },
-  {
-    href: "/404", //implementar pós mvp
-    icon: ChromeReaderMode,
-    title: "Relatórios",
-  },
-  {
-    href: "/404",
-    icon: AssignmentTurnedIn,
-    title: "To-do",
-  },
-  {
-    href: "/profile",
-    icon: AccountBox,
-    title: "Perfil",
-  },
-];
+    {
+      href: '/dashboard',
+      icon: Home,
+      title: 'Dashboard'
+    },
+    {
+      href: '/customer',
+      icon: AssignmentInd,
+      title: 'Clientes'
+    },
+    {
+      href: '/services',
+      icon: Ballot,
+      title: 'Serviços'
+    },
+    {
+      href: '/contracts',
+      icon: FindInPage,
+      title: 'Contratos'
+    },
+    {
+      href: '/404', //implementar pós mvp
+      icon: Assessment,
+      title: 'Gestão Financeira'
+    },
+    {
+      href: '/reports', //implementar pós mvp
+      icon: ChromeReaderMode,
+      title: 'Relatórios'
+    },
+    {
+      href: '/404',
+      icon: AssignmentTurnedIn,
+      title: 'To-do'
+    },
+    {
+      href: '/profile',
+      icon: AccountBox,
+      title: 'Perfil'
+    }
+  ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
