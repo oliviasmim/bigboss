@@ -1,8 +1,10 @@
 import "../../../styles/style.css";
+import { PageContainer } from "./styles";
+
 
 function Contact() {
   return (
-    <div id="contact">
+    <PageContainer>
       <h3>Ainda tem dúvidas? Entre em contato</h3>
       <form action="">
         <input type="text" placeholder="Nome completo" required />
@@ -15,7 +17,7 @@ function Contact() {
         ></textarea>
         <input type="submit" value="Enviar" />
       </form>
-    </div>
+    </PageContainer>
   );
 }
 
