@@ -6,17 +6,19 @@ import { getLettersAvatarSrc } from "../../services/avatarLetters";
 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "none",
-
-    [theme.breakpoints.up(1534)]: {
-      display: "block",
-      width: 1228,
-      height: 450,
-      backgroundColor: "white",
-      margin: 20,
-    },
-  },
+	root: {
+		display: "block",
+        flex: "auto",
+        textAlign: "center",
+		// width: 900,
+		// [theme.breakpoints.up(1534)]: {
+		//   display: "block",
+		//   width: 1228,
+		//   height: 450,
+		//   backgroundColor: "white",
+		//   margin: 20,
+		// },
+	},
 }));
 
 const columns = [
@@ -103,7 +105,7 @@ const columns = [
 
 const LastProjectsTable = ({ maxRows, hideFooter, newRows }) => {
 	const { userContracts } = useUserContracts();
-
+    
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
