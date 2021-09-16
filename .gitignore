@@ -21,6 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# arquivo com alterações irrelevantes
-src/backend/db.json

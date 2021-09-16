@@ -1,24 +1,24 @@
 import {
-        Box,
-        Divider,
-        Drawer,
-        Hidden,
-        List,
-        Typography, 
-} from '@material-ui/core';
-import { 
-        Assessment,
-        Ballot, 
-        FindInPage, 
-        AssignmentInd, 
-        Home, 
-        ChromeReaderMode, 
-        AccountBox, 
-        AssignmentTurnedIn,
-} from '@material-ui/icons';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import logo from "../../assets/logo.svg"
-import NavItem from '../NavItem';
+  Box,
+  Divider,
+  Drawer,
+  Hidden,
+  List,
+  Typography,
+} from "@material-ui/core";
+import {
+  Assessment,
+  Ballot,
+  FindInPage,
+  AssignmentInd,
+  Home,
+  ChromeReaderMode,
+  AccountBox,
+  AssignmentTurnedIn,
+} from "@material-ui/icons";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import logo from "../../assets/logo.svg";
+import NavItem from "../NavItem";
 
 const drawerWidth = 240;
 
@@ -39,7 +39,7 @@ const menuItems = [
       title: 'Serviços'
     },
     {
-      href: '/services/search',
+      href: '/contracts',
       icon: FindInPage,
       title: 'Contratos'
     },
@@ -49,7 +49,7 @@ const menuItems = [
       title: 'Gestão Financeira'
     },
     {
-      href: '/404', //implementar pós mvp
+      href: '/reports', //implementar pós mvp
       icon: ChromeReaderMode,
       title: 'Relatórios'
     },
@@ -67,18 +67,18 @@ const menuItems = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
       flexShrink: 0,
     },
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
     },
   },
   // para o conteúdo ficar abaixo do appbar
@@ -93,10 +93,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "700",
     fontSize: "20px",
     color: "#ffffff",
-    marginLeft: "1rem"
+    marginLeft: "1rem",
   },
   divider: {
-    backgroundColor: "#eeeeee"
+    backgroundColor: "#eeeeee",
   },
   drawerPaper: {
     width: drawerWidth,
@@ -122,10 +122,10 @@ const MenuSide = (props) => {
       <div className={classes.toolbar}>
         <Box className={classes.flex}>
           <img src={logo} alt="bigboss" />
-        <Typography className={classes.fontLogo}>BigBoss</Typography>
+          <Typography className={classes.fontLogo}>BigBoss</Typography>
         </Box>
       </div>
-      <Divider className={classes.divider}/>
+      <Divider className={classes.divider} />
       <Box sx={{ p: 2 }}>
         <List>
           {menuItems.map((item) => (
@@ -138,45 +138,46 @@ const MenuSide = (props) => {
           ))}
         </List>
       </Box>
-      <Divider className={classes.divider}/>
+      <Divider className={classes.divider} />
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
-  return (  
-      <nav className={classes.drawer} aria-label="mailbox folders">
-        <Hidden smUp implementation="css">
-          <Drawer
-            container={container}
-            variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true,
-            }}
-          >
-            { MenuContent }
-          </Drawer>
-        </Hidden>
+  return (
+    <nav className={classes.drawer} aria-label="mailbox folders">
+      <Hidden smUp implementation="css">
+        <Drawer
+          container={container}
+          variant="temporary"
+          anchor={theme.direction === "rtl" ? "right" : "left"}
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          ModalProps={{
+            keepMounted: true,
+          }}
+        >
+          {MenuContent}
+        </Drawer>
+      </Hidden>
 
-        <Hidden xsDown implementation="css">
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            variant="permanent"
-            open
-          >
-            { MenuContent }
-          </Drawer>
-        </Hidden>
-      </nav>
+      <Hidden xsDown implementation="css">
+        <Drawer
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          variant="permanent"
+          open
+        >
+          {MenuContent}
+        </Drawer>
+      </Hidden>
+    </nav>
   );
-}
+};
 
 export default MenuSide;

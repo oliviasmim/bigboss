@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-	baseURL: "https://bigboss-api.herokuapp.com",
+  baseURL: "https://bigboss-api.herokuapp.com",
 });
 
 export default api;

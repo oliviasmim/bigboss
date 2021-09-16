@@ -7,26 +7,28 @@ import { useUserClients } from "../../providers/userClients";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 import MenuSearchCustomer from "../../components/MenuSearchCustomer/SearchCustomer";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
-	container: {
-		gap: "15px", 
-		display: "flex", 
-		flexWrap: "wrap",
-		justifyContent: "space-evenly",
-	},
-	button: {
-		display: "flex",
-		justifyContent: "flex-end",
-		paddingRight: "2rem",
-		paddingBottom: "1rem"
-	}
-}))
+  container: {
+    gap: "15px",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly",
+  },
+  button: {
+    display: "flex",
+    justifyContent: "flex-end",
+    paddingRight: "2rem",
+    paddingBottom: "1rem",
+  },
+}));
 
 const SearchCustomer = () => {
 	const classes = useStyles();
 	const history = useHistory();
 	const { userClients } = useUserClients();
+    const [filtered, setFiltered] = useState(userClients)
     console.log(userClients)
 	return (
 		<PageLayout>
@@ -40,9 +42,9 @@ const SearchCustomer = () => {
 					Novo Cliente
 				</Button>	
 			</div>
-			<MenuSearchCustomer />
+			<MenuSearchCustomer filterFunction={setFiltered} filtered={filtered}/>
 			<section className={classes.container}>
-				{userClients.length > 0 ? userClients.map((item) => (
+				{filtered.length > 0 ? filtered.map((item) => (
 					<CardCustomer
 						key={item.id}
 						action={() => history.push(`/customer/id/${item.id}`)}
