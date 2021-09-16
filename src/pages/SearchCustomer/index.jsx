@@ -6,7 +6,7 @@ import CardCustomer from "../../components/CardCustomer";
 import { useUserClients } from "../../providers/userClients";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
-import MenuSearchCustomer from "../../components/SearchMenu/SearchCustomer";
+import MenuSearchCustomer from "../../components/MenuSearchCustomer/SearchCustomer";
 
 const useStyles = makeStyles((theme) => ({
   container: {
