@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import { useState } from "react";
+import { useUserContracts } from "../../providers/userContracts";
 
 const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
@@ -32,8 +34,53 @@ const useStyles = makeStyles((theme) => ({
 
 const BarChart = () => {
   const classes = useStyles();
+  const { userContracts } = useUserContracts();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  window.addEventListener("resize", () => {
+    setWindowWidth(window.innerWidth);
+  });
+  const getTopFive = (params) => {
+    if (!userContracts) {
+      return [];
+    }
+    const topInfos = {};
+    console.log("contr", userContracts);
+    userContracts.forEach((item) => {
+      let name = item.client.name;
+      if (topInfos[name] === undefined) {
+        return (topInfos[name] = Number(item.service.finalValue));
+      }
+      topInfos[name] += Number(item.service.finalValue);
+    });
+    let namesArray = Object.keys(topInfos);
+    if (params === "names") {
+      if (namesArray.length < 5) {
+        let size = namesArray.length;
+        for (let i = size; i < 5; i++) {
+          namesArray.push("");
+        }
+      }
+      return namesArray.slice(0, 5);
+    }
+    let topValues = Object.values(topInfos);
+    if (params === "values") {
+      if (topValues.length < 5) {
+        let size = topValues.length;
+        for (let i = size; i < 5; i++) {
+          topValues.push("");
+        }
+      }
+      return topValues.slice(0, 5);
+    }
+  };
+  console.log("nomes", getTopFive("names"));
+  console.log("valores", getTopFive("values"));
+
   return (
-    <Card className={classes.root}>
+    <Card
+      className={classes.root}
+      style={windowWidth > 1500 ? { height: "380px" } : {}}
+    >
       <CardContent>
         <Typography className={classes.title}>Top 5 Clientes</Typography>
         <Typography
@@ -45,18 +92,13 @@ const BarChart = () => {
         </Typography>
         <Bar
           className={classes.chart}
+          style={windowWidth > 1500 ? { height: "300px" } : {}}
           data={{
-            labels: [
-              "Cliente1",
-              "Cliente2",
-              "Cliente3",
-              "Cliente4",
-              "Cliente5",
-            ],
+            labels: getTopFive("names"),
             datasets: [
               {
                 label: "Top 5 Clientes - Total de Compras R$",
-                data: [2000, 1500, 1200, 1050, 1000],
+                data: getTopFive("values"),
                 backgroundColor: "rgba(54,168,235,0.4)",
                 borderColor: "rgba(54,168,235,1)",
                 borderWidth: 1,

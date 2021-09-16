@@ -20,7 +20,7 @@ export const UserContractsProvider = ({ children }) => {
         .then((res) => setUserContracts(res.data))
         .catch((err) => console.log(err));
     } else {
-      setUserContracts({});
+      setUserContracts([]);
     }
   }, [reloadUserContracts, token, userId]);
 

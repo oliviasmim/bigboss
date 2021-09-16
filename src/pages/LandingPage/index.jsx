@@ -1,13 +1,7 @@
-import { useHistory } from "react-router";
+import Header from "../../components/Home/Header";
 
 const LandingPage = () => {
-	const history = useHistory();
-    return (
-		<div style={{display: "grid", placeItems: "center"}}>
-            <button onClick={()=> history.push("/login")}>Login ={">"}</button>
-            <button onClick={()=> history.push("/signup")}>Cadastro ={">"}</button>
-		</div>
-	)
-}
+  return <Header />;
+};
 
 export default LandingPage;
