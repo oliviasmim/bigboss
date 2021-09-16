@@ -20,14 +20,20 @@ export const ImageContainer = styled.div`
 `;
 
 export const Badge = styled.span`
-  text-align: center;
-  width: 80px;
-  height: 20px;
-  font-size: 12px;
-  color: #5887ff;
-  background: rgba(88, 135, 255, 0.1);
-  font-weight: 500;
-  border-radius: 10px;
+	text-align: center;
+    padding: .1rem .3rem;
+	width: 80px;
+	height: 20px;
+	font-size: 12px;
+	color: rgb(23, 22, 54);
+	background: ${(props) =>
+		props.text === "Potencial"
+			? "rgba(87, 134, 255, 0.71)"
+			: props.text === "Trabalhando"
+			? "rgba(197, 202, 43, 0.98)"
+			: "rgba(24, 146, 22, 0.87)"};
+	font-weight: 500;
+	border-radius: 10px;
 `;
 
 export const Image = styled.figure`

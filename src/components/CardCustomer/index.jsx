@@ -6,38 +6,40 @@ import {
   Image,
   CardContent,
 } from "./styles";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import api from "../../services/api";
 import { useAuthenticated } from "../../providers/authentication";
+import { useUserContracts } from "../../providers/userContracts";
 
 const CardCustomer = ({ name, email, tel, clientSince, action, id }) => {
   const source = getLettersAvatarSrc(name);
-  const [clientContracts, setClientContracts] = useState([]);
-  const { token } = useAuthenticated();
+const { userContracts } = useUserContracts();
   const event = new Date(clientSince);
   const options = { day: "numeric", month: "numeric", year: "numeric" };
   const date = event.toLocaleDateString(options);
-
-  useEffect(() => {
-    api
-      .get(`/contracts/client/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => setClientContracts(res.data))
-      .catch((err) => console.log(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+    
+  const getBadge = () => {
+    let filtered = userContracts.filter(item => item.client.id === id);
+    if (filtered.length === 0){
+        return "Potencial";
+    }
+    let roll = filtered.filter(item=> item.status === "Em andamento");
+    if (roll.length > 0){
+        return "Trabalhando";
+    }
+    return "Concluído(s)"
+  }
+  
+  
   return (
     <CardContainer onClick={() => action()}>
       <ImageContainer>
         <Image>
           <img src={source} alt={`avatar:${name}`} />
         </Image>
-        <Badge>
-          {clientContracts.length === 0 ? <>cliente ativo</> : <>cadastrado</>}
+        <Badge text={getBadge()}>
+          {/* {clientContracts.length === 0 ?  <>Cadastrado</> : activeContracts.length === 0 ? <>Em andamento</> : <>Concluídos</>} */}
+          {getBadge()}
         </Badge>
       </ImageContainer>
       <CardContent>

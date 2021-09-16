@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     paddingRight: "2rem",
     paddingBottom: "1rem",
   },
@@ -33,7 +33,8 @@ const SearchCustomer = () => {
 	return (
 		<PageLayout>
 			<div className={classes.button}>
-				<Button
+				<h1>Clientes:</h1>
+                <Button
 					variant="text"
 					color="secondary"
 					startIcon={<Add />}
