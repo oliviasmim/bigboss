@@ -34,7 +34,6 @@ nav .menu-list {
   transition: all ease 0.2s;
 }
 nav .menu-list li a {
-  font-family: calibri;
   height: 40px;
   line-height: 43px;
   margin: 3px;
