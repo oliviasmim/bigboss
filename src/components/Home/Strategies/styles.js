@@ -35,6 +35,7 @@ export const TitleHeader = styled.div`
         color: #737373;
         font-weight: 500;
         font-size: 1rem;
+        padding: 0 1rem;
     }
 `
 
