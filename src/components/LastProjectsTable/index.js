@@ -1,7 +1,7 @@
 import * as React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid } from "@material-ui/data-grid";
-import { NoEncryption } from "@material-ui/icons";
+
 import { getLettersAvatarSrc } from "../../services/avatarLetters";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +49,7 @@ const columns = [
   {
     field: "service",
     headerName: "Serviço",
-    width: 140,
+    width: 130,
     editable: true,
   },
 
