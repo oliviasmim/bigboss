@@ -5,9 +5,9 @@ import { useAuthenticated } from "../authentication";
 const UserContractsContext = createContext();
 
 export const UserContractsProvider = ({ children }) => {
-	const [userContracts, setUserContracts] = useState([]);
-	const [reloadUserContracts, setReloadUserContracts] = useState(false);
-	const { userId, token } = useAuthenticated();
+  const [userContracts, setUserContracts] = useState([]);
+  const [reloadUserContracts, setReloadUserContracts] = useState(false);
+  const { userId, token } = useAuthenticated();
 
   useEffect(() => {
     if (userId) {

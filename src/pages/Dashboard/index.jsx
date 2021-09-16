@@ -35,43 +35,41 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = () => {
   const classes = useStyles();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   window.addEventListener("resize", () => {
-		setWindowWidth(window.innerWidth);
+    setWindowWidth(window.innerWidth);
   });
   const formationA = () => {
-      return (
-          <>
-          <div>
-          <LineChart />
-          <PieChart />
-          </div>
-          <BarChart />
-          </>
-      )
-  }
+    return (
+      <>
+        <DashCards />
+        <LineChart />
+        <BarChart />
+        <PieChart />
+        <LastProjectsTable />
+      </>
+    );
+  };
   const formationB = () => {
-      return (
-          <>
-          <LineChart />
-            <div style={{display: "flex"}}>
-          <PieChart />
-          <BarChart />
-          </div>
-          </>
-      )
-  }
+    return (
+      <Grid className={classes.Container}>
+        <DashCards />
+        <LineChart />
+        <BarChart />
+        <LastProjectsTable />
+        <PieChart />
+      </Grid>
+    );
+  };
   return (
     <PageLayout>
       <Grid className={classes.DashboardContainer}>
         <Typography className={classes.PageTitle}>Dashboard </Typography>
 
         <Grid className={classes.Container}>
-          <DashCards />
-          {windowWidth < 1550 ? formationA() : formationB()}
-          
+          {windowWidth < 2000 ? formationA() : formationB()}
         </Grid>
-          <LastProjectsTable />
+
         <Grid className={classes.Container}></Grid>
       </Grid>
     </PageLayout>
