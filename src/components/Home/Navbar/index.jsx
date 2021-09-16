@@ -19,7 +19,7 @@ const Navbar = () => {
   window.addEventListener("scroll", changeBackground);
 
   return (
-    <nav className={nav ? "nav active" : "nav"}>
+    <nav className={"navbar" ? "navbar active" : "navbar"}>
       <Link to="/" className="logo">
         <img src={logo} alt="logo" />
       </Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
         <span className="nav-icon"></span>
       </label>
       <div className="menu">
-        <ul>
+        <ul className="menu-list">
           <li>
             <a href="#about">Sobre</a>
           </li>

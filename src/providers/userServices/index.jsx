@@ -5,9 +5,10 @@ import { useAuthenticated } from "../authentication";
 const UserServicesContext = createContext();
 
 export const UserServicesProvider = ({ children }) => {
-  const [userServices, setUserServices] = useState({});
+  const [userServices, setUserServices] = useState([]);
   const [reloadUserServices, setReloadUserServices] = useState(false);
   const { userId, token } = useAuthenticated();
+  const [currentService, setCurrentService] = useState({});
 
   useEffect(() => {
     if (userId) {
@@ -28,6 +29,12 @@ export const UserServicesProvider = ({ children }) => {
     setReloadUserServices(!reloadUserServices);
   };
 
+  const handleIdService = (id, callback) => {
+    const currentService = userServices.find((service) => service.id === id);
+    setCurrentService(currentService);
+    callback();
+  };
+
   const handleDelete = (id) => {
     api
       .delete(`/services/${id}`, {
@@ -39,7 +46,13 @@ export const UserServicesProvider = ({ children }) => {
   };
   return (
     <UserServicesContext.Provider
-      value={{ userServices, updateUserServices, handleDelete }}
+      value={{
+        userServices,
+        updateUserServices,
+        handleIdService,
+        currentService,
+        handleDelete,
+      }}
     >
       {children}
     </UserServicesContext.Provider>
