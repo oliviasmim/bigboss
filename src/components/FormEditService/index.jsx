@@ -34,22 +34,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FormularioNewService = () => {
-  const { updateUserServices } = useUserServices();
-  const { handleCloseModalNew } = useModal();
+const FormEditService = () => {
+  const { handleCloseModalEdit } = useModal();
+  const { updateUserServices, currentService } = useUserServices();
   const { token } = useAuthenticated();
 
   const classes = useStyles();
 
   const formSchema = yup.object().shape({
-    titulo: yup
+    newtitulo: yup
       .string()
       .required("Título Obrigatório")
       .matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Somente letras"),
-    orcamento: yup.string().required("Orçamento obrigatório"),
-    valorfinal: yup.string().required("Valor Final Obrigatório"),
-    descricao: yup.string(),
-    linguagem: yup.string(),
+    neworcamento: yup.string().required("Orçamento obrigatório"),
+    newvalorfinal: yup.string().required("Valor Final Obrigatório"),
+    newdescricao: yup.string(),
+    newlinguagem: yup.string(),
   });
 
   const {
@@ -60,36 +60,35 @@ const FormularioNewService = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const handleDataNewService = (data) => {
+  const handleDataEditService = (data) => {
     const dataApi = {
-      title: data.titulo,
-      description: data.descricao,
-      language: data.linguagem,
-      budget: data.orcamento,
-      finalValue: data.valorfinal,
+      title: data.newtitulo,
+      description: data.newdescricao,
+      language: data.newlinguagem,
+      budget: data.neworcamento,
+      finalValue: data.newvalorfinal,
     };
     return dataApi;
   };
 
   const onSubmit = (data) => {
-    const apiBody = handleDataNewService(data);
+    const apiBody = handleDataEditService(data);
     api
-      .post("/services", apiBody, {
+      .patch(`/services/${currentService.id}`, apiBody, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         updateUserServices();
-        handleCloseModalNew();
+        handleCloseModalEdit();
       })
       .catch((err) => console.log(err));
-    console.log(apiBody);
   };
 
   return (
     <div className="CardForm">
       <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
         <ContainerContent>
-          <TitleForm>Novo Serviço:</TitleForm>
+          <TitleForm>Editar Serviço:</TitleForm>
           <ContentColumnLarge>
             <TitleService>Título: </TitleService>
             <TextField
@@ -97,12 +96,15 @@ const FormularioNewService = () => {
               type="input"
               variant="filled"
               size="small"
+              defaultValue={currentService.title}
               fullWidth
               color="primary"
-              error={!!errors.titulo}
-              helperText={errors.titulo?.message}
-              {...register("titulo")}
+              error={!!errors.newtitulo}
+              helperText={errors.newtitulo?.message}
+              {...register("newtitulo")}
             />
+            {console.log("textfield")}
+            {console.log(currentService.title)}
           </ContentColumnLarge>
           <FlexOrcamentoVF className={classes.text}>
             <ContentColumnLargeFlex>
@@ -112,11 +114,12 @@ const FormularioNewService = () => {
                 type="input"
                 variant="filled"
                 size="small"
+                defaultValue={currentService.budget}
                 fullWidth
                 color="primary"
-                error={!!errors.orcamento}
-                helperText={errors.orcamento?.message}
-                {...register("orcamento")}
+                error={!!errors.neworcamento}
+                helperText={errors.neworcamento?.message}
+                {...register("neworcamento")}
               />
             </ContentColumnLargeFlex>
             <ContentColumnLargeFlex>
@@ -126,11 +129,12 @@ const FormularioNewService = () => {
                 type="input"
                 variant="filled"
                 size="small"
+                defaultValue={currentService.finalValue}
                 fullWidth
                 color="primary"
-                error={!!errors.valorfinal}
-                helperText={errors.valorfinal?.message}
-                {...register("valorfinal")}
+                error={!!errors.newvalorfinal}
+                helperText={errors.newvalorfinal?.message}
+                {...register("newvalorfinal")}
               />
             </ContentColumnLargeFlex>
           </FlexOrcamentoVF>
@@ -145,10 +149,11 @@ const FormularioNewService = () => {
               multiline
               rows={3}
               size="small"
+              defaultValue={currentService.description}
               color="primary"
-              error={!!errors.descricao}
-              helperText={errors.descricao?.message}
-              {...register("descricao")}
+              error={!!errors.newdescricao}
+              helperText={errors.newdescricao?.message}
+              {...register("newdescricao")}
             />
           </ContentColumnLarge>
           <ContentColumnLarge>
@@ -159,10 +164,11 @@ const FormularioNewService = () => {
               variant="filled"
               fullWidth
               size="small"
+              defaultValue={currentService.language}
               color="primary"
-              error={!!errors.linguagem}
-              helperText={errors.linguagem?.message}
-              {...register("linguagem")}
+              error={!!errors.newlinguagem}
+              helperText={errors.newlinguagem?.message}
+              {...register("newlinguagem")}
             />
           </ContentColumnLarge>
         </ContainerContent>
@@ -170,7 +176,7 @@ const FormularioNewService = () => {
         <ButtonsGroup>
           <ButtonBox>
             <Button
-              onClick={handleCloseModalNew}
+              onClick={handleCloseModalEdit}
               variant="contained"
               size="small"
               color="secondary"
@@ -186,7 +192,7 @@ const FormularioNewService = () => {
               size="small"
               color="primary"
             >
-              Salvar
+              Salvar Edição
             </Button>
           </ButtonBox>
         </ButtonsGroup>
@@ -195,4 +201,4 @@ const FormularioNewService = () => {
   );
 };
 
-export default FormularioNewService;
+export default FormEditService;
