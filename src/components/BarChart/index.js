@@ -79,7 +79,7 @@ const BarChart = () => {
   return (
     <Card
       className={classes.root}
-      style={windowWidth > 1500 ? { height: "380px" } : {}}
+      style={windowWidth > 1500 ? { height: "610px" } : {}}
     >
       <CardContent>
         <Typography className={classes.title}>Top 5 Clientes</Typography>
@@ -92,7 +92,7 @@ const BarChart = () => {
         </Typography>
         <Bar
           className={classes.chart}
-          style={windowWidth > 1500 ? { height: "300px" } : {}}
+          style={windowWidth > 1500 ? { height: "450px" } : {}}
           data={{
             labels: getTopFive("names"),
             datasets: [
