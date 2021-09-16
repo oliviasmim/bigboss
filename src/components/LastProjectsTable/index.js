@@ -4,12 +4,19 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useUserContracts } from "../../providers/userContracts";
 import { getLettersAvatarSrc } from "../../services/avatarLetters";
 
+
 const useStyles = makeStyles((theme) => ({
-	root: {
-		width: "100%",
-		display: "flex",
-        backgroundColor: "white",
-	},
+  root: {
+    display: "none",
+
+    [theme.breakpoints.up(1534)]: {
+      display: "block",
+      width: 1228,
+      height: 450,
+      backgroundColor: "white",
+      margin: 20,
+    },
+  },
 }));
 
 const columns = [

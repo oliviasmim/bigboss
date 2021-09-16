@@ -9,22 +9,13 @@ const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
     width: 380,
-    height: 400,
-    margin: "10%",
-    marginTop: 0,
-
-    // [theme.breakpoints.up(768)]: {
-    //   width: 380,
-    //   height: 610,
-    //   margin: 10,
-    //   marginTop: 30,
-    //   marginLeft: "40%",
-    // },
-    // [theme.breakpoints.up(1024)]: {
-    //   width: 1240,
-    //   height: 610,
-    //   marginLeft: "15%",
-    // },
+    height: 610,
+    fontSize: 18,
+    margin: 20,
+    [theme.breakpoints.up(1550)]: {
+      width: 1228,
+      fontSize: 24,
+    },
   },
   //Ajusta Título do gráfico
   title: {
@@ -39,19 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
   //Ajusta o Gráfico dentro do Card
   chart: {
-    margin: 10,
-    maxWidth: 300,
-    maxHeight: 320,
-
-    [theme.breakpoints.up(768)]: {
-      margin: 20,
-      maxWidth: 485,
-      maxHeight: 475,
-    },
-    [theme.breakpoints.up(1024)]: {
-      maxWidth: 1175,
-      height: 650,
-    },
+    width: 900,
+    height: 400,
   },
 }));
 
@@ -106,10 +86,10 @@ const LineChart = () => {
               },
             ],
           }}
-          height={400}
-          width={200}
+          height={450}
+          width={1200}
           options={{
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             responsive: true,
             title: { text: "Vendas por Grupo de Produtos - R$", display: true },
             scales: {

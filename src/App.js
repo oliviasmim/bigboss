@@ -2,8 +2,8 @@ import GlobalStyle from "./styles/global";
 import Routes from "./routes";
 import { ThemeProvider } from "@material-ui/core";
 import { theme } from "./styles/theme";
-import 'react-toastify/dist/ReactToastify.css';
-import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          />
+        />
         <Routes />
       </ThemeProvider>
     </>
