@@ -28,6 +28,8 @@
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",
+    "react-toastify": "^8.0.2",
+    "remask": "^0.1.0-alpha.5",
     "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"

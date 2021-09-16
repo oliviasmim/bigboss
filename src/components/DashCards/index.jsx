@@ -11,94 +11,92 @@ import TrendingDownIcon from "@material-ui/icons/TrendingDown";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 
 const useStyles = makeStyles((theme) => ({
-	//Container Geral
-	container: {
-		display: "flex",
-		flexDirection: "row",
-		justifyContent: "center",
-		flexWrap: "wrap",
-	},
+  //Container Geral
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    flexWrap: "wrap",
+  },
 
-	//Ajusta o tamanho do Card
-	root: {
-		minWidth: 265,
-		height: 130,
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-		margin: 20,
-	},
+  //Ajusta o tamanho do Card
+  root: {
+    minWidth: 382,
+    height: 180,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    margin: 20,
+  },
 
-	//Container que engloba a Imagem e o outro container com os demais itens
-	containerA: {
-		display: "flex",
-		flexDirection: "row",
-		alignItems: "center",
-		justifyContent: "space-evenly",
-		marginTop: 20,
-		padding: 0,
-	},
+  //Container que engloba a Imagem e o outro container com os demais itens
+  containerA: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    marginTop: 20,
+    padding: 5,
+  },
 
-	//Ajusta Imagem do Card
-	image: {
-		width: "24%",
-		margin: "1%",
-		// width: "16%",
-		// margin: "1%",
-		// [theme.breakpoints.up(768)]: {
-		//   width: "24%",
-		//   margin: "2%",
-		// },
-	},
+  //Ajusta Imagem do Card
+  image: {
+    width: "16%",
+    margin: "1%",
+    [theme.breakpoints.up(768)]: {
+      width: "24%",
+      margin: "2%",
+    },
+  },
 
-	//Ajusta o total do card
-	amount: {
-		fontSize: 18,
-		fontWeight: "bold",
-	},
+  //Ajusta o total do card
+  amount: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 
-	//Ajusta Título do Card
-	title: {
-		fontSize: 16,
-		color: "#B9B9B9",
-		marginTop: 7,
-	},
+  //Ajusta Título do Card
+  title: {
+    fontSize: 18,
+    color: "#B9B9B9",
+    marginTop: 7,
+  },
 
-	//Container do Total, Título, Taxa e Seta
-	containerB: {
-		display: "flex",
-		flexDirection: "column",
-		alignItems: "start",
-		justifyContent: "center",
-		padding: 5,
-		marginTop: 2,
-	},
+  //Container do Total, Título, Taxa e Seta
+  containerB: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "start",
+    justifyContent: "center",
+    padding: 5,
+    marginTop: 2,
+  },
 
-	//Ajusta Taxa do Card
-	rate: {
-		fontSize: 18,
-		margin: 0,
-		color: "#4BDE97",
-		marginTop: 7,
-	},
+  //Ajusta Taxa do Card
+  rate: {
+    fontSize: 18,
+    margin: 0,
+    color: "#4BDE97",
+    marginTop: 7,
+  },
 
-	//Ajusta Taxa do Card
-	rateDown: {
-		fontSize: 18,
-		margin: 0,
-		color: "#F55B5D",
-		marginTop: 7,
-	},
+  //Ajusta Taxa do Card
+  rateDown: {
+    fontSize: 18,
+    margin: 0,
+    color: "#F55B5D",
+    marginTop: 7,
+  },
 
-	//Ajusta Seta para cima do Card
-	arrow: {
-		color: "#4BDE97",
-	},
+  //Ajusta Seta para cima do Card
+  arrow: {
+    color: "#4BDE97",
+  },
 
-	//Ajusta Seta para baixo do Card
-	arrowDown: {
-		color: "#F55B5D",
-	},
+  //Ajusta Seta para baixo do Card
+  arrowDown: {
+    color: "#F55B5D",
+  },
 }));
 
 const DashCards = () => {

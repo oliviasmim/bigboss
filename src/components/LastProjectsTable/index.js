@@ -8,12 +8,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: 380,
     margin: 20,
+    height: 450,
+    backgroundColor: "white",
 
     [theme.breakpoints.up(1534)]: {
-      display: "block",
       width: 1228,
-      height: 450,
-      backgroundColor: "white",
     },
   },
 }));
@@ -34,12 +33,12 @@ const columns = [
         </>
       );
     },
-    width: 200,
+    width: 220,
   },
   {
     field: "client",
     headerName: "CPF/CNPJ",
-    width: 160,
+    width: 180,
     valueFormatter: (params) => {
       return params.row.client.cpf;
     },
@@ -47,7 +46,7 @@ const columns = [
   {
     field: "service",
     headerName: "Serviço",
-    width: 130,
+    width: 150,
     editable: true,
     valueFormatter: (params) => {
       return params.row.service.title;
@@ -60,7 +59,7 @@ const columns = [
     headerAlign: "left",
     align: "left",
     type: "date",
-    width: 168,
+    width: 190,
     editable: true,
     valueFormatter: (params) => {
       const date = new Date(params.value);
@@ -95,7 +94,7 @@ const columns = [
     headerName: "Status",
     headerAlign: "left",
     align: "left",
-    width: 150,
+    width: 200,
     editable: true,
   },
 ];
@@ -110,7 +109,7 @@ const LastProjectsTable = ({ maxRows, hideFooter, newRows }) => {
         <DataGrid
           rows={newRows || userContracts}
           columns={columns}
-          pageSize={maxRows}
+          pageSize={5}
           autoPageSize
           autoHeight
           hideFooterPagination={hideFooter}
