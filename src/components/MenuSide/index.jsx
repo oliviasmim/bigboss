@@ -49,7 +49,7 @@ const menuItems = [
       title: 'Gestão Financeira'
     },
     {
-      href: '/404', //implementar pós mvp
+      href: '/reports', //implementar pós mvp
       icon: ChromeReaderMode,
       title: 'Relatórios'
     },

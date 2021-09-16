@@ -9,6 +9,7 @@ import { Edit } from "@material-ui/icons";
 import { mask as maskSelector } from "remask";
 import { useAuthenticated } from "../../providers/authentication";
 import { useUserClients } from "../../providers/userClients";
+import { toast } from "react-toastify";
 
 const FormRegisterCustomer = ({ isRegister }) => {
 	//Variável para segurar dados do cliente
@@ -167,8 +168,13 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then(()=> {updateUserClients(); history.push("/customer")});
+		}).then(()=> {updateUserClients(); toast.success("Deletado");history.push("/customer")}).catch(err=> {console.log(err); toast.warning("Algo deu errado, tente novamente!")});
 	};
+    const scrollToTop = () => {
+        document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+        
+    }
 	const handleUpdate = (e) => {
 		e.preventDefault();
 		const data = {};
@@ -192,7 +198,7 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then(() => {setAreDisabled(true); updateUserClients()});
+		}).then(() => {setAreDisabled(true); updateUserClients(); scrollToTop(); toast.success("Cadastro atualizado!");}).catch(err=>{console.log(err); toast.warning("Algo deu errado! Tente novamente!")});
 	};
 	const onSub = (e) => {
 		e.preventDefault();
@@ -217,7 +223,7 @@ const FormRegisterCustomer = ({ isRegister }) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then((res) => {updateUserClients(); history.push(`/customer/id/${res.data.id}`)});
+		}).then((res) => {updateUserClients();scrollToTop(); toast.success("Cliente cadastrado com sucesso!");history.push(`/customer/id/${res.data.id}`)}).catch(err=>{console.log(err); toast.warning("Algo deu errado! Tente novamente!")});
 	};
 	return (
 		<>

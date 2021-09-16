@@ -10,6 +10,7 @@ import SearchServices from "../pages/SearchServices";
 import Services from "../pages/Services";
 import Signup from "../pages/Signup";
 import Page404 from "../pages/Page404";
+import Reports from "../pages/Reports";
 
 const Routes = () => {
     return (
@@ -24,7 +25,8 @@ const Routes = () => {
             <Route exact path="/customer/register" component={RegisterCustomer} />
             <Route exact path="/customer/id/:clientId" component={PageCustomer} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/404" component={Page404} />
+            <Route exact path="/reports" component={Reports} />
+            <Route path="*" component={Page404} />
         </Switch>
     )
 }

@@ -11,10 +11,10 @@ export const Container = styled.div`
 
 export const Background = styled.div`
 	display: none;
-	width: 50%;
-	@media (min-width: 1100px) {
+	width: 100%;
+	@media (min-width: 900px) {
 		display: block;
-		flex: 1;
+		/* flex: 1; */
 		background: url(${Login}) no-repeat center, var(--white-gray);
 		background-size: contain;
 		border-bottom-left-radius: 2.5rem;
@@ -27,7 +27,7 @@ export const Content = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	width: 50%;
+	width: 100%;
 	/* max-width: 50%; */
 `;
 
