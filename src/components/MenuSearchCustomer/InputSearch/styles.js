@@ -19,7 +19,7 @@ export const InputContainer = styled.div`
     input{
         border: 1px solid transparent;
         background-color: #EFF0F6;
-        max-width: 80%;
+        width: 80%;
         &::placeholder{
             color: #D6D7E3;
         }
@@ -36,7 +36,7 @@ export const InputContainer = styled.div`
     
     button {
         height: 100%;
-        max-width: 20%;
+        width: 20%;
         padding: 6px;
     }
     svg{
