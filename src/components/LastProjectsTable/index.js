@@ -6,14 +6,14 @@ import { getLettersAvatarSrc } from "../../services/avatarLetters";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "none",
+    width: 380,
+    margin: 20,
 
     [theme.breakpoints.up(1534)]: {
       display: "block",
       width: 1228,
       height: 450,
       backgroundColor: "white",
-      margin: 20,
     },
   },
 }));
