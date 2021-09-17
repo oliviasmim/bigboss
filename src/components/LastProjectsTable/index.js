@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 260,
+    width: "100%",
     margin: 20,
     height: 385,
     backgroundColor: "white",
