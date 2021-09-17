@@ -8,18 +8,12 @@ import { useUserServices } from "../../providers/userServices";
 import { useUserContracts } from "../../providers/userContracts";
 
 const useStyles = makeStyles((theme) => ({
-  //Ajusta o Card do Gráfico
   root: {
-    height: 410,
     margin: 20,
-    [theme.breakpoints.up(1550)]: {
-      width: 265,
-      height: 450,
-    },
+    height: 385,
   },
   //Ajusta Título do gráfico
   title: {
-    fontSize: 18,
     [theme.breakpoints.up(768)]: {
       fontSize: 24,
     },
@@ -29,11 +23,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
   },
   //Ajusta o Gráfico dentro do Card
-  chart: {
-    maxWidth: 300,
-    maxHeight: 320,
-    marginTop: 60,
-  },
+  chart: { marginTop: 40 },
 }));
 
 const PieChart = () => {
@@ -112,7 +102,7 @@ const PieChart = () => {
               },
             ],
           }}
-          height={200}
+          height={300}
           width={220}
           options={{
             legend: {

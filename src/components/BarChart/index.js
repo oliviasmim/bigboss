@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: 255,
     height: 410,
-
     margin: 20,
   },
   //Ajusta Título do gráfico
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   //Ajusta o Gráfico dentro do Card
   chart: {
-    width: 100,
+    width: 200,
     height: 200,
   },
 }));
