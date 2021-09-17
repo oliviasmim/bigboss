@@ -6,6 +6,7 @@ export const PageContainer = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #FAFAFA;
 `
 
 export const TitleHeader = styled.div`

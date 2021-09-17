@@ -1,4 +1,4 @@
-import { PageContainer, ContainerImg, TitleHeader, ImageMobile, ImageDesktop } from "./styles"
+import { PageContainer, ContainerImg, TitleHeader, ImageDesktop } from "./styles"
 import DashboardImage from "../../../assets/filtros.svg"
 
 const Dashboard = () => {
