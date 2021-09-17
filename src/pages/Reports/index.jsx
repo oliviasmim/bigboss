@@ -16,8 +16,8 @@ const Reports = () => {
 	const handleClientsReport = async () => {
 		let workbook = new Workbook();
 		let worksheet = workbook.addWorksheet("dados");
-        worksheet.columns = [
-			{ header: "Nome", key: "name", width: 30,},
+		worksheet.columns = [
+			{ header: "Nome", key: "name", width: 30 },
 			{ header: "CPF", key: "cpf", width: 20 },
 			{ header: "E-mail", key: "email", width: 20 },
 			{ header: "Telefone", key: "tel", width: 20 },
@@ -42,10 +42,10 @@ const Reports = () => {
 		fileDownload(blob, "file.xlsx");
 	};
 	const handleServicesReport = async () => {
-        let workbook = new Workbook();
+		let workbook = new Workbook();
 		let worksheet = workbook.addWorksheet("dados");
 		worksheet.columns = [
-			{ header: "Título", key: "title", width: 30,},
+			{ header: "Título", key: "title", width: 30 },
 			{ header: "Descrição", key: "description", width: 30 },
 			{ header: "Linguagem", key: "language", width: 20 },
 			{ header: "Orçamento", key: "budget", width: 20 },
@@ -60,10 +60,10 @@ const Reports = () => {
 		fileDownload(blob, "file.xlsx");
 	};
 	const handleContractsReport = async () => {
-        let workbook = new Workbook();
+		let workbook = new Workbook();
 		let worksheet = workbook.addWorksheet("dados");
 		worksheet.columns = [
-			{ header: "Serviço", key: "service.title", width: 30,},
+			{ header: "Serviço", key: "service.title", width: 30 },
 			{ header: "Orçamento", key: "service.budget", width: 20 },
 			{ header: "Linguagem", key: "service.language", width: 20 },
 			{ header: "Inicio", key: "startDate", width: 30 },
@@ -82,7 +82,14 @@ const Reports = () => {
 	return (
 		<PageLayout>
 			<h3>Escolha o tipo de relatório abaixo:</h3>
-			<div style={{display: "flex", gap: "15px", flexWrap: "wrap", marginTop: "20px"}}>
+			<div
+				style={{
+					display: "flex",
+					gap: "15px",
+					flexWrap: "wrap",
+					marginTop: "20px",
+				}}
+			>
 				<Button
 					variant="contained"
 					color="primary"

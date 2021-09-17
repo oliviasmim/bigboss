@@ -6,32 +6,32 @@ import AccountProfileDetails from "../../components/Account/AccountProfileDetail
 import { useUserInfos } from "../../providers/userInfos";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    [theme.breakpoints.up("sm")]: {
-      flexDirection: "row",
-      alignItems: "normal",
-    },
-  },
+	container: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		[theme.breakpoints.up("sm")]: {
+			flexDirection: "row",
+			alignItems: "normal",
+		},
+	},
 }));
 
 const Profile = () => {
-  const classes = useStyles();
-  const { userInfos } = useUserInfos();
+	const classes = useStyles();
+	const { userInfos } = useUserInfos();
 
-  return (
-    <PageLayout>
-      <Box className={classes.container}>
-        <AccountProfile
-          name={userInfos.firstName + " " + userInfos.lastName}
-          email={userInfos.email}
-        />
-        <AccountProfileDetails user={userInfos} />
-      </Box>
-    </PageLayout>
-  );
+	return (
+		<PageLayout>
+			<Box className={classes.container}>
+				<AccountProfile
+					name={userInfos.firstName + " " + userInfos.lastName}
+					email={userInfos.email}
+				/>
+				<AccountProfileDetails user={userInfos} />
+			</Box>
+		</PageLayout>
+	);
 };
 
 export default Profile;
