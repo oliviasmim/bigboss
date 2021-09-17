@@ -110,11 +110,7 @@ const LastProjectsTable = ({ maxRows = 5, hideFooter, newRows }) => {
         <DataGrid
           rows={newRows || userContracts}
           columns={columns}
-<<<<<<< HEAD
-          pageSize={6}
-=======
           pageSize={maxRows}
->>>>>>> cdb0f6d7f9809c6fbca1054277b4790ea015742c
           autoPageSize
           autoHeight
           hideFooterPagination={hideFooter}
