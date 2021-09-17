@@ -10,37 +10,36 @@ import MenuSearchCustomer from "../../components/MenuSearchCustomer/SearchCustom
 import { useState, useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    gap: "15px",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-  },
-  button: {
-    display: "flex",
-    justifyContent: "space-between",
-    paddingRight: "2rem",
-    paddingBottom: "1rem",
-  },
-  PageTitle: {
-    display: "flex",
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 30,
-  },
+	container: {
+		gap: "15px",
+		display: "flex",
+		flexWrap: "wrap",
+		justifyContent: "space-evenly",
+	},
+	button: {
+		display: "flex",
+		justifyContent: "space-between",
+		paddingRight: "2rem",
+		paddingBottom: "1rem",
+	},
+	PageTitle: {
+		display: "flex",
+		fontSize: 24,
+		fontWeight: "bold",
+		marginBottom: 30,
+	},
 }));
 
 const SearchCustomer = () => {
-  const classes = useStyles();
-  const history = useHistory();
-  const { userClients, updateUserClients } = useUserClients();
-  const [filtered, setFiltered] = useState(userClients);
-  
-  useEffect(() => {
-      setFiltered(userClients)
-    
-  },[userClients])
-  return (
+	const classes = useStyles();
+	const history = useHistory();
+	const { userClients } = useUserClients();
+	const [filtered, setFiltered] = useState(userClients);
+
+	useEffect(() => {
+		setFiltered(userClients);
+	}, [userClients]);
+	return (
 		<PageLayout>
 			<div className={classes.button}>
 				<Button
@@ -78,7 +77,7 @@ const SearchCustomer = () => {
 				)}
 			</section>
 		</PageLayout>
-  );
+	);
 };
 
 export default SearchCustomer;

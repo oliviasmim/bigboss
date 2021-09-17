@@ -3,10 +3,10 @@ import Login from "../../assets/signup.svg";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
 `;
 
 export const Background = styled.div`
@@ -44,34 +44,34 @@ const appearFromLeft = keyframes`
 `;
 
 export const AnimationContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  animation: ${appearFromLeft} 1s;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	animation: ${appearFromLeft} 1s;
 `;
 
 export const Header = styled.div`
-  width: 100%;
+	width: 100%;
 
-  .span {
-    color: var(--black);
-    font-weight: 500;
-  }
+	.span {
+		color: var(--black);
+		font-weight: 500;
+	}
 
-  h2 {
-    margin-bottom: 0.4rem;
-  }
+	h2 {
+		margin-bottom: 0.4rem;
+	}
 `;
 
 export const RedirectMsg = styled.span`
-  color: var(--gray);
-  font-weight: 500;
+	color: var(--gray);
+	font-weight: 500;
 
-  a {
-    text-decoration: none;
-  }
+	a {
+		text-decoration: none;
+	}
 `;
 export const LinkTo = styled(Link)`
-  color: var(--blue);
+	color: var(--blue);
 `;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const TitleForm = styled.p`
 	color: var(--blue);
@@ -12,7 +12,7 @@ export const Select = styled.select`
 	background-color: white;
 	border: 1px solid var(--blue);
 	border-radius: 10px;
-    padding: .5rem;
+	padding: 0.5rem;
 	&:disabled {
 		background: "blue" !important;
 	}

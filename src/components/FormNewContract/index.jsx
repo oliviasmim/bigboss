@@ -6,7 +6,7 @@ import {
 	ButtonsContainer,
 	InputContainer,
 } from "./styles";
-import { Button, TextField } from "@material-ui/core"
+import { Button, TextField } from "@material-ui/core";
 import {
 	MuiPickersUtilsProvider,
 	KeyboardDatePicker,
@@ -21,38 +21,40 @@ import { useAuthenticated } from "../../providers/authentication";
 import { toast } from "react-toastify";
 import { useUserContracts } from "../../providers/userContracts";
 
-const FormNewContract = ({toClose}) => {
-    const { userServices } = useUserServices();
-    const { userClients } = useUserClients();
-    const { updateUserContracts } = useUserContracts();
-    const { token } = useAuthenticated();
-    const { useModal, setModal } = toClose;
-    const [service, setService ] = useState("");
-    const [startDate, setStartDate ] = useState(new Date());
-    const [finishDate, setFinishDate] = useState(new Date());
-    const [status, setStatus ] = useState("");
-    const { clientId } = useParams();
-    const client = userClients.find(item => Number(item.id) === Number(clientId))
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const data = {};
-        data.service = service;
-        data.status = status;
-        data.startDate = startDate;
-        data.finishDate = finishDate;
-        data.client = client;
-        api.post("/contracts", data, {
+const FormNewContract = ({ toClose }) => {
+	const { userServices } = useUserServices();
+	const { userClients } = useUserClients();
+	const { updateUserContracts } = useUserContracts();
+	const { token } = useAuthenticated();
+	const { useModal, setModal } = toClose;
+	const [service, setService] = useState("");
+	const [startDate, setStartDate] = useState(new Date());
+	const [finishDate, setFinishDate] = useState(new Date());
+	const [status, setStatus] = useState("");
+	const { clientId } = useParams();
+	const client = userClients.find(
+		(item) => Number(item.id) === Number(clientId)
+	);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const data = {};
+		data.service = service;
+		data.status = status;
+		data.startDate = startDate;
+		data.finishDate = finishDate;
+		data.client = client;
+		api.post("/contracts", data, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		}).then(()=> {
-            toast.success("Adicionado com sucesso!");
-            updateUserContracts();
-            setModal(!useModal)
-        });
-    }
-    return (
+		}).then(() => {
+			toast.success("Adicionado com sucesso!");
+			updateUserContracts();
+			setModal(!useModal);
+		});
+	};
+	return (
 		<Form onSubmit={handleSubmit}>
 			<TitleForm>Adicionar Contrato</TitleForm>
 			<InputContainer>
@@ -135,6 +137,6 @@ const FormNewContract = ({toClose}) => {
 			</ButtonsContainer>
 		</Form>
 	);
-}
- 
+};
+
 export default FormNewContract;

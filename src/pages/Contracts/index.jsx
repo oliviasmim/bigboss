@@ -1,5 +1,5 @@
 import PageLayout from "../../components/PageLayout";
-import LastProjectsTable from "../../components/LastProjectsTable"
+import LastProjectsTable from "../../components/LastProjectsTable";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 
@@ -12,16 +12,16 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 const Contracts = () => {
-    const classes = useStyles();
+	const classes = useStyles();
 
-    return (
+	return (
 		<PageLayout>
 			<Typography className={classes.PageTitle}>Contratos</Typography>
-            <div style={{ display: "flex"}}>
-				<LastProjectsTable maxRows={7} style={{width: "100%"}}/>
+			<div style={{ display: "flex" }}>
+				<LastProjectsTable maxRows={7} style={{ width: "100%" }} />
 			</div>
 		</PageLayout>
 	);
-}
+};
 
 export default Contracts;

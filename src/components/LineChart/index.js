@@ -9,79 +9,82 @@ import { useUserContracts } from "../../providers/userContracts";
 import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
-  //Ajusta o Card do Gráfico
-//   root: {
-//     width: 260,
-//     height: 410,
-//     fontSize: 18,
-//     margin: 20,
-//     [theme.breakpoints.up(1550)]: {
-//       width: 878,
-//       fontSize: 24,
-//     },
-//   },
-  //Ajusta Título do gráfico
-  title: {
-    fontSize: 18,
-    [theme.breakpoints.up(768)]: {
-      fontSize: 24,
-    },
-  },
-  //Ajusta Sub-título do gráfico
-  subtitle: {
-    fontSize: 14,
-  },
-  //Ajusta o Gráfico dentro do Card
-//   chart: {
-//     width: 180,
-//     minHeigth: 300,
-//     marginTop: 40,
-//     [theme.breakpoints.up(1500)]: {
-//       marginTop: 0,
-//       height: 400,
-//       width: 900,
-//     },
-//   },
+	//Ajusta o Card do Gráfico
+	//   root: {
+	//     width: 260,
+	//     height: 410,
+	//     fontSize: 18,
+	//     margin: 20,
+	//     [theme.breakpoints.up(1550)]: {
+	//       width: 878,
+	//       fontSize: 24,
+	//     },
+	//   },
+	//Ajusta Título do gráfico
+	title: {
+		fontSize: 18,
+		[theme.breakpoints.up(768)]: {
+			fontSize: 24,
+		},
+	},
+	//Ajusta Sub-título do gráfico
+	subtitle: {
+		fontSize: 14,
+	},
+	//Ajusta o Gráfico dentro do Card
+	//   chart: {
+	//     width: 180,
+	//     minHeigth: 300,
+	//     marginTop: 40,
+	//     [theme.breakpoints.up(1500)]: {
+	//       marginTop: 0,
+	//       height: 400,
+	//       width: 900,
+	//     },
+	//   },
 }));
 
 const LineChart = () => {
-  const classes = useStyles();
-  const { userClients } = useUserClients();
-  const { userContracts } = useUserContracts();
+	const classes = useStyles();
+	const { userClients } = useUserClients();
+	const { userContracts } = useUserContracts();
 
-  const getProfitPerMonth = () => {
-    if (!userContracts.length) {
-      return [];
-    }
-    const totalMonths = 12;
-    let output = [];
-    for (let i = 1; i <= totalMonths; i++) {
-      let finished = userContracts
-        .filter((item) => new Date(item.finishDate).getMonth() === i)
-        .reduce((acc, item) => Number(item.service.finalValue) + acc, 0);
-      output.push(finished);
-    }
-    return output;
-  };
-  const getNewClientsPerMonth = () => {
-    if (!userClients.length) {
-      return [];
-    }
-    const totalMonths = 12;
-    let output = [];
-    for (let i = 1; i <= totalMonths; i++) {
-      let count = userClients.filter(
-        (item) => new Date(item.clientSince).getMonth() === i
-      ).length;
-      output.push(count);
-    }
-    return output;
-  };
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  window.addEventListener("resize", () => {
+	const getProfitPerMonth = () => {
+		if (!userContracts.length) {
+			return [];
+		}
+		const totalMonths = 12;
+		let output = [];
+		for (let i = 1; i <= totalMonths; i++) {
+			let finished = userContracts
+				.filter((item) => new Date(item.finishDate).getMonth() === i)
+				.reduce(
+					(acc, item) => Number(item.service.finalValue) + acc,
+					0
+				);
+			output.push(finished);
+		}
+		return output;
+	};
+	const getNewClientsPerMonth = () => {
+		if (!userClients.length) {
+			return [];
+		}
+		const totalMonths = 12;
+		let output = [];
+		for (let i = 1; i <= totalMonths; i++) {
+			let count = userClients.filter(
+				(item) => new Date(item.clientSince).getMonth() === i
+			).length;
+			output.push(count);
+		}
+		return output;
+	};
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	window.addEventListener("resize", () => {
 		setWindowWidth(window.innerWidth);
-  });
-  return (
+	});
+	return (
 		<Card className={classes.root}>
 			<CardContent>
 				<Typography className={classes.title}>
@@ -147,7 +150,7 @@ const LineChart = () => {
 				/>
 			</CardContent>
 		</Card>
-  );
+	);
 };
 
 export default LineChart;
