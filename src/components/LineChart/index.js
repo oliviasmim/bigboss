@@ -10,16 +10,16 @@ import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
-  root: {
-    width: 260,
-    height: 410,
-    fontSize: 18,
-    margin: 20,
-    [theme.breakpoints.up(1550)]: {
-      width: 878,
-      fontSize: 24,
-    },
-  },
+//   root: {
+//     width: 260,
+//     height: 410,
+//     fontSize: 18,
+//     margin: 20,
+//     [theme.breakpoints.up(1550)]: {
+//       width: 878,
+//       fontSize: 24,
+//     },
+//   },
   //Ajusta Título do gráfico
   title: {
     fontSize: 18,
@@ -78,42 +78,42 @@ const LineChart = () => {
     setWindowWidth(window.innerWidth);
   });
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title}>
-          Receitas e Clientes Novos
-        </Typography>
-        <Typography
-          className={classes.subtitle}
-          color="textSecondary"
-          gutterBottom
-        >
-          JAN-DEZ
-        </Typography>
-        <Line
-          className={classes.chart}
-          data={{
-            labels: [
-              "JAN",
-              "FEV",
-              "MAR",
-              "ABR",
-              "MAI",
-              "JUN",
-              "JUL",
-              "AGO",
-              "SET",
-              "OUT",
-              "NOV",
-              "DEZ",
-            ],
-            datasets: [
-              {
-                label: "Faturamento Mensal - R$",
-                data: getProfitPerMonth(),
-                backgroundColor: "rgba(255,99,132,0.4)",
-                fill: "start",
-              },
+		<Card className={classes.root}>
+			<CardContent>
+				<Typography className={classes.title}>
+					Receitas e Clientes Novos
+				</Typography>
+				<Typography
+					className={classes.subtitle}
+					color="textSecondary"
+					gutterBottom
+				>
+					JAN-DEZ
+				</Typography>
+				<Line
+					className={classes.chart}
+					data={{
+						labels: [
+							"JAN",
+							"FEV",
+							"MAR",
+							"ABR",
+							"MAI",
+							"JUN",
+							"JUL",
+							"AGO",
+							"SET",
+							"OUT",
+							"NOV",
+							"DEZ",
+						],
+						datasets: [
+							{
+								label: "Faturamento Mensal - R$",
+								data: getProfitPerMonth(),
+								backgroundColor: "rgba(255,99,132,0.4)",
+								fill: "start",
+							},
 
               {
                 label: "Clientes Novos Mensal - Qtd.",

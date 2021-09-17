@@ -5,6 +5,7 @@ import AccountProfile from "../../components/Account/AccountProfile";
 import AccountProfileDetails from "../../components/Account/AccountProfileDetails";
 import { useUserInfos } from "../../providers/userInfos";
 
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -23,6 +24,7 @@ const Profile = () => {
 
   return (
     <PageLayout>
+      
       <Box className={classes.container}>
         <AccountProfile
           name={userInfos.firstName + " " + userInfos.lastName}

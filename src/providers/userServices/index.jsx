@@ -22,7 +22,7 @@ export const UserServicesProvider = ({ children }) => {
         //Deixei o console.log por conta do debug do UseEfect no loading da pagina
         .catch((err) => console.log(err));
     } else {
-      setUserServices({});
+      setUserServices([]);
     }
   }, [reloadUserServices, token, userId]);
 
