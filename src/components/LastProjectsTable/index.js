@@ -6,7 +6,7 @@ import { getLettersAvatarSrc } from "../../services/avatarLetters";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 260,
+    width: "100%",
     margin: 20,
     height: 420,
     backgroundColor: "white",
@@ -92,21 +92,34 @@ const columns = [
   },
 ];
 
-const LastProjectsTable = ({ maxRows, hideFooter, newRows }) => {
+const LastProjectsTable = ({ maxRows = 5, hideFooter, newRows }) => {
   const { userContracts } = useUserContracts();
 
   const classes = useStyles();
+  const noRows = () => {
+      return (
+          <div style={{position: "absolute", top: "50%", left: "50%", transform: "translateX(-50%)"}}>
+              <h4>Sem contratos por aqui!</h4>
+              
+          </div>
+      )
+  }
   return (
     <div className={classes.root}>
       {userContracts.length && (
         <DataGrid
           rows={newRows || userContracts}
           columns={columns}
+<<<<<<< HEAD
           pageSize={6}
+=======
+          pageSize={maxRows}
+>>>>>>> cdb0f6d7f9809c6fbca1054277b4790ea015742c
           autoPageSize
           autoHeight
           hideFooterPagination={hideFooter}
           disableSelectionOnClick
+          components={{ NoRowsOverlay: noRows}}
         />
       )}
     </div>

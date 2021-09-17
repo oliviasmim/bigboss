@@ -40,7 +40,6 @@ const BarChart = () => {
       return [];
     }
     const topInfos = {};
-    console.log("contr", userContracts);
     userContracts.forEach((item) => {
       let name = item.client.name;
       if (topInfos[name] === undefined) {
@@ -69,8 +68,6 @@ const BarChart = () => {
       return topValues.slice(0, 5);
     }
   };
-  console.log("nomes", getTopFive("names"));
-  console.log("valores", getTopFive("values"));
 
   return (
     <Card

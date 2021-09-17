@@ -1,9 +1,22 @@
 import Navbar from "../Navbar";
 import { useHistory } from "react-router-dom";
-import ImageHero from "../../../assets/img-hero.svg";
+import lottie from "lottie-web";
+import { useEffect, useRef } from "react";
 
 const Header = () => {
   const history = useHistory();
+
+  const container = useRef(null);
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: container.current,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: require("../../../Growth.json"),
+    });
+  }, []);
 
   return (
     <div id="main">
@@ -28,9 +41,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      <div className="hero-right">
-        <img src={ImageHero} alt="img hero" />
-      </div>
+      <div className="hero-right container" ref={container}></div>
     </div>
   );
 };

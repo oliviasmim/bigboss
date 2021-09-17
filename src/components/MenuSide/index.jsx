@@ -17,53 +17,53 @@ import {
   AssignmentTurnedIn,
 } from "@material-ui/icons";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/logo-white.png";
 import NavItem from "../NavItem";
 
 const drawerWidth = 240;
 
 const menuItems = [
-    {
-      href: '/dashboard',
-      icon: Home,
-      title: 'Dashboard'
-    },
-    {
-      href: '/customer',
-      icon: AssignmentInd,
-      title: 'Clientes'
-    },
-    {
-      href: '/services',
-      icon: Ballot,
-      title: 'Serviços'
-    },
-    {
-      href: '/contracts',
-      icon: FindInPage,
-      title: 'Contratos'
-    },
-    {
-      href: '/404', //implementar pós mvp
-      icon: Assessment,
-      title: 'Gestão Financeira'
-    },
-    {
-      href: '/reports', //implementar pós mvp
-      icon: ChromeReaderMode,
-      title: 'Relatórios'
-    },
-    {
-      href: '/404',
-      icon: AssignmentTurnedIn,
-      title: 'To-do'
-    },
-    {
-      href: '/profile',
-      icon: AccountBox,
-      title: 'Perfil'
-    }
-  ];
+  {
+    href: "/dashboard",
+    icon: Home,
+    title: "Dashboard",
+  },
+  {
+    href: "/customer",
+    icon: AssignmentInd,
+    title: "Clientes",
+  },
+  {
+    href: "/services",
+    icon: Ballot,
+    title: "Serviços",
+  },
+  {
+    href: "/contracts",
+    icon: FindInPage,
+    title: "Contratos",
+  },
+  // {
+  //   href: "/404", //implementar pós mvp
+  //   icon: Assessment,
+  //   title: "Gestão Financeira",
+  // },
+  {
+    href: "/reports", //implementar pós mvp
+    icon: ChromeReaderMode,
+    title: "Relatórios",
+  },
+  // {
+  //   href: "/404",
+  //   icon: AssignmentTurnedIn,
+  //   title: "To-do",
+  // },
+  {
+    href: "/profile",
+    icon: AccountBox,
+    title: "Perfil",
+  },
+];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -106,6 +106,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  image: {
+    width: "33%",
+  },
 }));
 
 const MenuSide = (props) => {
@@ -121,7 +124,7 @@ const MenuSide = (props) => {
     <Box>
       <div className={classes.toolbar}>
         <Box className={classes.flex}>
-          <img src={logo} alt="bigboss" />
+          <img src={logo} alt="bigboss" className={classes.image} />
           <Typography className={classes.fontLogo}>BigBoss</Typography>
         </Box>
       </div>

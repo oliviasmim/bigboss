@@ -6,6 +6,7 @@ export const PageContainer = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #FAFAFA;
 `
 export const ContainerFlex = styled.div`
     width: 100%;
@@ -35,6 +36,7 @@ export const TitleHeader = styled.div`
         color: #737373;
         font-weight: 500;
         font-size: 1rem;
+        padding: 0 1rem;
     }
 `
 

@@ -18,42 +18,53 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     paddingRight: "2rem",
     paddingBottom: "1rem",
+  },
+  PageTitle: {
+    display: "flex",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 30,
   },
 }));
 
 const SearchCustomer = () => {
-	const classes = useStyles();
-	const history = useHistory();
-	const { userClients } = useUserClients();
-    const [filtered, setFiltered] = useState(userClients)
-    console.log(userClients)
-	return (
-		<PageLayout>
-			<div className={classes.button}>
-				<Button
-					variant="text"
-					color="secondary"
-					startIcon={<Add />}
-					onClick={() => history.push("/customer/register")}
-				>
-					Novo Cliente
-				</Button>	
-			</div>
-			<MenuSearchCustomer filterFunction={setFiltered} filtered={filtered}/>
-			<section className={classes.container}>
-				{filtered.length > 0 ? filtered.map((item) => (
-					<CardCustomer
-						key={item.id}
-						action={() => history.push(`/customer/id/${item.id}`)}
-						{...item}
-					/>
-				)) : <Typography variant="h2">Não há clientes cadastrados ainda</Typography>}
-			</section>
-		</PageLayout>
-	);
+  const classes = useStyles();
+  const history = useHistory();
+  const { userClients } = useUserClients();
+  const [filtered, setFiltered] = useState(userClients);
+  return (
+    <PageLayout>
+      <div className={classes.button}>
+        <Button
+          variant="text"
+          color="secondary"
+          startIcon={<Add />}
+          onClick={() => history.push("/customer/register")}
+        >
+          Novo Cliente
+        </Button>
+      </div>
+      <MenuSearchCustomer filterFunction={setFiltered} filtered={filtered} />
+      <section className={classes.container}>
+        {filtered.length > 0 ? (
+          filtered.map((item) => (
+            <CardCustomer
+              key={item.id}
+              action={() => history.push(`/customer/id/${item.id}`)}
+              {...item}
+            />
+          ))
+        ) : (
+          <Typography variant="h4">
+            Não há clientes cadastrados ainda
+          </Typography>
+        )}
+      </section>
+    </PageLayout>
+  );
 };
 
 export default SearchCustomer;
