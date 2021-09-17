@@ -23,7 +23,6 @@ const PageLayout = ({ children }) => {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
   const { token, setAuthenticated } = useAuthenticated();
-  console.log(token);
   const tokenExp = jwt_decode(token).exp;
   const history = useHistory();
 
