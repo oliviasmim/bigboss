@@ -1,7 +1,6 @@
 import "../../../styles/style.css";
 import { PageContainer } from "./styles";
 
-
 function Contact() {
   return (
     <PageContainer>
