@@ -18,6 +18,7 @@ export const UserInfosProvider = ({ children }) => {
           },
         })
         .then((res) => setUserInfos(res.data))
+        //Deixei o console.log por conta do debug do UseEfect no loading da pagina
         .catch((err) => console.log(err));
     } else {
       setUserInfos({});

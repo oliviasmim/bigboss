@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { useModal } from "../../providers/Modal";
 import { useUserServices } from "../../providers/userServices";
+import { ToastContainer, toast } from "react-toastify";
 import { useAuthenticated } from "../../providers/authentication";
 import {
   ContainerContent,
@@ -80,10 +81,31 @@ const FormularioNewService = () => {
       .then((response) => {
         updateUserServices();
         handleCloseModalNew();
+        notify(true, "Serviço Adicionado!");
       })
-      .catch((err) => console.log(err));
-    console.log(apiBody);
+      .catch((err) => notify(false, "Erro ao adicionar Serviço :c"));
   };
+
+  const notify = (isSuccess, text) =>
+    isSuccess
+      ? toast.success(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      : toast.error(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
   return (
     <div className="CardForm">
@@ -93,7 +115,6 @@ const FormularioNewService = () => {
           <ContentColumnLarge>
             <TitleService>Título: </TitleService>
             <TextField
-              label="Titulo"
               type="input"
               variant="filled"
               size="small"
@@ -108,7 +129,6 @@ const FormularioNewService = () => {
             <ContentColumnLargeFlex>
               <TitleService>Orçamento: </TitleService>
               <TextField
-                label="Orçamento"
                 type="input"
                 variant="filled"
                 size="small"
@@ -122,7 +142,6 @@ const FormularioNewService = () => {
             <ContentColumnLargeFlex>
               <TitleService>Valor Final: </TitleService>
               <TextField
-                label="Valor Final"
                 type="input"
                 variant="filled"
                 size="small"
@@ -138,7 +157,6 @@ const FormularioNewService = () => {
           <ContentColumnLarge>
             <TitleService>Descrição: </TitleService>
             <TextField
-              label="Descrição"
               type="input"
               fullWidth
               variant="filled"
@@ -154,7 +172,6 @@ const FormularioNewService = () => {
           <ContentColumnLarge>
             <TitleService>Linguagem Utilizada: </TitleService>
             <TextField
-              label="Linguagem Utilizada"
               type="input"
               variant="filled"
               fullWidth
@@ -191,6 +208,17 @@ const FormularioNewService = () => {
           </ButtonBox>
         </ButtonsGroup>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

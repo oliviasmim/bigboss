@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useModal } from "../../providers/Modal";
 import { useUserServices } from "../../providers/userServices";
 import { useAuthenticated } from "../../providers/authentication";
+import { ToastContainer, toast } from "react-toastify";
 import {
   ContainerContent,
   TitleForm,
@@ -60,6 +61,27 @@ const FormEditService = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const notify = (isSuccess, text) =>
+    isSuccess
+      ? toast.success(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      : toast.error(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
   const handleDataEditService = (data) => {
     const dataApi = {
       title: data.newtitulo,
@@ -80,12 +102,24 @@ const FormEditService = () => {
       .then((response) => {
         updateUserServices();
         handleCloseModalEdit();
+        notify(true, "Concluído a Alteração");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => notify(false, "Erro ao criar o Serviço"));
   };
 
   return (
     <div className="CardForm">
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
         <ContainerContent>
           <TitleForm>Editar Serviço:</TitleForm>
@@ -103,8 +137,6 @@ const FormEditService = () => {
               helperText={errors.newtitulo?.message}
               {...register("newtitulo")}
             />
-            {console.log("textfield")}
-            {console.log(currentService.title)}
           </ContentColumnLarge>
           <FlexOrcamentoVF className={classes.text}>
             <ContentColumnLargeFlex>

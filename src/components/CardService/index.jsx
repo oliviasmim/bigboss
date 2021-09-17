@@ -8,6 +8,7 @@ import FormEditService from "../../components/FormEditService";
 import Modal from "../../components/Modal";
 import { useModal } from "../../providers/Modal";
 import api from "../../services/api";
+import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 
 const CardService = ({ title, description, id }) => {
@@ -35,15 +36,40 @@ const CardService = ({ title, description, id }) => {
       })
       .then((res) => {
         handleClose();
+        notify(true, "Serviço Deletado com Sucesso");
         updateUserServices();
       })
-      .catch((err) => updateUserServices());
+      .catch((err) => {
+        updateUserServices();
+        notify(false, "Erro ao Deletar serviço");
+      });
   };
 
   const handleMenuClose = () => {
     handleOpenModalEdit();
     handleClose();
   };
+
+  const notify = (isSuccess, text) =>
+    isSuccess
+      ? toast.success(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      : toast.error(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
   return (
     <>
@@ -85,6 +111,17 @@ const CardService = ({ title, description, id }) => {
           <FormEditService />
         </Modal>
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

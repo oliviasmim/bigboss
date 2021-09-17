@@ -26,6 +26,7 @@ const CardCustomer = ({ name, email, tel, clientSince, action, id }) => {
         },
       })
       .then((res) => setClientContracts(res.data))
+      //Deixei esse console.log por conta para saber se tiver algo de errado com o UseEffect
       .catch((err) => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
