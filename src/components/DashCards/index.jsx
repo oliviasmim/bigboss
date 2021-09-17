@@ -106,7 +106,7 @@ const DashCards = () => {
   const classes = useStyles();
   const { userContracts } = useUserContracts();
   const { userClients } = useUserClients();
-
+  console.log(userContracts);
   //contratos finalizados
   const finishedContracts = userContracts.length
     ? userContracts.filter((item) => item.status === "Concluído").length

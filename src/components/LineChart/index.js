@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { useUserClients } from "../../providers/userClients";
 import { useUserContracts } from "../../providers/userContracts";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
@@ -32,13 +33,9 @@ const useStyles = makeStyles((theme) => ({
   },
   //Ajusta o Gráfico dentro do Card
   chart: {
-    width: 80,
-    marginTop: 40,
-    [theme.breakpoints.up(1550)]: {
-      marginTop: 0,
-      height: 400,
-      width: 900,
-    },
+    marginTop: 60,
+    width: 200,
+    height: 150,
   },
 }));
 
@@ -75,6 +72,11 @@ const LineChart = () => {
     }
     return output;
   };
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  window.addEventListener("resize", () => {
+    setWindowWidth(window.innerWidth);
+  });
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -121,11 +123,11 @@ const LineChart = () => {
               },
             ],
           }}
-          height={450}
-          width={1200}
+          height={windowWidth > 1500 ? 250 : 150}
+          width={windowWidth > 1500 ? 800 : 200}
           options={{
             maintainAspectRatio: true,
-            responsive: true,
+            responsive: false,
             title: {
               text: "Vendas por Grupo de Produtos - R$",
               display: true,

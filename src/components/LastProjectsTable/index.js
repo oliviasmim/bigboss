@@ -8,11 +8,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: 260,
     margin: 20,
-    height: 450,
+    height: 420,
     backgroundColor: "white",
 
     [theme.breakpoints.up(1534)]: {
-      width: 880,
+      width: 875,
     },
   },
 }));
@@ -102,7 +102,7 @@ const LastProjectsTable = ({ maxRows, hideFooter, newRows }) => {
         <DataGrid
           rows={newRows || userContracts}
           columns={columns}
-          pageSize={5}
+          pageSize={6}
           autoPageSize
           autoHeight
           hideFooterPagination={hideFooter}
