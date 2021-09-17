@@ -16,8 +16,7 @@ const Page404 = () => {
           fullWidth
           onClick={() => history.push("/dashboard")}
         >
-          {" "}
-          Voltar{" "}
+          Voltar
         </Button>
       </ButtonContainer>
     </Container>

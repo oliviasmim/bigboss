@@ -12,24 +12,24 @@ import { Typography } from "@material-ui/core";
 
 /** */
 const useStyles = makeStyles((theme) => ({
-	container: {
-		gap: "15px",
-		display: "flex",
-		flexWrap: "wrap",
-		justifyContent: "space-evenly",
-	},
-	button: {
-		display: "flex",
-		justifyContent: "space-between",
-		paddingRight: "2rem",
-		paddingBottom: "1rem",
-	},
-	PageTitle: {
-		display: "flex",
-		fontSize: 24,
-		fontWeight: "bold",
-		marginBottom: 30,
-	},
+  container: {
+    gap: "15px",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly",
+  },
+  button: {
+    display: "flex",
+    justifyContent: "space-between",
+    paddingRight: "2rem",
+    paddingBottom: "1rem",
+  },
+  PageTitle: {
+    display: "flex",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 30,
+  },
 }));
 
 const Services = () => {

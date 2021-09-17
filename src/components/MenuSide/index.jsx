@@ -43,21 +43,21 @@ const menuItems = [
     icon: FindInPage,
     title: "Contratos",
   },
-  {
-    href: "/404", //implementar pós mvp
-    icon: Assessment,
-    title: "Gestão Financeira",
-  },
+  // {
+  //   href: "/404", //implementar pós mvp
+  //   icon: Assessment,
+  //   title: "Gestão Financeira",
+  // },
   {
     href: "/reports", //implementar pós mvp
     icon: ChromeReaderMode,
     title: "Relatórios",
   },
-  {
-    href: "/404",
-    icon: AssignmentTurnedIn,
-    title: "To-do",
-  },
+  // {
+  //   href: "/404",
+  //   icon: AssignmentTurnedIn,
+  //   title: "To-do",
+  // },
   {
     href: "/profile",
     icon: AccountBox,

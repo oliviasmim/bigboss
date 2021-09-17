@@ -67,9 +67,8 @@ const FormInput = React.forwardRef((props, ref) => {
               "aria-label": "change date",
             }}
             onChange={(date) => changefunction(date)}
-          />{" "}
+          />
         </MuiPickersUtilsProvider>
-        // <p>oi</p>
       ) : (
         <Input
           inputRef={ref}

@@ -19,7 +19,6 @@ export const AutheticationProvider = ({ children }) => {
       setAuthenticated(true);
       setToken(accessToken);
       setUserId(jwt_decode(accessToken).sub);
-      console.log("prov", token);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

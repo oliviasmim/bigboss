@@ -79,7 +79,7 @@ const FormSignUp = () => {
   return (
     <Form noValidate onSubmit={handleSubmit(onSubmitFunction)}>
       <Label>
-        <span>Nome ou Razão Social:</span>{" "}
+        <span>Nome ou Razão Social:</span>
         {errors.firstName && <ErrorMsg>({errors.firstName?.message})</ErrorMsg>}
       </Label>
       <TextField
@@ -109,7 +109,7 @@ const FormSignUp = () => {
         {...register("email")}
       />
       <Label>
-        <span>Senha:</span>{" "}
+        <span>Senha:</span>
         {errors.password && <ErrorMsg>({errors.password?.message})</ErrorMsg>}
       </Label>
       <TextField
@@ -121,7 +121,7 @@ const FormSignUp = () => {
         {...register("password")}
       />
       <Label>
-        <span>Confirme sua senha:</span>{" "}
+        <span>Confirme sua senha:</span>
         {errors.confirmPassword && (
           <ErrorMsg>({errors.confirmPassword?.message})</ErrorMsg>
         )}
