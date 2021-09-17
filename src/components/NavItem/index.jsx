@@ -8,23 +8,26 @@ import { Button, ListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
-  list: {
-    display: "flex",
-    py: 0,
-    width: "100%",
-  },
-  nav: {
-    color: "#dadada",
-    fontWeight: "bold",
-    justifyContent: "flex-start",
-    letterSpacing: 0.5,
-    py: 1.25,
-    textTransform: "none",
-    width: "100%",
-    "& svg": {
-      marginRight: "16px",
-    },
-  },
+	list: {
+		display: "flex",
+		py: 0,
+		width: "100%",
+	},
+	nav: {
+		color: "#dadada",
+		fontWeight: "bold",
+		justifyContent: "flex-start",
+		letterSpacing: 0.5,
+		py: 1.25,
+		textTransform: "none",
+		width: "100%",
+		"& svg": {
+			marginRight: "16px",
+		},
+		[theme.breakpoints.down(600)]: {
+			position: "absolute",
+		},
+	},
 }));
 
 const NavItem = ({ href, icon: Icon, title, ...rest }) => {
