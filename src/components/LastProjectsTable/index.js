@@ -128,7 +128,7 @@ const LastProjectsTable = ({ maxRows = 5, hideFooter, newRows }) => {
   };
   return (
     <div className={classes.root}>
-      {userContracts.length && (
+      {userContracts.length > 0 ? (
         <DataGrid
           rows={newRows || userContracts}
           columns={columns}
@@ -139,7 +139,7 @@ const LastProjectsTable = ({ maxRows = 5, hideFooter, newRows }) => {
           disableSelectionOnClick
           components={{ NoRowsOverlay: noRows }}
         />
-      )}
+      ) : <><p>Ainda não há contratos registrados</p></>}
     </div>
   );
 };
