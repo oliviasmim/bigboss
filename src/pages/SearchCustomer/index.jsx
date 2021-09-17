@@ -7,7 +7,7 @@ import { useUserClients } from "../../providers/userClients";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 import MenuSearchCustomer from "../../components/MenuSearchCustomer/SearchCustomer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,37 +33,51 @@ const useStyles = makeStyles((theme) => ({
 const SearchCustomer = () => {
   const classes = useStyles();
   const history = useHistory();
-  const { userClients } = useUserClients();
+  const { userClients, updateUserClients } = useUserClients();
   const [filtered, setFiltered] = useState(userClients);
+  
+  useEffect(() => {
+      setFiltered(userClients)
+    
+  },[userClients])
   return (
-    <PageLayout>
-      <div className={classes.button}>
-        <Button
-          variant="text"
-          color="secondary"
-          startIcon={<Add />}
-          onClick={() => history.push("/customer/register")}
-        >
-          Novo Cliente
-        </Button>
-      </div>
-      <MenuSearchCustomer filterFunction={setFiltered} filtered={filtered} />
-      <section className={classes.container}>
-        {filtered.length > 0 ? (
-          filtered.map((item) => (
-            <CardCustomer
-              key={item.id}
-              action={() => history.push(`/customer/id/${item.id}`)}
-              {...item}
-            />
-          ))
-        ) : (
-          <Typography variant="h4">
-            Não há clientes cadastrados ainda
-          </Typography>
-        )}
-      </section>
-    </PageLayout>
+		<PageLayout>
+			<div className={classes.button}>
+				<Button
+					variant="text"
+					color="secondary"
+					startIcon={<Add />}
+					onClick={() => history.push("/customer/register")}
+				>
+					Novo Cliente
+				</Button>
+			</div>
+			<MenuSearchCustomer
+				filterFunction={setFiltered}
+				filtered={filtered}
+			/>
+			<section className={classes.container}>
+				{filtered.length > 0 ? (
+					filtered.map((item) => (
+						<CardCustomer
+							key={item.id}
+							action={() =>
+								history.push(`/customer/id/${item.id}`)
+							}
+							{...item}
+						/>
+					))
+				) : userClients.length > 0 ? (
+					<Typography variant="h4">
+						Não foram encontrados resultados!
+					</Typography>
+				) : (
+					<Typography variant="h4">
+						Não há clientes cadastrados ainda
+					</Typography>
+				)}
+			</section>
+		</PageLayout>
   );
 };
 
