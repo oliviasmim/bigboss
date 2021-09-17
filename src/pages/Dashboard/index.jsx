@@ -67,7 +67,7 @@ const Dashboard = () => {
         <Typography className={classes.PageTitle}>Dashboard </Typography>
 
         <Grid className={classes.Container}>
-          {windowWidth < 2000 ? formationA() : formationB()}
+          {windowWidth < 1550 ? formationA() : formationB()}
         </Grid>
 
         <Grid className={classes.Container}></Grid>
