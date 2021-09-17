@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
 
   //Ajusta o tamanho do Card
   root: {
-    minWidth: 382,
-    height: 180,
+    minWidth: 265,
+    height: 135,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
