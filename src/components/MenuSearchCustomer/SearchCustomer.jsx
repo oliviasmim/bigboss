@@ -4,7 +4,7 @@ import InputSearch from "./InputSearch";
 const MenuSearchCustomer = (props) => {
 	return (
 		<SearchContainer>
-			<InputSearch placeholder="Cliente" field="name" {...props} />
+			<InputSearch placeholder="Nome" field="name" {...props} />
 			<InputSearch
 				placeholder="Email"
 				field="email"
