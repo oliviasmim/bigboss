@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ModalBox = styled.div`
   width: 100%;
-  height: 100vh;
-  position: absolute;
+  min-height: 100%;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
@@ -11,7 +11,7 @@ export const ModalBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 20000;
+  z-index: 1300;
 `;
 
 export const Container = styled.div`

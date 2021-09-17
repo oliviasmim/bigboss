@@ -9,6 +9,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   padding: 1rem;
   box-shadow: 0px 4px 4px 0px rgb(0 0 0 / 25%);
+  cursor: pointer;
 `;
 
 export const ImageContainer = styled.div`

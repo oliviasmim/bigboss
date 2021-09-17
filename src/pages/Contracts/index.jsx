@@ -18,7 +18,7 @@ const Contracts = () => {
 		<PageLayout>
 			<Typography className={classes.PageTitle}>Contratos</Typography>
             <div style={{ display: "flex"}}>
-				<LastProjectsTable maxRows={10} style={{width: "100%"}}/>
+				<LastProjectsTable maxRows={7} style={{width: "100%"}}/>
 			</div>
 		</PageLayout>
 	);
