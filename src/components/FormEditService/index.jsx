@@ -103,8 +103,6 @@ const FormEditService = () => {
               helperText={errors.newtitulo?.message}
               {...register("newtitulo")}
             />
-            {console.log("textfield")}
-            {console.log(currentService.title)}
           </ContentColumnLarge>
           <FlexOrcamentoVF className={classes.text}>
             <ContentColumnLargeFlex>
