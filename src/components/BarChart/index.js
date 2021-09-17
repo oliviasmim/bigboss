@@ -26,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     fontSize: 14,
   },
+  //Ajusta o Gráfico dentro do Card
+  chart: {
+    width: 100,
+    height: 200,
+  },
 }));
 
 const BarChart = () => {
@@ -98,7 +103,7 @@ const BarChart = () => {
               },
             ],
           }}
-          height={300}
+          height={350}
           width={200}
           options={{
             maintainAspectRatio: true,

@@ -6,18 +6,20 @@ import { UserContractsProvider } from "./userContracts";
 import { ModalProvider } from "./Modal";
 
 const Providers = ({ children }) => {
-  return (
-    <AutheticationProvider>
-      <ModalProvider>
-        <UserInfosProvider>
-          <UserClientsProvider>
-            <UserServicesProvider>
-              <UserContractsProvider>{children}</UserContractsProvider>
-            </UserServicesProvider>
-          </UserClientsProvider>
-        </UserInfosProvider>
-      </ModalProvider>
-    </AutheticationProvider>
-  );
+	return (
+		<AutheticationProvider>
+			<ModalProvider>
+				<UserInfosProvider>
+					<UserClientsProvider>
+						<UserServicesProvider>
+							<UserContractsProvider>
+								{children}
+							</UserContractsProvider>
+						</UserServicesProvider>
+					</UserClientsProvider>
+				</UserInfosProvider>
+			</ModalProvider>
+		</AutheticationProvider>
+	);
 };
 export default Providers;
