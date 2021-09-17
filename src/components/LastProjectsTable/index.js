@@ -6,7 +6,7 @@ import { getLettersAvatarSrc } from "../../services/avatarLetters";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 380,
+    width: "100%",
     margin: 20,
     height: 450,
     backgroundColor: "white",

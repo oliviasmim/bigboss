@@ -10,7 +10,7 @@ export const ContainerContent = styled.div`
   }
 `;
 export const TitleForm = styled.p`
-  color: blue;
+  color: var(--blue);
   font-size: 1.3rem;
   text-align: center;
   font-weight: bold;

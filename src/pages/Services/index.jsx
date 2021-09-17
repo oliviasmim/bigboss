@@ -1,26 +1,33 @@
 import { useUserServices } from "../../providers/userServices";
 import CardService from "../../components/CardService";
 import PageLayout from "../../components/PageLayout";
-import { makeStyles } from "@material-ui/styles";
 import { Button } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import FormularioNewService from "../../components/FormNewService";
 import { useModal } from "../../providers/Modal";
 import Modal from "../../components/Modal";
+import { makeStyles } from "@material-ui/styles";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    gap: "15px",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-  },
-  button: {
-    display: "flex",
-    justifyContent: "flex-end",
-    paddingRight: "2rem",
-    paddingBottom: "1rem",
-  },
+	container: {
+		gap: "15px",
+		display: "flex",
+		flexWrap: "wrap",
+		justifyContent: "space-evenly",
+	},
+	button: {
+		display: "flex",
+		justifyContent: "space-between",
+		paddingRight: "2rem",
+		paddingBottom: "1rem",
+	},
+	PageTitle: {
+		display: "flex",
+		fontSize: 24,
+		fontWeight: "bold",
+		marginBottom: 30,
+	},
 }));
 
 const Services = () => {
@@ -37,6 +44,7 @@ const Services = () => {
         </Modal>
       )}
       <div className={classes.button}>
+        <Typography className={classes.PageTitle}>Serviços</Typography>
         <Button
           variant="text"
           color="secondary"
