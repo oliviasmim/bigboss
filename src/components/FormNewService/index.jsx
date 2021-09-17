@@ -91,14 +91,14 @@ const FormularioNewService = () => {
         <ContainerContent>
           <TitleForm>Novo Serviço:</TitleForm>
           <ContentColumnLarge>
-            <TitleService>Título: </TitleService>
+            {/* <TitleService>Título: </TitleService> */}
             <TextField
               label="Titulo"
               type="input"
-              variant="filled"
-              size="small"
+            //   variant="filled"
+            //   size="small"
               fullWidth
-              color="primary"
+            //   color="primary"
               error={!!errors.titulo}
               helperText={errors.titulo?.message}
               {...register("titulo")}
@@ -106,28 +106,28 @@ const FormularioNewService = () => {
           </ContentColumnLarge>
           <FlexOrcamentoVF className={classes.text}>
             <ContentColumnLargeFlex>
-              <TitleService>Orçamento: </TitleService>
+              {/* <TitleService>Orçamento: </TitleService> */}
               <TextField
                 label="Orçamento"
                 type="input"
-                variant="filled"
-                size="small"
+                // variant="filled"
+                // size="small"
                 fullWidth
-                color="primary"
+                // color="primary"
                 error={!!errors.orcamento}
                 helperText={errors.orcamento?.message}
                 {...register("orcamento")}
               />
             </ContentColumnLargeFlex>
             <ContentColumnLargeFlex>
-              <TitleService>Valor Final: </TitleService>
+              {/* <TitleService>Valor Final: </TitleService> */}
               <TextField
                 label="Valor Final"
                 type="input"
-                variant="filled"
-                size="small"
+                // variant="filled"
+                // size="small"
                 fullWidth
-                color="primary"
+                // color="primary"
                 error={!!errors.valorfinal}
                 helperText={errors.valorfinal?.message}
                 {...register("valorfinal")}
@@ -136,30 +136,30 @@ const FormularioNewService = () => {
           </FlexOrcamentoVF>
 
           <ContentColumnLarge>
-            <TitleService>Descrição: </TitleService>
+            {/* <TitleService>Descrição: </TitleService> */}
             <TextField
               label="Descrição"
               type="input"
               fullWidth
-              variant="filled"
+            //   variant="filled"
               multiline
               rows={3}
-              size="small"
-              color="primary"
+            //   size="small"
+            //   color="primary"
               error={!!errors.descricao}
               helperText={errors.descricao?.message}
               {...register("descricao")}
             />
           </ContentColumnLarge>
           <ContentColumnLarge>
-            <TitleService>Linguagem Utilizada: </TitleService>
+            {/* <TitleService>Linguagem Utilizada: </TitleService> */}
             <TextField
               label="Linguagem Utilizada"
               type="input"
-              variant="filled"
+            //   variant="filled"
               fullWidth
-              size="small"
-              color="primary"
+            //   size="small"
+            //   color="primary"
               error={!!errors.linguagem}
               helperText={errors.linguagem?.message}
               {...register("linguagem")}

@@ -10,18 +10,24 @@ import MenuSearchCustomer from "../../components/MenuSearchCustomer/SearchCustom
 import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    gap: "15px",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-  },
-  button: {
-    display: "flex",
-    justifyContent: "space-between",
-    paddingRight: "2rem",
-    paddingBottom: "1rem",
-  },
+	container: {
+		gap: "15px",
+		display: "flex",
+		flexWrap: "wrap",
+		justifyContent: "space-evenly",
+	},
+	button: {
+		display: "flex",
+		justifyContent: "space-between",
+		paddingRight: "2rem",
+		paddingBottom: "1rem",
+	},
+	PageTitle: {
+		display: "flex",
+		fontSize: 24,
+		fontWeight: "bold",
+		marginBottom: 30,
+	},
 }));
 
 const SearchCustomer = () => {
@@ -33,7 +39,7 @@ const SearchCustomer = () => {
 	return (
 		<PageLayout>
 			<div className={classes.button}>
-				<h1>Clientes:</h1>
+				<Typography className={classes.PageTitle}>Clientes</Typography>
                 <Button
 					variant="text"
 					color="secondary"
