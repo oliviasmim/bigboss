@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.section`
-	min-width: 100vw;
+	min-width: 90vw;
 	min-height: 80vh;
 	display: flex;
 	flex-direction: column;
