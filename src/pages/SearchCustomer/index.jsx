@@ -18,9 +18,15 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     paddingRight: "2rem",
     paddingBottom: "1rem",
+  },
+  PageTitle: {
+    display: "flex",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 30,
   },
 }));
 

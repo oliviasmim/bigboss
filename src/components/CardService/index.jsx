@@ -4,16 +4,13 @@ import { MoreHoriz } from "@material-ui/icons";
 import { IconButton, Menu, MenuItem, Fade } from "@material-ui/core";
 import { useUserServices } from "../../providers/userServices";
 import { useAuthenticated } from "../../providers/authentication";
-import FormEditService from "../../components/FormEditService";
-import Modal from "../../components/Modal";
 import { useModal } from "../../providers/Modal";
 import api from "../../services/api";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 
 const CardService = ({ title, description, id }) => {
-  const { isModalVisibleEdit, handleCloseModalEdit, handleOpenModalEdit } =
-    useModal();
+  const { handleOpenModalEdit } = useModal();
   const { token } = useAuthenticated();
   const { updateUserServices, handleIdService } = useUserServices();
   const source = getOneLetterAvatarSrc(title);
@@ -106,11 +103,7 @@ const CardService = ({ title, description, id }) => {
           <p>{description}</p>
         </CardContent>
       </CardContainer>
-      {isModalVisibleEdit && (
-        <Modal onClose={handleCloseModalEdit}>
-          <FormEditService />
-        </Modal>
-      )}
+
       <ToastContainer
         position="top-right"
         autoClose={2000}

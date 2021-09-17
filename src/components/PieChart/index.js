@@ -10,8 +10,12 @@ import { useUserContracts } from "../../providers/userContracts";
 const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
-    width: 380,
+    height: 410,
     margin: 20,
+    [theme.breakpoints.up(1550)]: {
+      width: 265,
+      height: 450,
+    },
   },
   //Ajusta Título do gráfico
   title: {
@@ -26,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
   },
   //Ajusta o Gráfico dentro do Card
   chart: {
-    margin: 20,
     maxWidth: 300,
     maxHeight: 320,
+    marginTop: 60,
   },
 }));
 
@@ -78,9 +82,7 @@ const PieChart = () => {
     <Card className={classes.root}>
       <CardContent
         style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
+          display: "block",
         }}
       >
         <Typography className={classes.title}>Receitas X Serviços</Typography>
@@ -111,14 +113,13 @@ const PieChart = () => {
               },
             ],
           }}
-          height={400}
-          width={600}
+          height={200}
+          width={220}
           options={{
             legend: {
-              position: "bottom",
               labels: {
-                padding: 25,
-                boxWidth: 20,
+                position: "botton",
+                boxWidth: 0,
               },
             },
           }}

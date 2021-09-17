@@ -10,8 +10,9 @@ import { useUserContracts } from "../../providers/userContracts";
 const useStyles = makeStyles((theme) => ({
   //Ajusta o Card do Gráfico
   root: {
-    width: 380,
-    height: 610,
+    width: 255,
+    height: 410,
+
     margin: 20,
   },
   //Ajusta Título do gráfico
@@ -27,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
   //Ajusta o Gráfico dentro do Card
   chart: {
-    width: 320,
-    height: 400,
+    width: 100,
+    height: 200,
   },
 }));
 
@@ -76,7 +77,7 @@ const BarChart = () => {
   return (
     <Card
       className={classes.root}
-      style={windowWidth > 1500 ? { height: "610px" } : {}}
+      style={windowWidth > 1500 ? { height: "410px" } : {}}
     >
       <CardContent>
         <Typography className={classes.title}>Top 5 Clientes</Typography>
@@ -89,7 +90,7 @@ const BarChart = () => {
         </Typography>
         <Bar
           className={classes.chart}
-          style={windowWidth > 1500 ? { height: "450px" } : {}}
+          style={windowWidth > 1500 ? { height: "300px" } : {}}
           data={{
             labels: getTopFive("names"),
             datasets: [
@@ -102,8 +103,8 @@ const BarChart = () => {
               },
             ],
           }}
-          height={450}
-          width={350}
+          height={350}
+          width={200}
           options={{
             maintainAspectRatio: true,
             responsive: false,

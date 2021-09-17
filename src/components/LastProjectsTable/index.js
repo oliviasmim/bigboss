@@ -6,13 +6,13 @@ import { getLettersAvatarSrc } from "../../services/avatarLetters";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 380,
+    width: "100%",
     margin: 20,
     height: 450,
     backgroundColor: "white",
 
     [theme.breakpoints.up(1534)]: {
-      width: 1228,
+      width: 880,
     },
   },
 }));
@@ -33,20 +33,13 @@ const columns = [
         </>
       );
     },
-    width: 220,
-  },
-  {
-    field: "client",
-    headerName: "CPF/CNPJ",
     width: 180,
-    valueFormatter: (params) => {
-      return params.row.client.cpf;
-    },
   },
+
   {
     field: "service",
     headerName: "Serviço",
-    width: 150,
+    width: 130,
     editable: true,
     valueFormatter: (params) => {
       return params.row.service.title;
@@ -59,7 +52,7 @@ const columns = [
     headerAlign: "left",
     align: "left",
     type: "date",
-    width: 190,
+    width: 170,
     editable: true,
     valueFormatter: (params) => {
       const date = new Date(params.value);
@@ -77,7 +70,7 @@ const columns = [
     headerAlign: "left",
     align: "left",
     type: "date",
-    width: 205,
+    width: 200,
     editable: true,
     valueFormatter: (params) => {
       const date = new Date(params.value);
@@ -94,7 +87,7 @@ const columns = [
     headerName: "Status",
     headerAlign: "left",
     align: "left",
-    width: 200,
+    width: 190,
     editable: true,
   },
 ];

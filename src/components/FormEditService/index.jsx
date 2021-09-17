@@ -14,7 +14,6 @@ import {
   ContentColumnLarge,
   ContentColumnLargeFlex,
   FlexOrcamentoVF,
-  TitleService,
   ButtonsGroup,
   ButtonBox,
 } from "./styles";
@@ -124,15 +123,15 @@ const FormEditService = () => {
         <ContainerContent>
           <TitleForm>Editar Serviço:</TitleForm>
           <ContentColumnLarge>
-            <TitleService>Título: </TitleService>
+            {/* <TitleService>Título: </TitleService> */}
             <TextField
               label="Titulo"
               type="input"
-              variant="filled"
-              size="small"
+              //   variant="filled"
+              //   size="small"
               defaultValue={currentService.title}
               fullWidth
-              color="primary"
+              //   color="primary"
               error={!!errors.newtitulo}
               helperText={errors.newtitulo?.message}
               {...register("newtitulo")}
@@ -140,30 +139,30 @@ const FormEditService = () => {
           </ContentColumnLarge>
           <FlexOrcamentoVF className={classes.text}>
             <ContentColumnLargeFlex>
-              <TitleService>Orçamento: </TitleService>
+              {/* <TitleService>Orçamento: </TitleService> */}
               <TextField
                 label="Orçamento"
                 type="input"
-                variant="filled"
-                size="small"
+                // variant="filled"
+                // size="small"
                 defaultValue={currentService.budget}
                 fullWidth
-                color="primary"
+                // color="primary"
                 error={!!errors.neworcamento}
                 helperText={errors.neworcamento?.message}
                 {...register("neworcamento")}
               />
             </ContentColumnLargeFlex>
             <ContentColumnLargeFlex>
-              <TitleService>Valor Final: </TitleService>
+              {/* <TitleService>Valor Final: </TitleService> */}
               <TextField
                 label="Valor Final"
                 type="input"
-                variant="filled"
-                size="small"
+                // variant="filled"
+                // size="small"
                 defaultValue={currentService.finalValue}
                 fullWidth
-                color="primary"
+                // color="primary"
                 error={!!errors.newvalorfinal}
                 helperText={errors.newvalorfinal?.message}
                 {...register("newvalorfinal")}
@@ -172,32 +171,32 @@ const FormEditService = () => {
           </FlexOrcamentoVF>
 
           <ContentColumnLarge>
-            <TitleService>Descrição: </TitleService>
+            {/* <TitleService>Descrição: </TitleService> */}
             <TextField
               label="Descrição"
               type="input"
               fullWidth
-              variant="filled"
+              //   variant="filled"
               multiline
               rows={3}
-              size="small"
+              //   size="small"
               defaultValue={currentService.description}
-              color="primary"
+              //   color="primary"
               error={!!errors.newdescricao}
               helperText={errors.newdescricao?.message}
               {...register("newdescricao")}
             />
           </ContentColumnLarge>
           <ContentColumnLarge>
-            <TitleService>Linguagem Utilizada: </TitleService>
+            {/* <TitleService>Linguagem Utilizada: </TitleService> */}
             <TextField
               label="Linguagem Utilizada"
               type="input"
-              variant="filled"
+              //   variant="filled"
               fullWidth
-              size="small"
+              //   size="small"
               defaultValue={currentService.language}
-              color="primary"
+              //   color="primary"
               error={!!errors.newlinguagem}
               helperText={errors.newlinguagem?.message}
               {...register("newlinguagem")}
