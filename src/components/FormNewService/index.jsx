@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { useModal } from "../../providers/Modal";
 import { useUserServices } from "../../providers/userServices";
+import { ToastContainer, toast } from "react-toastify";
 import { useAuthenticated } from "../../providers/authentication";
 import {
   ContainerContent,
@@ -13,7 +14,6 @@ import {
   ContentColumnLarge,
   ContentColumnLargeFlex,
   FlexOrcamentoVF,
-  TitleService,
   ButtonsGroup,
   ButtonBox,
 } from "./styles";
@@ -80,10 +80,31 @@ const FormularioNewService = () => {
       .then((response) => {
         updateUserServices();
         handleCloseModalNew();
+        notify(true, "Serviço Adicionado!");
       })
-      .catch((err) => console.log(err));
-    console.log(apiBody);
+      .catch((err) => notify(false, "Erro ao adicionar Serviço :c"));
   };
+
+  const notify = (isSuccess, text) =>
+    isSuccess
+      ? toast.success(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      : toast.error(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
   return (
     <div className="CardForm">
@@ -93,12 +114,12 @@ const FormularioNewService = () => {
           <ContentColumnLarge>
             {/* <TitleService>Título: </TitleService> */}
             <TextField
-              label="Titulo"
+              label="Título"
               type="input"
-            //   variant="filled"
-            //   size="small"
+              //   variant="filled"
+              //   size="small"
               fullWidth
-            //   color="primary"
+              //   color="primary"
               error={!!errors.titulo}
               helperText={errors.titulo?.message}
               {...register("titulo")}
@@ -141,11 +162,11 @@ const FormularioNewService = () => {
               label="Descrição"
               type="input"
               fullWidth
-            //   variant="filled"
+              //   variant="filled"
               multiline
               rows={3}
-            //   size="small"
-            //   color="primary"
+              //   size="small"
+              //   color="primary"
               error={!!errors.descricao}
               helperText={errors.descricao?.message}
               {...register("descricao")}
@@ -156,10 +177,10 @@ const FormularioNewService = () => {
             <TextField
               label="Linguagem Utilizada"
               type="input"
-            //   variant="filled"
+              //   variant="filled"
               fullWidth
-            //   size="small"
-            //   color="primary"
+              //   size="small"
+              //   color="primary"
               error={!!errors.linguagem}
               helperText={errors.linguagem?.message}
               {...register("linguagem")}
@@ -191,6 +212,17 @@ const FormularioNewService = () => {
           </ButtonBox>
         </ButtonsGroup>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

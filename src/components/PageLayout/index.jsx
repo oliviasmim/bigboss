@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useState, useEffect } from "react";
 import { useAuthenticated } from "../../providers/authentication";
 import jwt_decode from "jwt-decode";
+import { ToastContainer, toast } from "react-toastify";
 import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +31,7 @@ const PageLayout = ({ children }) => {
   useEffect(() => {
     if (token) {
       if (Date.now() >= tokenExp * 1000) {
-        alert("Sua sessão expirou! Redirecionando para o Login...");
+        toast.warning("Sua sessão expirou! Redirecionando para o Login...");
         setAuthenticated(false);
         localStorage.clear();
         history.push("/login");
@@ -50,6 +51,17 @@ const PageLayout = ({ children }) => {
         {children}
         <Footer />
       </main>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

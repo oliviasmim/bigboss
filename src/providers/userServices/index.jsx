@@ -19,6 +19,7 @@ export const UserServicesProvider = ({ children }) => {
           },
         })
         .then((res) => setUserServices(res.data))
+        //Deixei o console.log por conta do debug do UseEfect no loading da pagina
         .catch((err) => console.log(err));
     } else {
       setUserServices({});
@@ -35,7 +36,7 @@ export const UserServicesProvider = ({ children }) => {
     callback();
   };
 
-  const handleDelete = (id) => {
+  /* const handleDelete = (id) => {
     api
       .delete(`/services/${id}`, {
         headers: {
@@ -43,7 +44,8 @@ export const UserServicesProvider = ({ children }) => {
         },
       })
       .catch((err) => console.log(err));
-  };
+  };*/
+
   return (
     <UserServicesContext.Provider
       value={{
@@ -51,7 +53,6 @@ export const UserServicesProvider = ({ children }) => {
         updateUserServices,
         handleIdService,
         currentService,
-        handleDelete,
       }}
     >
       {children}

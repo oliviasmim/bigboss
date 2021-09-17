@@ -13,6 +13,7 @@ import {
 import api from "../../services/api";
 import { useAuthenticated } from "../../providers/authentication";
 import { useUserInfos } from "../../providers/userInfos";
+import { ToastContainer, toast } from "react-toastify";
 
 const states = [
   "",
@@ -88,10 +89,33 @@ const AccountProfileDetails = ({ user }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then(updateUserInfos())
-      .catch((err) => console.log(err));
-    console.log(values); //mandar pra api
+      .then((response) => {
+        updateUserInfos();
+        notify(true, "Alteração concluída com sucesso");
+      })
+      .catch((err) => notify(false, "Erro ao editar"));
   };
+
+  const notify = (isSuccess, text) =>
+    isSuccess
+      ? toast.success(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      : toast.error(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
   return (
     <form autoComplete="off" noValidate onSubmit={handleSubmit}>
@@ -186,6 +210,17 @@ const AccountProfileDetails = ({ user }) => {
           </Button>
         </Box>
       </Card>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </form>
   );
 };

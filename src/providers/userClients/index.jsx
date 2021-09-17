@@ -10,7 +10,6 @@ export const UserClientsProvider = ({ children }) => {
   const { userId, token } = useAuthenticated();
 
   useEffect(() => {
-    console.log(userId);
     if (userId) {
       api
         .get(`clients/user/${userId}`, {
@@ -19,6 +18,7 @@ export const UserClientsProvider = ({ children }) => {
           },
         })
         .then((res) => setUserClients(res.data))
+        //Deixei esse Console.log como debug do UseEfect para ver o erro caso não carregue a página
         .catch((err) => console.log(err));
     } else {
       setUserClients({});

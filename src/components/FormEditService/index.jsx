@@ -7,13 +7,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useModal } from "../../providers/Modal";
 import { useUserServices } from "../../providers/userServices";
 import { useAuthenticated } from "../../providers/authentication";
+import { ToastContainer, toast } from "react-toastify";
 import {
   ContainerContent,
   TitleForm,
   ContentColumnLarge,
   ContentColumnLargeFlex,
   FlexOrcamentoVF,
-  TitleService,
   ButtonsGroup,
   ButtonBox,
 } from "./styles";
@@ -60,6 +60,27 @@ const FormEditService = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const notify = (isSuccess, text) =>
+    isSuccess
+      ? toast.success(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      : toast.error(text, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
   const handleDataEditService = (data) => {
     const dataApi = {
       title: data.newtitulo,
@@ -80,12 +101,24 @@ const FormEditService = () => {
       .then((response) => {
         updateUserServices();
         handleCloseModalEdit();
+        notify(true, "Concluído a Alteração");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => notify(false, "Erro ao criar o Serviço"));
   };
 
   return (
     <div className="CardForm">
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
         <ContainerContent>
           <TitleForm>Editar Serviço:</TitleForm>
@@ -94,11 +127,11 @@ const FormEditService = () => {
             <TextField
               label="Titulo"
               type="input"
-            //   variant="filled"
-            //   size="small"
+              //   variant="filled"
+              //   size="small"
               defaultValue={currentService.title}
               fullWidth
-            //   color="primary"
+              //   color="primary"
               error={!!errors.newtitulo}
               helperText={errors.newtitulo?.message}
               {...register("newtitulo")}
@@ -143,12 +176,12 @@ const FormEditService = () => {
               label="Descrição"
               type="input"
               fullWidth
-            //   variant="filled"
+              //   variant="filled"
               multiline
               rows={3}
-            //   size="small"
+              //   size="small"
               defaultValue={currentService.description}
-            //   color="primary"
+              //   color="primary"
               error={!!errors.newdescricao}
               helperText={errors.newdescricao?.message}
               {...register("newdescricao")}
@@ -159,11 +192,11 @@ const FormEditService = () => {
             <TextField
               label="Linguagem Utilizada"
               type="input"
-            //   variant="filled"
+              //   variant="filled"
               fullWidth
-            //   size="small"
+              //   size="small"
               defaultValue={currentService.language}
-            //   color="primary"
+              //   color="primary"
               error={!!errors.newlinguagem}
               helperText={errors.newlinguagem?.message}
               {...register("newlinguagem")}
