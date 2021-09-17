@@ -77,7 +77,6 @@ const PieChart = () => {
     let output = values.map((item) => ((item / sumValues) * 100).toFixed());
     return output;
   };
-  getProfitsByServices();
   return (
     <Card className={classes.root}>
       <CardContent
