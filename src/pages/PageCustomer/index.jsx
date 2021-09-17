@@ -10,20 +10,34 @@ import FormNewContract from "../../components/FormNewContract";
 import { useState } from "react";
 
 const PageCostumer = () => {
-    const { clientId } = useParams();
-    const { userContracts } = useUserContracts();
-    const clientContracts = userContracts.filter(item=> Number(item.client.id) === Number(clientId));
-    const [useModal, setUseModal] = useState(false)
+	const { clientId } = useParams();
+	const { userContracts } = useUserContracts();
+	const clientContracts = userContracts.filter(
+		(item) => Number(item.client.id) === Number(clientId)
+	);
+	const [useModal, setUseModal] = useState(false);
 	return (
 		<>
-        {useModal && <Modal><FormNewContract toClose={{useModal: useModal, setModal: setUseModal}}/></Modal>}
-        <PageLayout>
-			
-            <FormRegisterCustomer />
-			<Button variant="text" color="secondary" startIcon={<Add />} onClick={()=> setUseModal(!useModal)}>Adicionar contrato</Button>
-            <LastProjectsTable maxRows={3} newRows={clientContracts}/>
-		</PageLayout>
-        </>
+			{useModal && (
+				<Modal>
+					<FormNewContract
+						toClose={{ useModal: useModal, setModal: setUseModal }}
+					/>
+				</Modal>
+			)}
+			<PageLayout>
+				<FormRegisterCustomer />
+				<Button
+					variant="text"
+					color="secondary"
+					startIcon={<Add />}
+					onClick={() => setUseModal(!useModal)}
+				>
+					Adicionar contrato
+				</Button>
+				<LastProjectsTable maxRows={3} newRows={clientContracts} />
+			</PageLayout>
+		</>
 	);
 };
 

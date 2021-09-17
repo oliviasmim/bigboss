@@ -7,24 +7,21 @@ import api from "../../services/api";
 import { useAuthenticated } from "../../providers/authentication";
 import { toast } from "react-toastify";
 
-
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    margin: 20,
-    height: 450,
-    backgroundColor: "white",
+	root: {
+		width: "100%",
+		margin: 20,
+		height: 450,
+		backgroundColor: "white",
 
-    [theme.breakpoints.up(1534)]: {
-      width: 880,
-    },
-  },
+		[theme.breakpoints.up(1534)]: {
+			width: 880,
+		},
+	},
 }));
 
-
-
 const LastProjectsTable = ({ maxRows = 5, hideFooter, newRows }) => {
-  const columns = [
+	const columns = [
 		{
 			field: "name",
 			headerName: "Cliente",
@@ -89,8 +86,11 @@ const LastProjectsTable = ({ maxRows = 5, hideFooter, newRows }) => {
 									Authorization: `Bearer ${token}`,
 								},
 							})
-								.then(()=> {toast.success("Deletado!"); updateUserContracts();})
-								.catch((err)=>toast.warning("errooouuu"));
+								.then(() => {
+									toast.success("Deletado!");
+									updateUserContracts();
+								})
+								.catch((err) => toast.warning("errooouuu"));
 						}}
 					>
 						{new Date(params.value).toLocaleDateString("pt-BR")}
@@ -106,35 +106,41 @@ const LastProjectsTable = ({ maxRows = 5, hideFooter, newRows }) => {
 			width: 190,
 			editable: true,
 		},
-  ];
-  const { updateUserContracts } = useUserContracts();
-    const { userContracts } = useUserContracts();
-const { token } = useAuthenticated();
-  const classes = useStyles();
-  const noRows = () => {
-      return (
-          <div style={{position: "absolute", top: "50%", left: "50%", transform: "translateX(-50%)"}}>
-              <h4>Sem contratos por aqui!</h4>
-              
-          </div>
-      )
-  }
-  return (
-    <div className={classes.root}>
-      {userContracts.length && (
-        <DataGrid
-          rows={newRows || userContracts}
-          columns={columns}
-          pageSize={maxRows}
-          autoPageSize
-          autoHeight
-          hideFooterPagination={hideFooter}
-          disableSelectionOnClick
-          components={{ NoRowsOverlay: noRows}}
-        />
-      )}
-    </div>
-  );
+	];
+	const { updateUserContracts } = useUserContracts();
+	const { userContracts } = useUserContracts();
+	const { token } = useAuthenticated();
+	const classes = useStyles();
+	const noRows = () => {
+		return (
+			<div
+				style={{
+					position: "absolute",
+					top: "50%",
+					left: "50%",
+					transform: "translateX(-50%)",
+				}}
+			>
+				<h4>Sem contratos por aqui!</h4>
+			</div>
+		);
+	};
+	return (
+		<div className={classes.root}>
+			{userContracts.length && (
+				<DataGrid
+					rows={newRows || userContracts}
+					columns={columns}
+					pageSize={maxRows}
+					autoPageSize
+					autoHeight
+					hideFooterPagination={hideFooter}
+					disableSelectionOnClick
+					components={{ NoRowsOverlay: noRows }}
+				/>
+			)}
+		</div>
+	);
 };
 
 export default LastProjectsTable;
