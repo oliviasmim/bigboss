@@ -21,7 +21,7 @@ export const UserServicesProvider = ({ children }) => {
         .then((res) => setUserServices(res.data))
         .catch((err) => console.log(err));
     } else {
-      setUserServices({});
+      setUserServices([]);
     }
   }, [reloadUserServices, token, userId]);
 

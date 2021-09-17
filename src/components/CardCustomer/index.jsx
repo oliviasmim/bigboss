@@ -32,7 +32,7 @@ const { userContracts } = useUserContracts();
   
   
   return (
-    <CardContainer onClick={() => action()}>
+    <CardContainer onClick={() => {document.body.scrollTop = 0;document.documentElement.scrollTop = 0;action()}}>
       <ImageContainer>
         <Image>
           <img src={source} alt={`avatar:${name}`} />
