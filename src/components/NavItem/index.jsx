@@ -24,9 +24,6 @@ const useStyles = makeStyles((theme) => ({
 		"& svg": {
 			marginRight: "16px",
 		},
-		[theme.breakpoints.down(600)]: {
-			position: "absolute",
-		},
 	},
 }));
 
